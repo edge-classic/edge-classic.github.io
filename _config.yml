@@ -1,0 +1,10 @@
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - README.md
+title: EDGE-Classic
+description: Heavy Features, Light Requirements
+theme: jekyll-theme-midnight
