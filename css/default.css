@@ -1,0 +1,212 @@
+body {
+    margin:0;
+	color: rgb(0, 0, 0);
+    background-color: rgb(192, 192, 192);
+}
+
+.mobscreen {
+  font-size: 1.5vw;
+ 
+  /*color: blue; */
+}
+
+#cssmenu
+{
+    width:auto;
+    display:block;
+    text-align:center;
+    font-family:Spectral;
+    line-height:1.2;
+}
+#cssmenu ul
+{
+    width:auto;
+    display:block;
+    font-size:0;
+    text-align:center;
+    color:#EEEEEE;
+    background-color: #205081;
+    border: transparent;
+    margin:0; 
+    padding:0;
+    list-style:none;
+    position:relative;
+    z-index:999999990;
+    border-radius: 3px;
+} 
+
+#cssmenu li
+{
+    display:inline-block;
+    position:relative;    
+    font-size:0; 
+    margin:0;
+    padding:0;
+}
+
+/*Top level items
+---------------------------------------*/
+
+#cssmenu >ul>li>span, #cssmenu >ul>li>a 
+{   
+    font-size:1.4vw;
+    color:inherit;
+    text-decoration:none;
+    padding:10px 20px; 
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:2px;   
+    display:block;   
+    position:relative;
+    transition:all 0.3s;
+}
+#cssmenu li:hover > span, #cssmenu li:hover > a
+{  
+    color:#FFFFFF;
+    background-color:rgba(255,255,255,0.1);
+}
+
+/*Sub level items
+---------------------------------------*/
+#cssmenu .dropdown
+{
+    text-align:left;
+    left:0;
+    font-family:inherit;
+    color: #EEEEEE; /*#000000;*/
+    background-color:#205081/*#FFFFFF;*/
+    border:none;
+    position:absolute;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display:none;
+    opacity:0;
+    cursor:default;
+}
+
+#cssmenu .dropdown li {
+    display: block;  
+}
+
+#cssmenu .dropdown li > span, #cssmenu .dropdown li > a, #cssmenu .clm a, #cssmenu .clm h3 
+{
+    font-size:1.3vw;
+    font-weight:400;
+    font-family:inherit;
+    margin:0;
+    padding:10px 15px; 
+    display:block;
+    color:inherit;
+    text-decoration:none;
+}
+#cssmenu .clm h3 {
+    font-size:1.4vw;
+    font-weight:700;
+}
+#cssmenu .sub-item {
+    background-color:#FFFFFF;
+    position:relative;       
+    transition:all 0.3s;
+}
+
+#cssmenu .dropdown li:hover > span, #cssmenu .dropdown li:hover > a
+{
+
+    color:#000000;
+    background-color:#EEEEEE;
+}
+
+#cssmenu .clm a:hover
+{
+    color:#000000;
+    transition:color 0.2s;
+}
+
+#cssmenu .dropdown.right0 {left:auto;right:0;} 
+#cssmenu .dropdown li > .dropdown.right0 {left:auto;right:100%;} 
+       
+#cssmenu li.full-width{
+    position:static;
+}
+#cssmenu li.full-width .dropdown{
+    width:100%;
+    left:0;
+    box-sizing:border-box;
+}  
+
+#cssmenu li:hover > .dropdown
+{
+    display:block;
+    opacity:1;
+    z-index:1;
+}
+
+#cssmenu .dropdown li > .dropdown
+{
+    left:100%; right:auto;
+    top:0;
+}
+
+#cssmenu ul.dropdown
+{
+    min-width:240px; /* Sub level menu min width */
+}
+
+#cssmenu div.dropdown  {
+    text-align:center;
+}
+
+/* each column */
+#cssmenu .clm
+{
+    text-align:left;
+    margin:20px;
+    vertical-align:top;/*or middle*/
+    width:auto;
+    min-width:240px;
+    display:inline-block;
+    *display:inline;*zoom:1;
+}
+
+#cssmenu .clm a:hover
+{
+    color:#000000;
+    text-decoration:underline;
+}
+
+/*-----------Arrows----------------*/
+#cssmenu .arrow {
+    color:inherit;
+    border-style:solid; border-width:2px 2px 0 0; padding:4px; transform:rotate(135deg);margin-top:-8.5px;margin-left:4px;
+    position:relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align:middle;
+    overflow:hidden;/*for IE6*/
+}
+        
+#cssmenu .dropdown .arrow {
+    transform:rotate(45deg);
+    top:50%;margin-top:-6px;
+    position:relative;top:auto;
+} 
+
+
+
+@keyframes topItemAnimation{
+  from {opacity: 0; transform:translate3d(0, -10vh, 0);}
+  to {opacity: 1; transform:translate3d(0, 0, 0);}
+}
+#cssmenu li a {animation:none;}
+#cssmenu.active li a { animation: topItemAnimation 0.5s ease 0.08333333333333333s backwards;}
+#cssmenu.active li:nth-of-type(1) a { animation: topItemAnimation 0.5s ease 0.5s backwards;}
+#cssmenu.active li:nth-of-type(2) a { animation: topItemAnimation 0.5s ease 0.4166666666666667s backwards;}
+#cssmenu.active li:nth-of-type(3) a { animation: topItemAnimation 0.5s ease 0.3333333333333333s backwards;}
+#cssmenu.active li:nth-of-type(4) a { animation: topItemAnimation 0.5s ease 0.25s backwards;}
+#cssmenu.active li:nth-of-type(5) a { animation: topItemAnimation 0.5s ease 0.16666666666666666s backwards;}@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { #cssmenu.active li a{animation:none!important;}}
+/*--Add border to top-level menu items--*/
+#mcmenu .top-item {
+  border-left:1px solid #2e6fb2;
+  border-right:1px solid #14314f; }
+#mcmenu li:first-child .top-item {border-left:none;}
+#mcmenu li:last-child .top-item {border-right:none;}

@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>ddf language: DDFCOLM</title>
+
+ <link rel="stylesheet" type="text/css" href="ddfstylesheet.css">
+
+</head>
+
+<BODY>
+ 
+<IMG SRC="ECLOGOCIRCLE.png" HEIGHT="110" BORDER=0 style="margin:0px 20px" ALT="">
+
+<nav class="navMenu">
+	<ul>
+		<li><a href="./index.htm">intro to ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./anims.htm">anims.ddf</a></li>
+		<li><a href="./attacks.htm">attacks.ddf</a></li>
+		<li><a href="./colmap.htm">colmap.ddf</a></li>
+		<li><a href="./flats.htm">flats.ddf</a></li>
+		<li><a href="./fonts.htm">fonts.ddf</a></li>
+		<li><a href="./games.htm">games.ddf</a></li>
+		<li><a href="./images.htm">images.ddf</a></li>
+		<li><a href="./lang.htm">language.ldf</a></li>
+		<li><a href="./levels.htm">levels.ddf</a></li>
+		<li><a href="./mapstuff.htm">lines/sectors.ddf</a></li>
+		<li><a href="./playlist.htm">playlist.ddf</a></li>
+		<li><a href="./sfx.htm">sounds.ddf</a></li>
+		<li><a href="./styles.htm">styles.ddf</a></li>
+		<li><a href="./switch.htm">switch.ddf</a></li>
+		<li><a href="./things.htm">things.ddf</a></li>
+		<li><a href="./weapons.htm">weapons.ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./coal.htm">COAL</a></li>
+	</ul>
+</nav>  
+
+<br>
+<br>
+
+
+<h2><A NAME="top"><B>COLOURMAPS</B></a></h2>
+
+<p>
+Stored in colmap.ddf or in the DDFCOLM data lump
+</p>
+<p>
+Colmap.ddf allows you to modify how colourmaps are used in the game, and are useful for creating
+interesting lighting and other special effects such as fog.
+</p>
+<p>
+
+Each entry describes a "colourmap" and consists of a unique name, enclosed in square brackets, followed by a series of commands that specify a sequence of "coltables".  A coltable is a single 256 byte section of a colourmap lump (such as the "COLORMAP" lump in EDGE.WAD), which maps a set of 256 palette colours to another set of palette colours.
+</p>
+<p>
+The name should be descriptive of the effect it creates and is used in other DDF files to refer to that particular colourmap. See also the sectors.ddf and lines.ddf pages.
+</p>
+<p>
+To edit colourmap lumps you can use a program such as inkworks (available from most
+doom ftp sites). Alternatively, <A HREF="http://www.teamtnt.com">TeamTNT</A> (the guys who
+made the boom engine) created a nifty little colourmap editor called cmaptool. It is packaged up in a tools/utility package on the
+TeamTNT web site.
+<br>
+&nbsp
+</p>
+<p>
+<B><FONT SIZE=+1>COMMANDS</font></b>
+</p>
+<p>
+The following is a list of the commands that are accepted by each colourmap entry:
+</p>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>COMMAND</TH><TH>TYPE</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>LUMP</TD><TD>[string]</TD><TD>
+The lump name which contains this colourmap.</TD></TR>
+
+<TR><TD>START</TD><TD>[integer]</TD><TD>
+The offset into the lump where this colourmap begins, in terms of
+whole coltables (0, 1, 2, etc).</TD></TR>
+
+<TR><TD>LENGTH</TD><TD>[integer]</TD><TD>
+The number of coltables in this colourmap. Defaults to 1 if omitted.</TD></TR>
+
+<TR><TD>GL_COLOUR</TD><TD>[hex]</TD><TD>
+Specify a colour directly without needing any lumps.
+<br>Example: 
+GL_COLOUR = #FF9030; //Orange</TD></TR>
+
+<!-- deprecated from EDGE 1.25
+<TR><TD>PRIORITY</TD><TD>[integer]</TD><TD>
+When multiple "special effects" that use colourmaps  (e.g.
+invulnerability & night vision) are active, then the one with the
+highest priority value gets used. defaults to 0.</TD></TR>
+-->
+
+<TR><TD>SPECIAL</TD><TD>[special]</TD><TD>
+A comma separated list of special flags. See below.</td></tr>
+</table>
+
+&nbsp
+<p>
+<B><FONT SIZE=+1>SPECIALS</font></b>
+</p>
+<p>
+These allow some control over the ways the colourmap is used.
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>SPECIAL</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>NO_FLASH</TD><TD>
+Usually when the player fires a weapon, there is a brief flash of
+light.  When using a fog effect (for example), this flash can look
+weird.  This flag disables the gun flash for all sectors using this
+colourmap.</TD></TR>
+
+<!-- deprecated from EDGE 1.25
+<TR><TD>NO_SKY</TD><TD>
+Using this flag, the sky will be unaffected by the sector's lighting
+or colourmap, and drawn using the [SKY] colourmap instead.</TD></TR>
+-->
+
+</TABLE>
+&nbsp
+<p>
+<B><FONT SIZE=+1>EXAMPLES</font></b>
+</p>
+<p>
+The following is an example of a complete colourmap entry:
+
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TD>
+<FONT SIZE=2>
+[WATER]<BR>
+LUMP=WATERMAP;<BR>
+START=0;<BR>
+LENGTH=32;<BR>
+SPECIAL=NO_FLASH;<BR>
+</FONT>
+</TD></TR>
+</TABLE>
+
+
+
+<!--begin footer-->
+<p>
+back to <A HREF="#top">top</A>
+</p>
+<p>
+DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, Andy Brewood and Luke Brennan.<BR>
+Problems with the docs, errors and comments should be directed to the EDGE team.
+</p>
+<p>
+&copy; EDGE Team 1998 - 2022.
+</p>
+</body>
+</html>

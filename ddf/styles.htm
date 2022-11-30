@@ -1,0 +1,252 @@
+<html>
+<head>
+<title>ddf language: DDFSTYLE</title>
+
+ <link rel="stylesheet" type="text/css" href="ddfstylesheet.css">
+
+</head>
+
+<BODY>
+ 
+<IMG SRC="ECLOGOCIRCLE.png" HEIGHT="110" BORDER=0 style="margin:0px 20px" ALT="">
+
+<nav class="navMenu">
+	<ul>
+		<li><a href="./index.htm">intro to ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./anims.htm">anims.ddf</a></li>
+		<li><a href="./attacks.htm">attacks.ddf</a></li>
+		<li><a href="./colmap.htm">colmap.ddf</a></li>
+		<li><a href="./flats.htm">flats.ddf</a></li>
+		<li><a href="./fonts.htm">fonts.ddf</a></li>
+		<li><a href="./games.htm">games.ddf</a></li>
+		<li><a href="./images.htm">images.ddf</a></li>
+		<li><a href="./lang.htm">language.ldf</a></li>
+		<li><a href="./levels.htm">levels.ddf</a></li>
+		<li><a href="./mapstuff.htm">lines/sectors.ddf</a></li>
+		<li><a href="./playlist.htm">playlist.ddf</a></li>
+		<li><a href="./sfx.htm">sounds.ddf</a></li>
+		<li><a href="./styles.htm">styles.ddf</a></li>
+		<li><a href="./switch.htm">switch.ddf</a></li>
+		<li><a href="./things.htm">things.ddf</a></li>
+		<li><a href="./weapons.htm">weapons.ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./coal.htm">COAL</a></li>
+	</ul>
+</nav>  
+
+<br>
+<br>
+
+<h2><A NAME="top"><B>STYLES</B></a></h2>
+
+<p>
+Stored in styles.ddf or in the DDFSTYLE data lump
+</p>
+<p>
+Styles.ddf allows you to define the background colour/image and text font/colour/scaling information (and sounds too) for various parts of EDGE's user interface. 
+</p>
+<p>
+Each entry describes a section of the UI and consists of a unique name, enclosed in square brackets, followed by a series of commands that define the "style" to use. To modify one of the default styles EDGE uses you must use the appropriate hard-coded entry name:
+</p>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=3>
+	<tr><td>
+		<ul>
+			<li>DEFAULT</li>
+			<li>RTS_MENU</li>
+			<li>MENU</li>
+			<li>MAIN_MENU</li>
+			<li>OPTIONS</li>
+			<li>GAMEPLAY_OPTIONS</li>
+			<li>DIALOG</li>
+			<li>CONSOLE</li>
+			<li>STATS</li>
+			<li>AUTOMAP</li>
+			<li>CHOOSE_EPISODE</li>
+			<li>CHOOSE_SKILL</li>
+		</ul>
+	</td></tr>
+</table>
+<p>
+Note that RTS_MENU is limited to allow only the BACKGROUND.???? commands, others like TEXT.???? do not work.
+</p>
+<p>
+<B><FONT SIZE=+1>BACKGROUND COMMANDS</font></b>
+</p>
+<p>
+The following is a list of the commands that are accepted by BACKGROUND:
+</p>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>COMMAND</TH><TH>TYPE</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>BACKGROUND.COLOUR</TD><TD>[hex]</TD><TD>
+Specify a colour directly without needing any lumps.
+<br>Example: 
+BACKGROUND.COLOUR = #FF9030; //Orange</TD></TR>
+
+<TR><TD>BACKGROUND.IMAGE</TD><TD>[image name]</TD><TD>
+The image to show behind any text.</TD></TR>
+
+<tr><td>BACKGROUND.TRANSLUCENCY</td><td>[percentage]</td><td>
+The percentage of translucency. 0% is invisible, while 100% is visible.
+</td></tr>
+
+<tr><td>BACKGROUND.ASPECT</td><td>[float]</td><td>
+Adjusts the width of the image. 1 is normal, 0.5
+makes for tall and skinny, 2.0 makes for obese.</td></tr>
+
+<tr><td>BACKGROUND.SCALE</td><td>[float]</td><td>
+Stretches or shrinks the total size (width and height) of 
+the image. 1 is normal perspective, 0.5 will make image half normal
+size. Used when you wish to use a larger and more detailed image than
+normal DOOM.</td></tr>
+
+<TR><TD>SPECIAL</TD><TD><a href="#special">[special]</a></TD><TD>
+A comma separated list of special flags. See below.</td></tr>
+
+</table>
+
+<p>
+<B><FONT SIZE=+1>TEXT, ALT, TITLE or HELP COMMANDS</font></b>
+</p>
+<p>
+The following is a list of the commands can be used after the ".": i.e. TEXT.FONT:
+</p>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>COMMAND</TH><TH>TYPE</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>.COLOURMAP</TD><TD>[colourmap]</TD><TD>
+Used to remap text colours. The value is a reference to an entry in
+colmap.ddf. Examples: 'TEXT_RED', 'TEXT_LT_BLUE', 'ALLWHITE'.</TD></TR>
+
+<TR><TD>.FONT</TD><TD>[font name]</TD><TD>
+The font(defined in DDFFONTS) to use for the text.</TD></TR>
+
+<tr><td>.TRANSLUCENCY</td><td>[percentage]</td><td>
+The percentage of translucency. 0% is invisible, while 100% is visible.
+</td></tr>
+
+<tr><td>.ASPECT</td><td>[float]</td><td>
+Adjusts the width of the text. 1 is normal, 0.5
+makes for tall and skinny, 2.0 makes for obese.</td></tr>
+
+<tr><td>.SCALE</td><td>[float]</td><td>
+Stretches or shrinks the total size (width and height) of 
+the text. 1 is normal perspective, 0.5 will make image half normal
+size. Used when you wish to use a larger and more detailed image than
+normal DOOM.</td></tr>
+
+<tr><td>.X_OFFSET</td><td>[float]</td><td>
+Can be used to offset text-based menus </td></tr>
+
+<tr><td>.Y_OFFSET</td><td>[float]</td><td>
+Can be used to offset text-based menus </td></tr>
+
+</table>
+
+&nbsp
+<p><a name="special">
+
+<B><FONT SIZE=+1>SPECIALS</font></b>
+</p>
+<p>
+These allow some control over the ways the image is used.
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>SPECIAL</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>TILED </TD><TD>
+Background image should tile (otherwise covers whole area).</TD></TR>
+
+<TR><TD>TILED_NOSCALE</TD><TD>
+Background image should tile (1:1 pixels)</TD></TR>
+
+<TR><TD>NO_STRETCH_FULLSCREEN</TD><TD>
+Background image will NOT be stretched to fill the screen</TD></TR>
+
+<TR><TD>CURSOR_RIGHT</TD><TD>
+Menu cursor will be drawn on the right side of menu entries</TD></TR>
+
+</TABLE>
+&nbsp
+<!--
+<p>
+<B><FONT SIZE=+1>SOUND COMMANDS</font></b>
+<p>
+The following is a list of the commands can be used after the ".": i.e. SOUND.BEGIN:
+<p>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>COMMAND</TH><TH>TYPE</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>.BEGIN</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.END</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.SELECT</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.BACK</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.ERROR</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.MOVE</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+<TR><TD>.SLIDER</TD><TD>[sound]</TD><TD>
+Sound played when </TD></TR>
+
+</table>
+-->
+
+&nbsp
+<p>
+<B><FONT SIZE=+1>EXAMPLES</font></b>
+</p>
+
+<p>
+The following is an example of an RTS_MENU style entry:
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<FONT SIZE=2>
+[MENU3]<br>
+BACKGROUND.IMAGE="WNTPSTR2";//background image<br> 
+BACKGROUND.TRANSLUCENCY=100%;  //solid image<br>
+<br>
+//TITLE controls the question part of the RTS menu<br>
+TITLE.FONT="DOOM";<br>
+TITLE.COLOURMAP="TEXT_YELLOW";<br>
+TITLE.SCALE=1.1; //make the text a bit bigger<br>
+<br>
+//TEXT controls the menu options<br>
+TEXT.FONT="VERDANA";<br>
+TEXT.COLOURMAP="TEXT_GREEN";<br>
+TEXT.SCALE=0.9;//make the text a bit smaller<br>
+
+</FONT>
+</TD></TR>
+</TABLE>
+
+
+<br>
+
+<!--begin footer-->
+<p>
+back to <A HREF="#top">top</A>
+</p>
+<p>
+DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, Andy Brewood and Luke Brennan.<BR>
+Problems with the docs, errors and comments should be directed to the EDGE team.
+</p>
+<p>
+&copy; EDGE Team 1998 - 2022.
+</p>
+</body>
+</html>

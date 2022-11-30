@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>ddf language: DDFPLAY</title>
+
+ <link rel="stylesheet" type="text/css" href="ddfstylesheet.css">
+
+</head>
+
+<BODY>
+
+<IMG SRC="ECLOGOCIRCLE.png" HEIGHT="110" BORDER=0 style="margin:0px 20px" ALT="">
+
+<nav class="navMenu">
+	<ul>
+		<li><a href="./index.htm">intro to ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./anims.htm">anims.ddf</a></li>
+		<li><a href="./attacks.htm">attacks.ddf</a></li>
+		<li><a href="./colmap.htm">colmap.ddf</a></li>
+		<li><a href="./flats.htm">flats.ddf</a></li>
+		<li><a href="./fonts.htm">fonts.ddf</a></li>
+		<li><a href="./games.htm">games.ddf</a></li>
+		<li><a href="./images.htm">images.ddf</a></li>
+		<li><a href="./lang.htm">language.ldf</a></li>
+		<li><a href="./levels.htm">levels.ddf</a></li>
+		<li><a href="./mapstuff.htm">lines/sectors.ddf</a></li>
+		<li><a href="./playlist.htm">playlist.ddf</a></li>
+		<li><a href="./sfx.htm">sounds.ddf</a></li>
+		<li><a href="./styles.htm">styles.ddf</a></li>
+		<li><a href="./switch.htm">switch.ddf</a></li>
+		<li><a href="./things.htm">things.ddf</a></li>
+		<li><a href="./weapons.htm">weapons.ddf</a></li>
+		<li><a href="#">--------------------</a></li>
+		<li><a href="./coal.htm">COAL</a></li>
+	</ul>
+</nav>  
+
+<br>
+<br>
+
+
+<h2><A NAME="top"><b>PLAYLIST</b></a></h2>
+<p>
+Stored in the playlist.ddf file, or in the DDFPLAY data lump.
+</p>
+<p>
+Playlist.ddf is used to define music entries in EDGE. Each entry begins with a unique reference number, in square brackets, and represents a piece of music that can be played at some point in the game. Either during a level, or as one of the intermission or title pieces of music. These entries are then referred to from the other ddf files, such as levels.ddf or game.ddf.
+</p>
+<p>NOTE: When using filenames, directories must be separated by / instead
+  of the \ character which is normally used under Windows.  The reason
+  is because the \ character has a special meaning in DDF: it is the
+  escape character, and "\n" is used to put newlines into DDF strings.
+</p>
+<p>
+<font size=+1><b>Format</b></font></a>
+</p>
+<p>
+Entries in playlist.ddf have the following format:
+</p>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+<b>[ENTRY NUMBER] MUSICINFO=[TYPE]:[FORMAT]:[SONG NAME];</b>
+<br>
+</blockquote>
+</td></tr>
+</table>
+&nbsp
+<p>
+Where each command is as follows:
+</p>
+<table BORDER=1  CELLSPACING=0 CELLPADDING=1>
+<tr><th>COMMAND</th><th>DESCRIPTION</th></tr>
+
+<tr><td>[ENTRY_NUMBER]</td><td>
+A two digit number, used to reference this entry in games.ddf and level.ddf.</td></tr>
+
+
+<tr><td>[TYPE]</td><td>
+This can be MIDI, MUS, MP3, OGG, XMP, GME or SID and should refer to the type of music source that is being used.</td></tr>
+
+<tr><td>[FORMAT]</td><td>
+If the music is in a wadfile, this must be LUMP, if the music is a file on the hard drive this must be FILE.</td></tr>
+
+<tr><td>[SONG NAME]</td><td>
+Name of the actual file in the wadfile or on the hard drive, or the CD track number. Entries with an underscore "_" in <b>require</b> quotes around the name (e.g. "D_DEAD").</td></tr>
+
+</table>
+&nbsp
+<p>
+<font size=+1><b>Examples</b></font></a>
+</p>
+<p>
+The following are examples of different playlist entries: 
+</p>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<FONT SIZE=2>
+[10] MUSICINFO=MUS:LUMP:"D_DEAD";&nbsp &nbsp &nbsp // NOTE: names with "_" in them <b>require</b> quotes
+<br><br>
+[23] MUSICINFO=OGG:FILE:"music/QOTSA/A_Song_for_the_dead.ogg";&nbsp &nbsp &nbsp
+<br>
+
+</font>
+</td>
+</tr>
+</table>
+
+<br>
+
+
+
+
+<!--begin footer-->
+<p>
+back to <A HREF="#top">top</a>
+</p>
+<p>
+DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, Andy Brewood and Luke Brennan.<BR>
+Problems with the docs, errors and comments should be directed to the EDGE team.
+</p>
+<p>
+&copy; EDGE Team 1998 - 2022.
+</p>
+</body>
+</html>

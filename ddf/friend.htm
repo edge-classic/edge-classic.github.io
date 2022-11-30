@@ -1,0 +1,581 @@
+<html>
+<head>
+<title>ddf language</title>
+<script Language="JavaScript">
+window.defaultStatus = "UnOfficial DDF page.";
+</script>
+ <link rel="stylesheet" type="text/css" href="../ddfstylesheet.css">
+
+</head>
+
+<BODY>
+
+
+<font face="Verdana, Tahoma" size="2">
+<!--end of header-->
+
+<A NAME="top"><B>DDF Tutorial #3: Making a Friendly Creature</B></a></font>
+<font face="Verdana, Tahoma" size="2">
+<P>
+This is a tutorial by Ziggy Gnarly that describes how to make a friendly monster using DDF. 
+<P>
+This tutorial expands on the previous tutorial on making a new
+creature using DDF. In this example, we'll make a friendly creature
+that uses multiple attacks to aid you in your missions.
+<P>
+The female player from Quake 2 is going to be your friendly creature
+(she must dig your retro style, your cream boots or your motorcycle
+helmet - or perhaps it's just your animal magnetism) In any case, you
+are gonna be very happy that she's on your side! 
+<P>
+
+Initially, we'll need to go through the same steps involved with
+making a normal doom monster.  As in the other tutorials, I'm assuming
+that you are somewhat familiar with doom editing - and that you know
+how to make sounds, graphics and understand how to use Wintex and make
+a WAD file.
+<p>
+Our first step is to create some new sounds for our female player.
+This is important, since doom isn't exactly brimming with appropriate
+sounds for a female character. 
+<P>
+
+<b>1) <u>Create the new sounds for it:</b></u>
+
+<blockquote>
+
+-a pain sound called QFPAIN
+<br>
+
+-a death sound called QFDIE1
+<br>
+
+-a second death sound QFDIE2
+
+</blockquote>
+
+<b>2) <u>Import and name them in new WAD using Wintex:</b></u>
+
+<blockquote>
+You'll need to add a DS to the front of each sound<P>
+
+-DSQFPAIN
+<br>
+
+-DSQFDIE1
+<br>
+
+-DSQFDIE2
+
+</blockquote>
+
+All digital sounds MUST be called DS[name]. You can have 6 character
+names total. Like DSSPINDN for example.
+
+<p>
+
+<b>3) <u>We need to define the sounds, so open EDGE's existing
+SOUNDS.DDF, PAGE DOWN to the bottom to add new stuff:</b></u>
+
+
+<p>
+
+Anything that appears after // is a comment, ex: // THIS IS A COMMENT.
+DDF doesn't pay attention to upper or lower case, but I use upper
+cause it looks better.
+
+<p>
+
+Add the following:
+<p>
+<table BORDER=1 width=95% CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<font size=2>
+<br>
+
+[Q2FDIE1] // sound's name, used in other DDF files<BR>
+LUMP_NAME="DSQFDIE1"; // lump name in the WAD
+PRIORITY=60; // medium level priority<BR>
+
+
+<p>
+
+[Q2FDIE2]<br>
+LUMP_NAME="DSQFDIE2";<br>
+PRIORITY=60;<br>
+
+
+<p>
+
+[Q2FPAIN]<br>
+LUMP="DSQFPAIN";<br>
+PRIORITY=60;<br>
+&nbsp
+<p>
+</font>
+</td></tr>
+</table>
+<p>
+I should just note that the sounds.ddf file is very important. It is
+quite easy to add your sound files to your WAD, and use those sounds
+in your attacks.ddf and things.ddf. However, if you don't identify the
+sounds in sounds.ddf, then EDGE won't be able to find or play your new
+sounds.
+
+<p>
+
+<b>4) <u>We now need to define the attack for the new creature, so
+open EDGE's existing ATTACKS.DDF, PAGE DOWN to the bottom to add new
+stuff.</b></u>
+
+<p>
+
+This attack is going to make our character fire dual plasma bolts at
+any unfortunate monsters who get in the way...These bolts will be
+tracers - e.g they will lock onto and follow the target. To make the
+dual attack, we will make both a left and a right attack, using the X
+OFFSET value.
+
+<p>
+
+Add the following:
+
+<p>
+<table BORDER=1 width=95% CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<font size=2>
+<br>
+
+[QF_TRACKER_L] // left attack<br>
+ATTACKTYPE=PROJECTILE; <br>
+HEIGHT=8; <br>
+RADIUS=11; <br>
+DAMAGE.VAL=8;<br>
+DAMAGE.MAX=80;<br>
+ATTACK_HEIGHT=32; <br>
+X_OFFSET=-30; // attack moves 30 units to left<br>
+SPEED=10;<br>
+TRANSLUCENCY=40%; // somewhat see through<br>
+NO_TRACE_CHANCE=0%; // always traces target, 100 never traces<br>
+TOO_CLOSE_RANGE=196; // will move to closecombat if target gets close<br>
+PROJECTILE_SPECIAL=NOBLOCKMAP, MISSILE, DROPOFF, NOGRAVITY;<br>
+PUFF=PUFF; // used for smoke trail<br>
+ATTACK_SPECIAL=SMOKING_TRACER; // sets a smoke trail. Calls puff animation to trail behind <br>
+LAUNCH_SOUND=PLASMA;<br>
+DEATH_SOUND=FIRXPL;<br>
+<p>
+STATES(IDLE)=PLSS:A:2:BRIGHT:TRACER, // sets projectile to track target<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSS:B:2:BRIGHT:TRACER;<br>
+<p>
+
+STATES(DEATH)=PLSE:A:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:B:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:C:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:D:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:E:4:BRIGHT:NOTHING,#REMOVE; // makes explosion disappear
+<p>
+</font>
+</td></tr>
+</table>
+<p>
+
+We'll now add the right attack - which will be identical, except for
+the X value which will offset the attack to the right.
+
+<p>
+<table BORDER=1 width=95% CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<font size=2>
+<br>
+[QF_TRACKER_R] <br>
+ATTACKTYPE=PROJECTILE; <br>
+HEIGHT=8; <br>
+RADIUS=11; <br>
+DAMAGE.VAL=8;<br>
+DAMAGE.MAX=80;<br>
+ATTACK_HEIGHT=32; <br>
+X_OFFSET=30; // projectile launches from the right<br>
+SPEED=10; <br>
+TRANSLUCENCY=40%;<br>
+NO_TRACE_CHANCE=0%; <br>
+TOO_CLOSE_RANGE=196; <br>
+PROJECTILE_SPECIAL=NOBLOCKMAP, MISSILE, DROPOFF, NOGRAVITY;<br>
+PUFF=PUFF;<br>
+ATTACK_SPECIAL=SMOKING_TRACER; <br>
+LAUNCH_SOUND=PLASMA;<br>
+DEATH_SOUND=FIRXPL;<br>
+<p>
+STATES(IDLE)=PLSS:A:2:BRIGHT:TRACER, // sets projectile to track target<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSS:B:2:BRIGHT:TRACER;<br>
+<p>
+
+STATES(DEATH)=PLSE:A:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:B:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:C:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:D:4:BRIGHT:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp PLSE:E:4:BRIGHT:NOTHING,#REMOVE; <br>
+<p>
+</font>
+</td></tr>
+</table>
+<p>
+Surprisingly, the see through plasma bolt with a yellowish smoking
+trail looks surprisingly cool...(at least in my humble opinion - and
+hey, I'm the poor bastard taking ages to write this thing, so you'll
+just have to play along. OK?)
+<p>
+Quick warning #1: be very careful when using left and right attacks.
+When making this tutorial, I accidentally set the offset of both
+missiles to 30....with predictably bad results.
+<p>
+As the next step, we'll also give the friendly quake female a
+closecombat attack - just in case she ends up fighting in a confined
+space.
+<p>
+<table BORDER=1 width=95% CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<font size=2>
+<br>
+[QF_CLOSECOMBAT] <br>
+ATTACKTYPE=CLOSECOMBAT; <br>
+DAMAGE.VAL=8;<br>
+DAMAGE.MAX=32;<br>
+ATTACKRANGE=96; // small value, but <u>must</u> be larger than the monster's radius<br>
+ATTACK_SPECIAL=NEED_SIGHT,FACE_TARGET; // must be able to see target, and will always face target during attack<br>
+&nbsp
+<p>
+</font>
+</td></tr>
+</table>
+<p>
+
+<b>5) <u>We now need to create our creature sprites, and projectile sprites:</b></u>
+<P>
+As our friendly monster uses the existing plasma gun bolts, these
+won't have to be added to our custom wad, so we'll simply concentrate
+on doing the character sprites. We will need a number of sprites for
+our new creature:
+<p>
+
+<blockquote>
+
+-the creature walking / chase states 
+<br>
+
+-the creature attack states
+<br>
+
+-the creature pain states 
+<br>
+
+-the creature death states
+<br>
+
+-the creature overkill states
+
+</blockquote>
+
+<P>
+All monsters have 8 'views' or rotations (if you open up the doom or
+doom2 wad using wintex, you'll see that all monsters can be viewed
+from a number of different angles) Some monsters, like the former
+humans, only have 5 frames while monsters like the cyberdemon have a
+full 8 frames) In the case of five framed monsters, the frames that
+show the monster facing front left, left and back left are
+automatically mirrored to create the views as seen from the right. See
+the Wintex documentation for more information. 
+<P>
+What you need to remember is that you must name your sprites using a
+four letter description, followed by either:<P>
+A1, A2A8, A3A7, A4A6, A5<BR> 
+(for sprites that can be mirrored)<P>
+or<P>
+A1, A2, A3, A4, A5, A6, A7, A8<BR>
+ (for sprites that are asymmetric, and cannot be mirrored)<P>
+* As we already know, the letter A means that these would be the first
+graphics displayed in an animation. You will have to change this value
+as appropriate. 
+<P>
+You should also note that only walking, firing and pain states have
+rotations. The death and overkill frames have no rotations, and are
+identical no matter what angle they are seen from. Consequently, they
+have a four character name suffixed with a frame character, and a zero
+(e.g G0, H0, I0) 
+<p>
+
+<b>6) <u>We will need to import our character animation into the WAD
+file that we already have our sounds in, and name them as
+such:</b></u>
+
+<blockquote>
+
+-All sprites will have the 4 character name Q2FM
+<p>
+
+-the walking / chase states are frames A to D. <br> format is A1, A2A8, A3A7, A4A6, A5
+<p>
+
+-the attack states are frames E and F. <br> format is E1, E2E8, E3E7, E4E6, E5
+<p>
+
+-the pain state is frame G.<br> format is G1, G2G8, G3G7, G4G6, G5
+<p>
+
+-the death states are frames H to N.<br> format is H0, I0, J0 etc
+<p>
+
+-the overkill states are frames O to W.<br>format is O0, P0, Q0 etc
+<p>
+
+</blockquote>
+
+In EDGE, it is possible to add as many animation frames as you desire.
+In this example, the firing sequence is frames E and F (which is all
+that was possible with doom) However, such limits don't apply with
+DDF. if you wished, you could make a firing sequence that spanned 3, 4
+or as many frames as you wished. 
+<p>
+
+<b>7) <u>We now have all our graphics and sounds, so we now need to
+make our monster code. Open EDGE's existing THINGS.DDF, PAGE DOWN to
+the bottom to add new stuff.</b></u>
+
+<p>
+
+The code will vary considerably from the monster made in tutorial #2.
+Firstly, this monster has three seperate attacks which we will have to
+manage. We will also have to add some different action pointers so
+that our friendly monster will attack other monsters (rather than
+us!)
+<p>
+
+Add the following (no word wrap either):
+<p>
+<table BORDER=1 width=95% CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<font size=2>
+<br>
+
+[Q2FEMALE:888] // thing's name and number (used by map editor)<br>
+
+SPAWNHEALTH=80; // starting health<br>
+
+REACTION_TIME=0.1; // she will move and fire quickly after spotting a  monster<br>
+
+RADIUS=20; <br>
+
+HEIGHT=56;<br>
+
+SPEED=12; // quite a bit quicker than other monsters)<br>
+
+MASS=80; // slimmer than the average marine!<br>
+
+PAINCHANCE=50%; // 0% means monster never goes into pain, 100% is always<br>
+
+SPECIAL=SOLID,SHOOTABLE; // monster will block you, and can be shot. Note that we don't use count_as_kill<br>
+
+MINATTACK_CHANCE=60%; // chance that the monster will move or shoot.
+1% = move, 100% = shoot<br>
+
+CASTORDER=19; // monster can be seen in cast list at end of map30 in doom2<br>
+
+BLOOD=BLOOD; // when shot, the monster will use the animation 'blood', defined in things.ddf<br>
+
+SIDE=1; // this means that the friendly monster will support player 1.
+This tag is vital - without it the friendly monster won't attack
+anything.  Possible values are 1, 2, 4 , 8, 16, 32, 64 and 128 - which
+represent player 1 to 8 respectively. These numbers can be combined,
+so side=6 would mean the creature would support player 2 <U>and</U> 3.<br>
+
+PALETTE_REMAP=PLAYER_DULL_RED; // changes green clothes to red...<br>
+
+DROPITEM=CELLS; // drops plasma cells when killed<br>
+
+RESPAWN_EFFECT=RESPAWN_FLASH; // uses the animation respawn_flash when respawns<br>
+
+ACTIVE_SOUND=POSACT; // used by former human<br>
+
+DEATH_SOUND="QFDIE?"; // question mark is a wildcard. If sounds with the prefix QMDIE exist, one will be chosen at random<br>
+
+PAIN_SOUND=QFPAIN;<br>
+
+SIGHTING_SOUND="POSIT?"; // when the creature sees you<br>
+
+RANGE_ATTACK=QF_TRACKER_L; // calls our previously defined attacks<br>
+SPARE_ATTACK=QF_TRACKER_R;<br>
+CLOSE_ATTACK=QF_CLOSECOMBAT;
+<p>
+
+STATES(IDLE)=Q2FM:A:3:NORMAL:SUPPORT_MEANDER, // support_meander makes monster attack enemy monsters<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:A:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:B:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:B:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:C:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:C:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:D:3:NORMAL:SUPPORT_MEANDER,<BR>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:D:3:NORMAL:SUPPORT_MEANDER;<BR>
+<br>
+
+STATES(CHASE)=Q2FM:A:4:NORMAL:CHASE, // chase directs monster to pursue targets<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:A:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:B:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:B:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:C:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:C:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:D:4:NORMAL:CHASE,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:D:4:NORMAL:CHASE;<br>
+<br>
+
+STATES(MELEE)=Q2FM:E:10:NORMAL:FACETARGET,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:F:6:BRIGHT:CLOSE_ATTACK,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:E:6:BRIGHT:CLOSE_ATTACK,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:F:2:NORMAL:REFIRE_CHECK, #CHASE; // goes to chase states<br>
+<br>
+
+STATES(MISSILE)=Q2FM:E:10:NORMAL:FACETARGET,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:F:6:BRIGHT:RANGE_ATTACK, // fire left attack<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:E:6:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:F:6:BRIGHT:SPARE_ATTACK, // fire right attack<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:F:2:NORMAL:REFIRE_CHECK, #MISSILE:1; // loops back to frame 1 of missile_states. Refire check makes the monster check if the target has moved or died...<br>
+<br>
+
+STATES(PAIN)=Q2FM:G:3:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:G:3:NORMAL:MAKEPAINSOUND,#CHASE; // plays QMPAIN <br>
+<br>
+
+STATES(DEATH)=Q2FM:H:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:I:5:NORMAL:MAKEDEATHSOUND, // plays QMDIE1 or QMDIE2<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:J:5:NORMAL:MAKEDEAD, // monster is now dead and cannot react to anything<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:K:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:L:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:M:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:N:-1:NORMAL:NOTHING;<br>
+<br>
+
+STATES(OVERKILL)=Q2FM:O:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:P:5:NORMAL:MAKEOVERKILLSOUND, // plays slop sound<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:Q:5:NORMAL:MAKEDEAD,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:R:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:S:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:T:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:U:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:V:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:W:-1:NORMAL:NOTHING;<br>
+<br>
+
+STATES(RESPAWN)=Q2FM:N:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:M:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:L:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:K:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:J:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:I:5:NORMAL:NOTHING,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Q2FM:H:5:NORMAL:NOTHING,#CHASE;
+<p>
+</font>
+</td></tr>
+</table>
+<p>
+
+Now, the frames work as such:
+
+<p>
+
+[state]=[4 letter sprite name]:[frame letter]:[duration of the frame]:[light level NORMAL or BRIGHT]:[action];
+
+<p>
+
+Remember to close the lines with a semi-colon ";". Commas indicate to
+continue the loop.
+
+<p>
+
+The #CHASE statement 'forces' the creature to go back to it's chasing
+states after certain actions take place.  You can also use #DEATH,
+#PAIN, #MISSILE and #IDLE. 
+
+<p>
+
+Because our friendly monster has a closecombat attack, we've included
+MELEE_STATES, and the action pointer CLOSE_COMBAT. 
+
+<p>
+Click <A HREF="things.htm#actions">here</A> for a comprehensive
+description of all possible actions that can be used with a creature. 
+<p>
+
+At this point, you've done almost everything necessary to get your
+creature working. We have the our sounds and graphics in the wad, the
+sounds have been defined, attacks coded, and the creature is coded.
+All we have to do now is get the monster to appear in the game.
+
+<br.<br>
+
+There are 2 basic ways of doing this. The easiest way is to simply
+comment out an existing monster (e.g the chaingunner) and then give
+your monster the same mapnumber as the chaingunner. This means that
+your monster will automatically appear whenever the chaingunner
+previously appeared in a map. <P> If you choose this method, be very
+careful not to duplicate mapnumbers - otherwise you'll run into all
+kinds of problems - as EDGE won't be able to work out which creature
+to use.
+<P>
+The second method is to fool around with your map editor. Most good
+map editors have a means of adding new or custom items - so read the
+documentation that came with the map editor for more info. The
+advantage of this method is that you can keep all the old doom
+monsters, while introducing new monsters to make things more
+challenging!
+<P>
+But before you charge off to kill your new creature, you'll have to
+use Wintex or DeuSF to append all sprites to your WAD file with the
+sounds and sprites, then run EDGE as such:
+
+<p>
+
+edge -file [wadname].wad
+
+<p>
+
+That's it!
+
+<p>
+
+A neat way of using new creatures is to make copies of the DDF files
+and place the ones that you are editing in a new directory. That way,
+you can  refer to the original DDF files as necessary, and use your
+custom DDF files to play with your new creature in the game.
+
+<p>
+
+If you do this, you'll need to run it as such:
+
+<p>
+
+edge -ddf [directory where you store your DDF files] -file [wadname].wad
+
+<p>
+Now that you've read this far, you should be getting good at all this
+ddf stuff.  However, if there is a particular subject that you think
+is worthy of a DDF tutorial, then send me an email and I'll see what I
+can do.
+
+<!-- br br
+Finally, I'm sure you'll all be familar with TV cooking programs.
+Well, you know how they always say "here's one I prepared earlier"?
+and grab a fresh baked cake out of the oven?
+Well, I've done exactly this (well kinda) So if you wanna be lazy,
+haul ass to the demo section, grab q2f.zip and give it a play (I'm
+sure you can work out what q2f.zip is and what it does).
+-->
+
+<br>
+
+<!--begin footer-->
+<P>
+back to <A HREF="#top">top</A>
+<P>
+DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, Andy Brewood and Luke Brennan.<BR>
+Site design by Fanatic (with graphics and modifications by Ziggy Gnarly). Problems with the docs, errors and comments should be directed to the EDGE team.<P>
+&copy; EDGE Team 1998 - 2021.
+</body>
+</html>

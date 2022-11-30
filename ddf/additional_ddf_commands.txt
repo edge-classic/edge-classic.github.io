@@ -1,0 +1,167 @@
+-----------
+WEAPONS.DDF
+-----------
+
+DJNE - Used just like JUMP(state_name:frame,xx%), but decrements the reload quantity for the specified attack and jumps if it's not zero. The jump chance is now interpreted as the attack specifier: 0% is the primary attack ammo, and non-zero percent is the secondary attack ammo.
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+UNZOOM - Forces the screen to be unzoomed if zoom is active.
+
+SHARED_CLIP - TRUE or FALSE. Means that the primary and secondary attacks are using a single (shared) clip.  Hence you cannot use SEC_AMMOTYPE, SEC_AMMOPERSHOT or SEC_CLIPSIZE commands when using SHARED_CLIP. There can only be a single reload animation (SECRELOAD states will be ignored).
+
+MODEL_SKIN - Which skin number to use, see IMAGES.DDF.
+SET_SKIN(##) - Which skin number to use via state frames.
+MODEL_ASPECT - Make the weapon fatter/skinnier (ex. 1.0)
+MODEL_BIAS - Add this to every z coordinate (ex. 0.0)
+MODEL_FORWARD - Move the weapon forward/backward (ex. 2.2)
+MODEL_SIDE - Move the weapon right/left (ex. -3.5)
+
+
+LIT00-LIT99 - Can be used in state frames where the keywords 'NORMAL' and 'BRIGHT' are used. This allows fine-grained control of dynamic lights.
+
+
+----------
+THINGS.DDF
+----------
+
+SPRITE_YALIGN
+
+INVULNERABLE - Makes the thing completely immune to all attacks.  There are also two new actions to dynamically change it: SET_INVULNERABLE and CLEAR_INVULNERABLE, which can be used to make monsters with blocking states (like the Centaurs in Hexen).
+
+SECRET_SOUND - For players. Sound to play when entering secret areas.
+
+GLOOP_SOUND - For players. Sound to play when landing in liquids.
+
+SPAWN - Similar to DROPITEM action, but it doesn't force the object to be non-SOLID like DROPITEM does, plus the spawned object will have the same Angle and Side as the parent object.  The name must be given in brackets, e.g. SPAWN(IMP).
+
+BECOME - Allows a thing to turn into another thing.  Can be used on players too.  HEALTH and SIDE will remain the same. For example: BECOME(CACODEMON) or BECOME(CACODEMON,CHASE:2).
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+CHECK_ACTIVITY - Will cause the player to enter SWIM, FLY, or CLIMB states if the player is currently swimming, flying (jetpack) or climbing a ladder.  Also JUMP states are entered when the player jumps.  These new states are all optional.
+
+RESISTANCE_MULTIPLY - Lets you control how much to multiply the damage caused by RESISTANCE_CLASS.  The default is 0.4 which matches the previously hard-coded value.  Values over 1.0 can be used (makes it a weakness instead of resistance).
+
+RESISTANCE_PAINCHANCE - The probability that the thing will go into pain state when injured. 100% is certain, 0% is never.
+
+ARMOUR_PROTECTION - The percentage of damage which is saved by the armour (100% for all) which overrides the default protection rates (e.g. BLUE_ARMOUR is normally 50%).
+
+ARMOUR_DEPLETION - Armour low depletion rate.
+
+ARMOUR_CLASS - Like IMMUNITY_CLASS but for armour items (ex. B for bullets, M for missiles and C for closecombat). See ATTACK_CLASS for ATTACKS.DDF.
+
+WEAKNESS.CLASS - Allows a monster to receive more damage from certain attacks. See ATTACK_CLASS for ATTACKS.DDF.
+
+WEAKNESS.HEIGHTS - Allows you to specify the damage height range. Ex. WEAKNESS.HEIGHTS=75%:100%;
+
+WEAKNESS.ANGLES - Allows you to specify the damage angle range. Ex. WEAKNESS.ANGLES=150:210;
+
+WEAKNESS.MULTIPLY - Lets you control how much to multiply the damage caused by WEAKNESS.CLASS.
+
+WEAKNESS.PAINCHANCE - The probability that the thing will go into WEAKPAIN state when injured. 100% is certain, 0% is never.
+
+SIMPLE_ARMOUR- Prevents the wacky Doom-emulation from kicking in.
+Note: Whatever that means.
+
+
+MODEL_SKIN - Which skin number to use, see IMAGES.DDF.
+SET_SKIN(##) - Which skin number to use via state frames.
+MODEL_SCALE - Draw the model bigger (ex. 1.5)
+MODEL_ASPECT - Make the model fatter/skinnier (ex. 0.7)
+MODEL_BIAS - Add this to every z coordinate (ex. 24.0)
+
+PURPLE_ARMOUR - ??????
+source: http://edge.sourceforge.net/logs/131.htm
+
+
+TILT special? (MD2 models will be vertically tilted (using the mlook angle) for all missiles and anything using the new "TILT" special.)
+source: http://edge.sourceforge.net/logs/135.htm
+
+WEAKPAIN - Pain state to enter if WEAKNESS.CLASS is used. If it doesn't have them then the normal PAIN states are used.
+
+WEAKDEATH - Death state to enter if WEAKNESS.CLASS is used. If they don't exist then it will try OVERKILL states, and finally it falls back to the normal DEATH states.
+
+
+LIT00-LIT99 - Can be used in state frames where the keywords 'NORMAL' and 'BRIGHT' are used. This allows fine-grained control of dynamic lights.
+
+GLOW_TYPE
+
+-----------
+ATTACKS.DDF
+-----------
+
+VAMPIRE - Causes the inflictor of damage to gain the health from the damage done to the victim.  The health/damage ratio is hard-coded as 25% for monsters and 50% for players.
+
+SPAWN - Similar to DROPITEM action, but it doesn't force the object to be non-SOLID like DROPITEM does, plus the spawned object will have the same Angle and Side as the parent object.  The name must be given in brackets, e.g. SPAWN(IMP).
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+MODEL_SKIN - Which skin number to use, see IMAGES.DDF.
+SET_SKIN(##) - Which skin number to use via state frames.
+MODEL_ASPECT - Make the weapon fatter/skinnier (ex. 1.0)
+MODEL_BIAS - Add this to every z coordinate (ex. 0.0)
+MODEL_FORWARD - Move the weapon forward/backward (ex. 2.2)
+MODEL_SIDE - Move the weapon right/left (ex. -3.5)
+
+
+TILT special? (MD2 models will be vertically tilted (using the mlook angle) for all missiles and anything using the new "TILT" special.)
+source: http://edge.sourceforge.net/logs/135.htm
+
+
+LIT00-LIT99 - Can be used in state frames where the keywords 'NORMAL' and 'BRIGHT' are used. This allows fine-grained control of dynamic lights.
+
+
+----------
+IMAGES.DDF
+----------
+
+FIX_TRANS=BLACKEN - Ensures that every completely transparent pixel (alpha=0) in the image is black.  Useful for fixing the "white borders" problem.
+
+Model skins: The skin of the model is the sprite base ("TROO") plus "SKN1" on the end --> "TROOSKN1".  There should be a definition for it in IMAGES.DDF using the sprite namespace --> [spr:TROOSKN1].
+
+UNCONFIRMED: Support has been added for several new image types; must use 'EXT' as the 'type' - as well as supporting PNG and JPG, it now also support BMP, PSD, GIF, HDR, PIC, PNM, and animated GIFS. grAB is finally working 100%, but for grAb images you _must_ use :PNG: as the IMAGE_DATA= TYPE or grAb will not be recognized.)
+
+
+---------
+GAMES.DDF
+---------
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+
+----------
+LEVELS.DDF
+----------
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+
+---------
+LINES.DDF
+---------
+
+FAILED_SFX - Plays a sound when the player tries to use a locked door without the key.
+
+ACTIVATORS - Specifies what can activate the line, in the form of a comma seperated list. Can be either "PLAYER", "MONSTER", "OTHER" or "NOBOT".
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+
+
+----------
+SECTOR.DDF
+----------
+
+SPLASH_SOUND - Sound that is played whenever a player enters the water. Requires the SWIM special.
+
+TEMPLATE - Inheritance. This allows a new DDF entry to be based off an existing one, instead of fields getting default values.
+
+FLOOR.CRUSH_DAMAGE
+
+---------
+ANIMS.DDF
+---------
+
+TYPE - Either 'FLAT' for a floor texture animation, 'TEXTURE' for a wall texture animation or 'GRAPHIC' for a graphic animation (backgrounds, menus, hud).
+source: new type "GRAPHIC" is now supported, which can animate graphics used for the UI (backgrounds, menus, hud). You need to use the SEQUENCE command (because FIRST/LAST doesn't make any sense for graphics), and the graphics must have the same size and X/Y offsets.
