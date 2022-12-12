@@ -21,7 +21,7 @@
   <li><a href="./projects.html">projects</a></li>
   <li><a href="./download.html">download</a></li>
   <li><a href="./documentation.html">documentation</a></li>
-  <li><a href="https://github.com/dashodanger/EDGE-classic/">github repo</a></li>
+  <li><a href="https://github.com/edge-classic/EDGE-classic">github repo</a></li>
   <li><a href="./about.html">about</a></li>
 </ul>
 </nav>  
@@ -29,6 +29,63 @@
 <br>
 <br>
 <br>
+
+<br>
+<table>
+<tbody>
+    <tr>
+      <td><b>06 September 2022:
+EDGE-Classic v1.21 released</b></span><br>
+      <br>
+
+	  New release of EDGE-Classic. Major new features include:<br>
+	  
+- Fixed SFX loaders treating all sounds as Mono regardless of original sound format<br>
+- Fixed PWAD PLAYPAL lumps not properly being applied to images<br>
+- DEHEXTRA Support<br>
+- UDMF 1.1 Support. The following UDMF namespaces are currently supported:
+  Doom, Heretic, ZDoomTranslated<br>
+- Module Music:<br>
+  libxmp-lite music player replaced with libmodplug, providing far better performance and load times,
+   with all of the following formats now supported:<br>
+   MOD, S3M, XM, IT, 669, AMF (both of them), AMS, DBM, DMF, DSM, FAR,
+   MDL, MED, MTM, OKT, PTM, STM, ULT, UMX, MT2, PSM<br>
+- Partial UMAPINFO support<br>
+- Heretic/Blasphemer support: vastly improved. Now 100% completable from start to finish.<br>
+- ENDOOM Support<br>
+- AJBSP updated to produce only XGL3 nodes compatible with both binary/UDMF map formats<br>
+- Improved handling of PWADs with custom status bars that aren't widescreen<br>
+- DP* sound lumps (PC speaker sounds) in the DOOM IWADs are now usable via DDFSFX<br>
+- "PC Speaker Mode" option added to Sound Options menu. Only specific SFX will be used, and
+  the MIDI player will switch to an appropriate soundfont.<br>
+  Imitation PC Speaker sounds added for Blasphemer, Heretic, and HacX<br>
+- "Pistol Starts" option added to Gameplay Options menu (default Off). Will force player to default state upon
+  starting a new level. Works with all supported IWADs<br>
+- New font type: IMAGE; an image with a 16x16 ASCII character layout with either a transparent or solid color background<br>
+- Improved STYLES.DDF functionality across console and menus; backgrounds images/colors and translucency are no longer hardcoded<br>
+- Custom standalone IWADs can be created by adding an EDGEIWAD lump to the WAD. This will allow it to pass the automatic IWAD
+  detection<br>
+- Added 3 new BREAKABLE glass line types: <br>
+  [830] Breakable Glass: monsters can see through it and can break it<br>
+  [831] Breakable Glass: monsters: cannot see through it but can break it<br>
+  [832] Breakable Glass: monsters: cannot see through it and cannot break it<br>
+- Added 6 new coloured sector types:<br>
+  [4471] EDGE Blue Hue<br>
+  [4472] EDGE Green Hue<br>
+  [4473] EDGE Red Hue<br>
+  [4474] EDGE Yellow Hue<br>
+  [4475] EDGE Purple Hue<br>
+  [4476] EDGE Grey Hue<br><br>
+	  and many more new commands, bugfixes etc. (check out the changelog)<br>
+	 
+	  <br><br>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
 <table>
 <tbody>
     <tr>
@@ -42,7 +99,7 @@ EDGE-Classic v1.1 released</b></span><br>
 	  -More music types (including tracker and even C64 SID!)<br>
 	  -Dynamic reverb for SFX<br>
 	  -Autoload folders<br>
-	  -Liquid swirl FX<br>
+	  -Liquid swirl FX<br><br>
 	  and more new commands, bugfixes etc. (check out the changelog)<br>
 	 
 	  <br><br>
@@ -51,7 +108,7 @@ EDGE-Classic v1.1 released</b></span><br>
   </tbody>
 </table>
 
-<br>
+<br><br>
 <table>
 
   <tbody>
