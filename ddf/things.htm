@@ -234,6 +234,9 @@ For players. Sound to play when landing in liquids.</td></tr>
 When this thing is in a sector, it adds light to the nearest floor, ceiling or wall in that sector. 
 When the thing is a dynamic light, it creates a "glow" effect on that surface from the dynamic light (differently to normal). For non-dlight things, it just makes the surface brighter (as if sector's level was higher). Allowed options are FLOOR and CEILING.</td></tr>
 
+<tr><td>HEAR_DISTANCE</td><td>[float]</td><td>
+Sets the maximum number of map units a monster can hear. 
+</td></tr>
 
 <!--
 <tr><td>HALO.HEIGHT</td><td>[float]</td><td>
@@ -984,6 +987,12 @@ Turns the object to face it's target.</td></tr>
 <tr><td>JUMP</td><td>
 Used like so.. JUMP(state:frame,xx%) and gives a xx% chance that the object jumps to the specified frame of the specified state.</td></tr>
 
+<tr><td>JUMP_LIQUID</td><td>
+Similar to the previous JUMP action, except this only triggers if the thing is in contact with a floor flat indicated as LIQUID in DDFFLATS. Possible use is killing a monster if he touches water for example.</td></tr>
+
+<tr><td>JUMP_SKY</td><td>
+Similar to the previous JUMP_LIQUID action, except this only triggers if the thing is in an outdoor sector i.e. ceiling is sky. Possible use is to make a flying monster become non-flying for example.</td></tr>
+
 <tr><td>KILLSOUND</td><td>
 Stops any sound playing that is associated with this thing.</td></tr>
 
@@ -1028,6 +1037,9 @@ Walk around aimlessly. Find targets to attack.</td></tr>
 <tr><td>MOVE_RIGHT</td><td>Causes this object to move right by the amount specified in brackets. Use a negative value to move left.</td></tr>
 
 <tr><td>MOVE_UP</td><td>Causes this object to move up by the amount specified in brackets.</td></tr>
+
+<tr><td>NOISE_ALERT</td><td>
+Will cause nearby monsters to be alerted. Add it to a monsters death states so his final groan will warn nearby monsters to expect trouble ;)</td></tr>
 
 <tr><td>NOTHING</td><td>Does nothing.</td></tr>
 
@@ -1387,6 +1399,10 @@ a harder time trying to shoot you.</td></tr>
 The scuba allows the player to breathe underwater! Be warned though, the air does
 not last forever.</td></tr>
 
+<tr><td>POWERUP_TIMESTOP</td><td>
+Everything in the gameworld stops, except the player! This includes any rockets you might fire, so switch to your fists or bullets instead ;)</td></tr>
+
+
 </TABLE>
 
 <p>
@@ -1451,7 +1467,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body>
 </html>

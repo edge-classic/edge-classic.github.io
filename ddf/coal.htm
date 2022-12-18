@@ -57,117 +57,119 @@ A wad may contain a lump called "COALHUDS" which is automatically loaded and wil
 <p><b><u>FILES CONTENTS</u></b>
 <br>The contents of each file or lump is simply the text of the COAL code.
 The engine provides two modules: the "hud" module provides drawing functions and general queries, whereas the "player" module provides query functions about the current player. All of their functions and variables are described in separate sections below.
+</p>
 <p>
 In order to customize the default HUDs, your COAL code needs to redefine one of the existing functions, as follows:
 <br><b>doom_status_bar() :</b> replace this function if you only want to customize the full status bar (including the one shown in the automap screen). The size has to be the same (width 320, height 32).
 <br><b>overlay_status_bar() :</b> write your own version of this function if you only want to change the overlay status bar.
 <br><b>doom_automap() :</b> this function draws the automap screen (including the status bar at the bottom). Replacing it means you can show other information here instead of (or in addition to) the automap.
 <br><b>draw_all() :</b> this is the function which EDGE calls to draw everything. The normal version (in edge-defs.WAD) will call the above functions depending on the user's current HUD and whether the automap is active or not. Replacing this function gives you total control: you could provide more hud configurations (or less) than the usual three, ignore the automap mode completely if you wanted, or even draw the view from multiple players.
-
+</p>
 <br><br><br>
-<p><b><u>HUD MODULE</u></b>
-<p><b><u>General Queries</u></b><br>
+<p><b><u>HUD MODULE</u></b></p>
+<p><b><u>General Queries</u></b><br></p>
 
 <p><b>hud.check_automap() : float</b>
 <br>This function returns true while the user is viewing the automap (by pressing TAB) and false for the normal view.
-
+</p>
 <p><b>hud.which_hud() : float</b>
 <br>This variable returns the current HUD number which the user cycles through when pressing '+' and '-' keys. It ranges from 0 to 119, allowing 120 different HUD screens, but in reality you must use the modulo operator '%' to convert this number to a smaller range.
 For example, the standard code uses hud.which_hud() % 3 to select between three different huds (none, normal and overlay).
 The following are good modulo numbers: 2,3,4,5,6,8 and 10 (because they divide into 120).
 For a HUD which never changes, simply ignore this value.
-
+</p>
 <p><b>hud.get_time() : float</b>
 <br>This function returns the current time, in terms of "tics" where there are 35 tics per second. In other words, after each 1/35th of a second the value of hud.now_time increases by one. It keeps going even during menus or while the game is paused.
-
+</p>
 <p><b>hud.passed_time</b>
 <br>This variable is updated by the hud.grab_times() call, and contains the number of "tics" that have passed since the last time the draw_all() function was called. Note that a result of zero is possible.
-
+</p>
 <p><b>hud.game_mode() : string</b>
 <br>This function returns a string for the current game mode: "sp" (Single Player), "coop" (Cooperative), or "dm" (Deathmatch).
-
+</p>
 <p><b>hud.game_name() : string</b>
 <br>This function returns the DDF name of the current game being played (the one defined in GAMES.DDF).
-
+</p>
 <p><b>hud.game_paused() : float</b>
 <br>This function returns 1 if we are in a title screen menu or the game is paused.
-
+</p>
 <p><b>hud.map_name() : string</b>
 <br>This function returns the DDF name of the current map being played (the one defined in LEVELS.DDF).
-
+</p>
 <p><b>hud.map_title() : string</b>
 <br>This function returns the title of the map being played, mainly to be displayed on the automap.
-
+</p>
 <br><br>
-<p><b><u>* Drawing Stuff</u></b>
+<p><b><u>* Drawing Stuff</u></b></p>
 
 <p><b>hud.coord_sys(w, h)</b>
 <br>In the original DOOM, the screen size was always 320x200, and by default all of the drawing functions here use screen coordinates as if that were the case (even when EDGE is running in different modes likes 640x480 or 1024x768). This function allows you to set a different "virtual" resolution, for example 640x400, and then all coordinates will be for this new system, plus the size of images and text characters will be affected as well.
-
+</p>
 <p><b>hud.text_font(name)</b>
 <br>Sets the current text font, where the 'name' parameter refers to an entry in FONTS.DDF. The default font is "DOOM" and is reset after each frame.
-
+</p>
 <p><b>hud.text_color(name)</b>
 <br>Sets the current text color, which must refer to an entry in COLMAPS.DDF, or can be the empty string "" which causes the text to be drawn normally (without being colormapped). The default is "" and is reset after each frame.
+</p>
 <p><b>hud.set_scale(value)</b>
 <br>Sets the scaling for drawing text and for hud.draw_image(). Larger values make the text/image bigger. The default scale is 1.0 and is reset after each frame.
-
+</p>
 <p><b>hud.set_alpha(value)</b>
 <br>Set the alpha value (translucency) for drawing text, lines, boxes and images. The 'value' parameter ranges from 0.0 (completely invisible) to 1.0 (completely solid). The default alpha is 1.0 and is reset after each frame.
-
+</p>
 <p><b>hud.solid_box(x, y, w, h, color)</b>
 <br>Draws a solid rectangle consisting of a single color. The 'x' and 'y' parameters are the coordinates of the top left corner, whereas 'w' and 'h' are the width and height. The current alpha value is also applied.
 The 'color' parameter is a vector with fields called 'r', 'g' and 'b' (for red, green and blue). Each of these fields is a number from 0 to 255. For example: '255 170 0' for orange.
-
+</p>
 <p><b>hud.solid_line(x1, y1, x2, y2, color)</b>
 <br>Draws a solid line between the start coordinate (x1,y1) to the end coordinate (x2, y2). The 'color' parameter is the same as for hud.solid_box(), and the current alpha value is also applied.
-
+</p>
 <p><b>hud.thin_box(x, y, w, h, color)</b>
 <br>Similar to hud.solid_box(), but only draws the outline of a rectangle. The inside area is not affected. The sides are always two pixels thick, and never go outside the specified area. The 'color' parameter is the same as for hud.solid_box(), and the current alpha value is also applied.
-
+</p>
 <p><b>hud.gradient_box(x, y, w, h, TL, BL, TR, BR)</b>
 <br>Similar to hud.solid_box(), but the colors for each corner are specified individually: 'TL' for top left, 'BL' for bottom left, 'TR' for top right and 'BR' for bottom right. The current alpha value will also be applied.
-
+</p>
 <p><b>hud.draw_image(x, y, name, [NoOffset])</b>
 <br>Draws an image at the given coordinates, which specify the top/left corner of the image. The current alpha and scaling factors are applied as well. 
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
-
+</p>
 
 <p><b>hud.stretch_image(x, y, w, h, name, [NoOffset])</b>
 <br>Similar to hud.draw_image(), but the image will be stretched or squashed so that it fits exactly into the given rectangle on the screen. The current alpha value is also applied. 
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
-
+</p>
 
 <p><b>hud.tile_image(x, y, w, h, name, [x_offset, y_offset])</b>
 <br>Draws an image (usually a texture or flat) on the screen, where the image is tiled (repeated) to fill up the given rectangle. The current alpha and scaling factors are also applied. The 'x_offset' and 'y_offset' parameters are optional, and can be used to offset the texture by a certain number of pixels.
-
+</p>
 <p><b>hud.scroll_image(x, y, name, sx, sy, [NoOffset])</b>
 <br>Draws a texcoord scrolling image at the given coordinates, which specify the top/left corner of the image. The current alpha and scaling factors are applied as well. 
 <br>The parameter "sx" controls horizontal scrolling speed and direction(positive value scrolls Right, negative Left). 
 <br>The parameter "sy" controls vertical scrolling speed and direction(positive value scrolls Up, negative Down).
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
-
+</p>
 
 <p><b>hud.draw_text(x, y, str, [size])</b>
 <br>Draws some text on the screen using the current text font, color, alpha and scaling values. Newlines ("\n") in the string can be used to draw multi-line text.
 <br>We can specify the optional [size] argument to set the font size in pixels i.e. 16
-
+</p>
 <p><b>hud.draw_number(x, y, len, num, alignRight, [size])</b>
 <br>Draws a number (an integer) on the screen using the current text font, color, alpha and scaling. 
 <br>If we pass 1 for the alignRight argument, then the number is right-aligned, in other words the 'x' parameter specifies the right-most pixel. If we pass 0 then the "x" parameter specifies the leftmost pixel.
 <br>The 'len' parameter gives the maximum number of characters (including the minus sign if the number is negative).
 <br>We can specify the optional [size] argument to set the font size in pixels i.e. 16
-
+</p>
 <p><b>hud.draw_num2(x, y, len, num, [size])</b>
 <br>Draws a number (an integer) on the screen using the current text font, color, alpha and scaling. The number is right-aligned, in other words the 'x' parameter specified the right-most pixel, and the 'len' parameter gives the maximum number of characters (including the minus sign if the number is negative).
 <br>We can specify the optional [size] argument to set the font size in pixels i.e. 16
-
+</p>
 <p><b>hud.render_world(x, y, w, h)</b>
 <br>Renders the view for the player on the screen, in a rectangle with the given coordinates. The player's weapon is also drawn. The views of different players can be rendered by using the hud.set_render_who() function below.
-
+</p>
 <p><b>hud.render_automap(x, y, w, h)</b>
 <br>Renders the automap for the player on the screen, in a rectangle with the given coordinates. Note that no background is drawn, hence you can use this function to create an overlay automap (drawn over the top of the player's view). If you need a solid color behind it, use the hud.solid_box() function first.
-
+</p>
 <p><b>hud.automap_option(option, value)</b>
 <br> Turn ON or OFF automap options.
 <br>Example usage: 
@@ -182,14 +184,14 @@ The following list shows all the possible options:
 <br><b>hud.AM_FOLLOW</b> Force follow-player mode on/off
 <br><b>hud.AM_ROTATE</b> Force map rotation on/off
 <br><b>hud.AM_HIDELINES</b> Show no map lines whatsoever
-
+</p>
 
 
 
 <p><b>hud.set_render_who(index)</b>
 <br>
 Sets the current player for rendering the world or the automap. The 'index' parameter is a small number: 1 for the "main player" on this computer (the person at the keyboard), 2 for the next player in the list, etc... upto the number of players in the game.
-
+</p>
 <p><b>hud.automap_color(part, colour)</b>
 <br>
 This function can be used to change some or all of the colors used when drawing the automap. 
@@ -208,71 +210,72 @@ This function can be used to change some or all of the colors used when drawing 
 <br><b>hud.AM_ITEM</b> Pickup items
 <br><b>hud.AM_MISSILE</b> Missiles, fireballs, etc
 <br><b>hud.AM_SCENERY</b> Scenery items
-
+</p>
 
 <p><b>hud.get_average_color(image)
 </b>
 <br>
 Will return an RGB vector with the average color of the named image lump.
-
+</p>
 <p><b>hud.get_average_hue(image)
 </b>
 <br>
 Will return an RGB vector with the average hue of the named image lump.
-
+</p>
 <p><b>hud.get_lightest_color(image)
 </b>
 <br>
 Will return an RGB vector with the lightest color of the named image lump.
-
+</p>
 <p><b>hud.get_darkest_color(image)
 </b>
 <br>
 Will return an RGB vector with the darkest color of the named image lump.
-
+</p>
 <p><b>hud.get_average_top_border_color(image)
 </b>
 <br>
 Will return an RGB vector with the average top border color of the named image lump.
-
+</p>
 <p><b>hud.get_average_bottom_border_color(image)
 </b>
 <br>
 Will return an RGB vector with the average bottom border color of the named image lump.
-
+</p>
 
 <br><br>
-<p><b><u>* Audio Functions</u></b>
+<p><b><u>* Audio Functions</u></b></p>
 <br>
 <p><b>hud.play_sound(name)</b>
 <br>Plays the given sound, which must be an entry in SOUNDS.DDF.
 <br><br><br>
-<p><b><u>PLAYER MODULE</u></b>
-<p><b><u>General Queries</u></b>
+</p>
+<p><b><u>PLAYER MODULE</u></b></p>
+<p><b><u>General Queries</u></b></p>
 <p><b>player.is_bot()</b>
 <br>
 Returns true if the current player is a bot.
-
+</p>
 <p><b>player.get_name()</b>
 <br>
 Returns the name of the current player.
-
+</p>
 <p><b>player.get_angle()</b>
 <br>
 Returns the angle of the current player.
-
+</p>
 <p><b>player.get_pos()</b>
 <br>
 Returns the position of the current player.
-
+</p>
 <p><b>player.get_mlook()</b>
 <br>
 Returns the mlook (mouse-look) angle of the current player.
-
+</p>
 <p><b>player.health()</b>
 <br>
 Returns the health of the current player. The result will normally be in the range 0 to 100, regardless of the SPAWNHEALTH setting for the player in DDF (in other words, the result is a percentage value of the spawn health). Values higher than 100 are possible when the player has bonus health (e.g. from the Soul Sphere pickup).
-
+</p>
 <p><b>player.armor(type)</b>
 <br>
 For the given armor type, returns the amount the player is currently wearing. The 'type' parameter is a number in the range 1-5, but the following names can be used for more readable code:
@@ -281,19 +284,19 @@ For the given armor type, returns the amount the player is currently wearing. Th
 <br>player.PURPLE_ARMOR
 <br>player.YELLOW_ARMOR
 <br>player.RED_ARMOR
-
+</p>
 <p><b>player.total_armor(type)</b>
 <br>
 Returns the total amount of armor the player has.
-
+</p>
 <p><b>player.move_speed()</b>
 <br>
 Returns a number for how fast the player is currently moving, roughly the number of map units per tic (there are 35 tics per second).
-
+</p>
 <p><b>player.air_in_lungs()</b>
 <br>
 Returns amount of air in the player lungs, as a percentage value from 0 to 100. Only guaranteed to be valid while the player is underwater.
-
+</p>
 <p><b>player.has_key(key)</b>
 <br>
 Returns true if the player currently has the specified key, which is a number from 1 to 16. For more readable code, the following names can be used:
@@ -305,10 +308,10 @@ Returns true if the player currently has the specified key, which is a number fr
 <br>player.RED_SKULL player.COPPER_KEY
 <br>player.YELLOW_SKULL player.WOODEN_KEY
 <br>player.GREEN_SKULL player.WATER_KEY
-
+</p>
 <p><b>player.has_power(power)</b>
 <br>
-Returns true if the player currently has the specified powerup. The 'power' parameter is a number from 1 to 9. For more readable code, the following names can be used:
+Returns true if the player currently has the specified powerup. The 'power' parameter is a number from 1 to 10. For more readable code, the following names can be used:
 <br>player.INVULN
 <br>player.BERSERK
 <br>player.INVIS
@@ -318,31 +321,32 @@ Returns true if the player currently has the specified powerup. The 'power' para
 <br>player.JET_PACK
 <br>player.NIGHT_VIS
 <br>player.SCUBA
-
+<br>player.POWERUP_TIMESTOP
+</p>
 <p><b>player.power_left(power)</b>
 <br>
 Returns the number of seconds remaining for the specified powerup, or zero when the player does not have it. The berserk powerup only counts down the red-screen effect, and returns -1 when that is finished. The automap powerup returns a large value when active and it never counts down. The result for invulnerability is not affected by the God-mode cheat.
-
+</p>
 <br><br>
-<p><b><u>* Weapon Stuff</u></b>
+<p><b><u>* Weapon Stuff</u></b></p>
 <br>
 
 <p><b>player.has_weapon(name)</b>
 <br>
 Returns true if the player currently owns the weapon, where 'name' is the DDF name of the weapon.
-
+</p>
 <p><b>player.has_weapon_slot(slot)</b>
 <br>
 Returns true if the player currently owns any weapon which uses the given 'slot', which is a number for 0 to 9 (same as the BINDKEY command in the DDF).
-
+</p>
 <p><b>player.cur_weapon()</b>
 <br>
 Returns the DDF name of the weapon the player is currently holding, or the special value "none" when the player is holding no weapon at all, or "change" while the weapon is switching to a new one.
-
+</p>
 <p><b>player.cur_weapon_slot()</b>
 <br>
 Returns the slot number (i.e. BINDKEY) of the weapon the player is currently holding, or -1 when the player is holding no weapon at all.
-
+</p>
 <p><b>player.ammo(type)</b>
 <br>
 Returns the amount of ammo the player is carrying (not including any ammo inside the clips of weapons). The 'type' parameter is a number in the range 1-99. For more readable code, one of the following names can be used instead:
@@ -350,223 +354,263 @@ Returns the amount of ammo the player is carrying (not including any ammo inside
 <br>player.SHELLS player.NAILS
 <br>player.ROCKETS player.GRENADES
 <br>player.CELLS player.GAS
-
+</p>
 <p><b>player.ammomax(type)</b>
 <br>
 Returns the maximum amount of ammo the player can carry (not including weapon clips). The 'type' parameter is the same as the player.ammo() function.
-
+</p>
 <p><b>player.main_ammo()</b>
 <br>
 Returns the main ammo quantity for the player's current weapon. This is zero for weapons that don't use any ammo (like the FIST). If the weapon has a clip and the SHOWCLIP command (in DDF) is true, then the amount of ammo inside the clip is returned instead. Note that only the primary attack is checked, the secondary attack (if present) will be ignored.
-
+</p>
 <p><b>player.ammo_type(ATK)</b>
 <br>
 Returns the ammo type of the player's current weapon for the given attack (primary or secondary). The result is in the range 1-99, or can be 0 for the special case of NOAMMO. The 'ATK' parameter is 1 for the primary attack, 2 for the secondary attack, and is compulsory.
-
+</p>
 <p><b>player.ammo_pershot(ATK)</b>
 <br>
 Returns the ammo used up per shot by the current weapon for the given attack (primary or secondary). Same as the AMMOPERSHOT commands in WEAPONS.DDF. The 'ATK' parameter is 1 for the primary attack, 2 for the secondary attack, and is compulsory.
-
+</p>
 <p><b>player.clip_ammo(ATK)</b>
 <br>
 Returns the current amount of ammo the clip in the player's current weapon is holding, or zero if the weapon has no clip. The 'ATK' parameter is 1 for the primary attack, 2 for the secondary attack, and is compulsory.
-
+</p>
 <p><b>player.clip_size(ATK)</b>
 <br>
 Returns the maximum amount of ammo the clip in the player's current weapon can hold, or zero if the weapon has no clip. The 'ATK' parameter is 1 for the primary attack, 2 for the secondary attack, and is compulsory.
-
+</p>
 <p><b>player.clip_is_shared()</b>
 <br>
 Returns true if the player's current weapon is sharing a single clip between primary and secondary attackes (the SHARED_CLIP command).
-
+</p>
 <p><b>player.kills()</b>
 <br>
 Returns how many enemies killed on the current map.
-
+</p>
 <p><b>player.secrets()</b>
 <br>
 Returns how many secrets discovered on current map.
-
+</p>
 <p><b>player.items()</b>
 <br>
 Returns how many items picked up on the current map.
-
+</p>
 <p><b>player.map_enemies()</b>
 <br>
 Returns total enemies on current map.
-
+</p>
 <p><b>player.map_secrets()</b>
 <br>
 Returns total number of secrets on current map.
-
+</p>
 <p><b>player.map_items()</b>
 <br>
 Returns total items on current map.
-
+</p>
 <p><b>player.floor_flat()</b>
 <br>
 Returns the floor flat of the current sector we are in.
-
+</p>
 <p><b>player.sector_tag()</b>
 <br>
 Returns the tag of the current sector we are in.
-
+</p>
 <p><b>player.play_footstep(flatname)</b>
 <br>
 Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
-
+</p>
 <p><b>player.rts_enable_tagged(tag)
 </b>
 <br>
 Run an RTS script, where 'tag' is the RTS script to be called. 
-
+</p>
 <br><br>
-<p><b><u>* Counter stuff</u></b>
+<p><b><u>* Counter stuff</u></b></p>
 <br>
 
 <p><b>player.counter(type)</b>
 <br>
 Returns the amount of a counter type the player has. The 'type' parameter is a number in the range 1-99. 
-
+</p>
 <p><b>player.countermax(type)</b>
 <br>
 Returns the maximum amount of a counter type the player has. The 'type' parameter is the same as the player.counter() function.
-
+</p>
 <p><b>player.set_counter(type, value)</b>
 <br>
 Allows us to set the amount of a counter type the player has. The 'type' parameter is a number in the range 1-99. 
 <br>The 'value' is the new amount the counter will have.
-
+</p>
 
 
 <br><br>
-<p><b><u>* Inventory stuff</u></b>
+<p><b><u>* Inventory stuff</u></b></p>
 <br>
 
 <p><b>player.inventory(type)</b>
 <br>
 Returns the amount of an inventory type the player is carrying. The 'type' parameter is a number in the range 1-99. 
-
+</p>
 <p><b>player.inventorymax(type)</b>
 <br>
 Returns the maximum amount of an inventory type the player can carry. The 'type' parameter is the same as the player.inventory() function.
-
+</p>
 <p><b>player.inv_prev_key()
 </b>
 <br>
 Returns 1 if the 'Inventory Previous' key has been pressed.  
-
+</p>
 <p><b>player.inv_next_key()
 </b>
 <br>
 Returns 1 if the 'Inventory Next' key has been pressed.  
-
+</p>
 <p><b>player.inv_use_key()
 </b>
 <br>
 Returns 1 if the 'Inventory Use' key has been pressed.
-
+</p>
 <p><b>player.use_inventory(type)
 </b>
 <br>
 Use/spend an inventory item. The 'type' parameter is a number in the range 1-99. The amount of this item will be decreased by 1 and an RTS script tagged INVENTORY<type> will be called i.e. TAG INVENTORY01 in RTS.  
-
+</p>
 
 
 
 <br><br>
-<p><b><u>* Conditions</u></b>
+<p><b><u>* Conditions</u></b></p>
 <br>
 
 <p><b>player.on_ground()</b>
 <br>
 Returns true if player is standing on solid ground.
-
+</p>
 <p><b>player.under_water()</b>
 <br>
 Returns true if player is in an AIRLESS sector and doesn't have the Scuba powerup.
 <br>Think of it like player.cannot_breathe ;)
-
+</p>
 <p><b>player.is_swimming()</b>
 <br>
 Returns true if player is in swimmable water (i.e. the SWIM sector special).
-
+</p>
 <p><b>player.is_jumping()</b>
 <br>
 Returns true if player is jumping.
-
+</p>
 <p><b>player.is_crouching()</b>
 <br>
 Returns true if player is crouching.
-
+</p>
 <p><b>player.get_side_move()</b>
 <br>
 Returns true if player is strafing from side-to-side.
-
+</p>
 <p><b>player.is_attacking()</b>
 <br>
 Returns true if player is firing his weapon (either first or second attack).
-
+</p>
 <p><b>player.is_rampaging()</b>
 <br>
 Returns true if player has been firing his weapon for two seconds or more.
-
+</p>
 <p><b>player.is_using()</b>
 <br>
 Returns true if player is holding the USE button down.
-
+</p>
 <p><b>player.is_grinning()</b>
 <br>
 Returns true if player is grinning (after picking up a weapon).
 <br><br>
+</p>
 
-
-<p><b><u>* Miscellaneous</u></b>
+<p><b><u>* Miscellaneous</u></b></p>
 <br>
 
 <p><b>player.num_players()</b>
 <br>
 Returns the total number of players in the game, including bots.
-
+</p>
 <p><b>player.set_who(index)</b>
 <br>
 Sets who the current player is. The 'index' parameter is a small number: 1 for the "main player" on this computer (the person at the keyboard), 2 for the next player in the list, for instance the split-screen player) etc... up to the number of players in the game. All the player query functions described here return their results for the current player.
-
+</p>
 <p><b>player.hurt_by()</b>
 <br>
 If the player has been hurt in the last few seconds, this returns a string describing what did the damage. Otherwise this function returns nil. The result is usually "enemy", but could be "friend" for friendly fire. If the player hurt himself with his own damn stupidity then the result is "self", whereas damaging floors and crushers will return "other".
-
+</p>
 <p><b>player.hurt_mon()</b>
 <br>
 If the player has been hurt in the last few seconds, this returns the name of the monster or other player. Otherwise this function returns nil.
-
+</p>
 <p><b>player.hurt_pain()</b>
 <br>
 If the player was just hurt, this returns the damage amount, otherwise this function returns 0.
-
+</p>
 <p><b>player.hurt_dir()</b>
 <br>
 If the player was just hurt, this returns a direction relative to the player where the attacker was: -1 for the left side, +1 for the right side, and 0 for all other cases.
-
+</p>
 <p><b>player.hurt_angle()</b>
 <br>
 Like player.hurt_dir(), except this returns the map angle from the player to his attacker. The result is in degrees (ranging from 0 to 359), where East is 0 and North is 90.
-
+</p>
 <p><b>math.random2()</b>
 <br>
 Returns a random number between 0 and 10.
-
+</p>
 <p><b>strings.find(s,TextToFind)</b>
 <br>
 Argument "s" is the string to be searched, argument "TextToFind" is what we're looking for. Will find a sub-string at ANY position. Returns position it was found at or -1 if not found.
+</p>
+<p><b>mapobject.count(thingID)</b>
+<br>
+Returns the number of objects of this type on the map. 
+</p>
+<p><b>player.query_object(MaxDistance, WhatInfo)</b>
+<br>
+Returns information about the currently targetted thing. <br>
+- <i>MaxDistance</i> is the limit to how far we can query an object in map units.<br>
+- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 5:<br>
+&nbsp&nbsp 1 (NAME)<br>
+&nbsp&nbsp 2 (CURRENT_HEALTH)<br>
+&nbsp&nbsp 3 (SPAWN_HEALTH)<br>
+&nbsp&nbsp 4 (PICKUP_BENEFIT)<br>
+&nbsp&nbsp 5 (KILL_BENEFIT)<br>
+</p>
+<p><b>mapobject.query_tagged(ThingMapTag, WhatInfo)</b>
+<br>
+Returns information about the thing with the tag we specified. <br>
+- <i>ThingMapTag</i> is the map tag we assigned to the object.<br>
+- <i>WhatInfo</i> is the same as player.query_object()<br>
+</p>
 
+<p><b>player.query_weapon(MaxDistance, WhatInfo, [secAttackInfo])</b>
+<br>
+Returns information about the currently targetted weapon. <br>
+- <i>MaxDistance</i> is the limit to how far we can query a weapon in map units.<br>
+- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 9:<br>
+&nbsp&nbsp 1 (NAME)<br>
+&nbsp&nbsp 2 (ZOOM FACTOR)<br>
+&nbsp&nbsp 3 (AMMOTYPE)<br>
+&nbsp&nbsp 4 (AMMOPERSHOT)<br>
+&nbsp&nbsp 5 (CLIPSIZE)<br>
+&nbsp&nbsp 6 (DAMAGE Nominal)<br>
+&nbsp&nbsp 7 (DAMAGE Max)<br>
+&nbsp&nbsp 8 (RANGE)<br>
+&nbsp&nbsp 9 (AUTOMATIC)<br>
+- <i>secAttackInfo</i> is optional, and is the same as WhatInfo but applies only to the weapons secondary attack. 
+</p>
+
+<br><br>
 <p>
 back to <A HREF="#top">top</A>
 </p>
 
 <p>
 Problems with the docs, errors and comments should be directed to the EDGE-Classic team.<P>
-&copy; EDGE-Classic community 2022.
+&copy; EDGE-Classic community 2023.
 </p>
 
 

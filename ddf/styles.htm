@@ -52,24 +52,30 @@ Each entry describes a section of the UI and consists of a unique name, enclosed
 <table BORDER=1 CELLSPACING=0 CELLPADDING=3>
 	<tr><td>
 		<ul>
-			<li>DEFAULT</li>
-			<li>RTS_MENU</li>
 			<li>MENU</li>
 			<li>MAIN_MENU</li>
-			<li>OPTIONS</li>
-			<li>GAMEPLAY_OPTIONS</li>
-			<li>DIALOG</li>
-			<li>CONSOLE</li>
-			<li>STATS</li>
-			<li>AUTOMAP</li>
-			<li>CHOOSE_EPISODE</li>
 			<li>CHOOSE_SKILL</li>
+			<li>CHOOSE_EPISODE</li>
+			<li>LOAD_MENU</li>
+			<li>SAVE_MENU</li>
+			<li>OPTIONS</li>
+			<li>STATS</li>
+			<li>CONSOLE</li>
+			<li>INTERLEVEL_TEXT</li>
+			<li>CAST_SCREEN</li>
+			<li>MESSAGES</li>
+			<li>IMPORTANT_MESSAGES</li>
+			<li>EXIT_SCREEN</li>
+			<li>RTS_TIP</li>
+			<li>AUTOMAP</li>
+			<li>HOST_NETGAME</li>
 		</ul>
 	</td></tr>
 </table>
 <p>
-Note that RTS_MENU is limited to allow only the BACKGROUND.???? commands, others like TEXT.???? do not work.
+Note that <b>RTS_TIP</b> is limited to allow only the TEXT.FONT command: other stuff like text size, colour etc. depends on the RTS tip slot definition.
 </p>
+<br><br>
 <p>
 <B><FONT SIZE=+1>BACKGROUND COMMANDS</font></b>
 </p>
@@ -107,11 +113,12 @@ A comma separated list of special flags. See below.</td></tr>
 
 </table>
 
+<br><br>
 <p>
 <B><FONT SIZE=+1>TEXT, ALT, TITLE or HELP COMMANDS</font></b>
 </p>
 <p>
-The following is a list of the commands can be used after the ".": i.e. TEXT.FONT:
+The following is a list of the commands that can be used after the ".": i.e. TEXT.FONT:
 </p>
 
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
@@ -146,6 +153,46 @@ Can be used to offset text-based menus </td></tr>
 
 </table>
 
+<br><br>
+
+<p>
+<B><FONT SIZE=+1> Specific COMMANDS for Menu items</font></b>
+</p>
+<p>
+The following is a list of the commands can be used to change ECs Menus
+</p>
+
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>COMMAND</TH><TH>TYPE</TH><TH>EXPLANATION</TH></TR>
+
+<TR><TD>ENTRY_ALIGNMENT</TD><TD>[string]</TD><TD>
+Used to set text/image alignment for menu item names. The value can be: 'LEFT', 'CENTER' or 'RIGHT'.</TD></TR>
+
+<TR><TD>CURSOR.POSITION</TD><TD>[string]</TD><TD>
+Used to determine cursor position relative to menu item. The value can be: 'LEFT', 'CENTER', 'RIGHT' or 'BOTH'.<br>
+"BOTH" will drawn the cursor in both LEFT/RIGHT positions. Defaults to "LEFT".</TD></TR>
+
+<tr><td>CURSOR.BORDER </td><td>[boolean]</td><td>
+Only has an effect when the cursor position is set to CENTER. Will scale up to the dimensions of the tallest menu item. Good for highlights/frames/border style cursors.
+</td></tr>
+
+<tr><td>CURSOR.TRANSLUCENCY</td><td>[percentage]</td><td>
+The percentage of translucency. 0% is invisible, while 100% is visible.
+</td></tr>
+
+<TR><TD>CURSOR.IMAGE</TD><TD>[image name]</TD><TD>
+The image to use instead of the default for this menu's cursor.</TD></TR>
+
+<TR><TD>CURSOR.STRING</TD><TD>[string]</TD><TD>
+If present, will use these characters from the style's font as the cursor instead of an image.</TD></TR>
+
+<tr><td>CURSOR.SCALING</td><td>[boolean]</td><td>
+Will set whether or not the cursor scales proportionally to menu item heights. Defaults to true.
+</td></tr>
+
+
+</table>
+
 &nbsp
 <p><a name="special">
 
@@ -170,6 +217,7 @@ Background image will NOT be stretched to fill the screen</TD></TR>
 Menu cursor will be drawn on the right side of menu entries</TD></TR>
 
 </TABLE>
+<br><br>
 &nbsp
 <!--
 <p>
@@ -246,7 +294,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body>
 </html>

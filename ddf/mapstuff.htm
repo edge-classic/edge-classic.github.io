@@ -252,9 +252,10 @@ The time to wait before floor begins moving at all.</td></tr>
 Causes this line type to (a)be blocking and (b)will apply the LINE_EFFECT= specials BLOCK_SHOTS and BLOCK_SIGHT if specified.
 <br>Once the line is activated(normally via SHOOT) then 
 <br>(1) line will be set to unblocking, 
-<br>(2)BLOCK_SHOTS and BLOCK_SIGHT will be removed, 
+<br>(2) BLOCK_SHOTS and BLOCK_SIGHT will be removed, 
 <br>(3) the mid-texture will be removed. 
 <br>If combined with EFFECT_OBJECT then you can spawn shards of broken glass when the line "breaks" for example. NOTE: GLASS=TRUE should be used with COUNT=1
+<br> If used with LINE_PARTS, then we try and use that texture as the BROKEN_TEXTURE instead of just removing the current midtex.
 </td></tr>
 
 <tr><td>S</td><td>GRAVITY</td><td>[float]</td><td>Specifies the level of gravity there is in this sector. 1 is normal however 0.5 allows swimming.</td></tr>
@@ -283,7 +284,13 @@ The period of gametime to syncronise changes in lighting to. With a value of 2, 
 Specifies what type of light it is. Options are GLOW, FLASH, FLICKER, SET or STROBE</td></tr>
 
 <tr><td>L</td><td>LINE_EFFECT</td><td>[special]</td><td>
-Specifies the type of line to line effect to use. Primarily for Boom compatability. Options are TRANSLUCENT, VECTOR_SCROLL, OFFSET_SCROLL, SCALE_TEX, SKEW_TEX, SKY_TRANSFER, LIGHT_WALL, UNBLOCK_THINGS, BLOCK_SHOTS and BLOCK_SIGHT. A comma seperated list can be used to specify multiple effects. <br>Note that for these to work, you need to set AUTO=TRUE</td></tr>
+Specifies the type of line to line effect to use. Primarily for Boom compatability. Options are TRANSLUCENT, TAGGED_OFFSET_SCROLL, VECTOR_SCROLL, OFFSET_SCROLL, SCALE_TEX, SKEW_TEX, SKY_TRANSFER, LIGHT_WALL, UNBLOCK_THINGS, BLOCK_SHOTS and BLOCK_SIGHT. A comma seperated list can be used to specify multiple effects. 
+<br>Note that for these to work, you need to set AUTO=TRUE</td></tr>
+
+<tr><td>L</td><td>LINE_PARTS</td><td>[special]</td><td>
+Values can be LEFT_LOWER, LEFT_UPPER, RIGHT_LOWER or RIGHT_UPPER.<br>
+When combined with GLASS=TRUE, will replace the mid-texture with this one instead of just removing it i.e. for shooting out a vent and replacing it with a broken vent. See GLASS command above.
+ </td></tr>
 
 <tr><td>L</td><td>MUSIC</td><td>[music]</td><td>
 When this line is activated, the current music changes to that of the playlist entry specified.</td></tr>
@@ -328,6 +335,10 @@ using a comma separated list, eg SCROLL=LEFT,RIGHT; </td></tr>
 
 <tr><td>L</td><td>SCROLLING_SPEED</td><td>[float]</td><td>
 How fast the wall scrolls. (Normal value is 1).</td></tr>
+
+<tr><td>L</td><td>SCROLL_TYPE</td><td>[special]</td><td>
+This can be DISPLACE or ACCEL. 
+<br>Affects the PUSH_THINGS, SCROLL_FLOOR, SCROLL_CEILING, VECTOR_SCROLL, and TAGGED_OFFSET_SCROLL specials. </td></tr>
 
 <tr><td>S</td><td>SECRET</td><td>[boolean]</td><td>
 This sector is counted as part of the level's secret percentage.</td></tr>
@@ -755,7 +766,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body>
 </html>

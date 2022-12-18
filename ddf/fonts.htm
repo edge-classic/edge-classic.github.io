@@ -64,7 +64,9 @@ The commands used for font entries are as follows:
 
 <TR><TD>TYPE</TD><TD>[string]</TD><TD>
 PATCH: usual doom style patch font.<br>
-IMAGE: an image with a 16x16 ASCII character layout with either a transparent or solid color background.</TD></TR>
+IMAGE: an image with a 16x16 ASCII character layout with either a transparent or solid color background.<br>
+TRUETYPE: usual doom style patch font.
+</TD></TR>
 
 <TR><TD>IMAGE</TD><TD>[string]</TD><TD>
 Only used with TYPE=IMAGE. Refers to a DDFIMAGE definition of the image in question. </TD></TR>
@@ -75,6 +77,15 @@ Only used with TYPE=IMAGE. Accepts positive or negative values to have fine-grai
 <TR><TD>PATCHES</TD><TD>[string]</TD><TD>
 Only used with TYPE=PATCH. What patch will be used for a character or range of characters. Put a character in "" quotes or use : for a range of characters e.g. FONTP33("!") or FONTP65("A":"Z"). </TD></TR>
 
+<TR><TD>TTF</TD><TD>[string]</TD><TD>
+Only used with TYPE=TRUETYPE. Refers to a TTF/OTF file or lump. </TD></TR>
+
+<TR><TD>TTF_DEFAULT_SIZE</TD><TD>[number]</TD><TD>
+Only used with TYPE=TRUETYPE. Default (scaled to HUD) rendering size for this font. If not provided, a default value of 7 will be used </TD></TR>
+
+<TR><TD>TTF_SMOOTHING</TD><TD>[special]</TD><TD>
+Only used with TYPE=TRUETYPE. "ALWAYS", "NEVER", or "ON_DEMAND". Affects behavior of the font when the Smoothing option in the Video Options menu is adjusted. Defaults to "ON_DEMAND". </TD></TR>
+
 <TR><TD>MISSING_PATCH</TD><TD>[string]</TD><TD>
 Only used with TYPE=PATCH. Optional. The patch to be used when we're missing a character.</td></tr>
 
@@ -84,15 +95,15 @@ Only used with TYPE=PATCH. Optional. The patch to be used when we're missing a c
 <B><FONT SIZE=+1>EXAMPLES</font></b>
 </p>
 <p>
-The following is an example of a complete PATCH font entry:
+The following is an example of a complete <b>PATCH</b> font entry:
 </p>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
 <TR><TD>
 <FONT SIZE=2>
 [FOO]
 <br>TYPE=PATCH; 
-<br>PATCHES=FONTP33("!"),  // put a character in "" quotes
-<br>FONTP65("A":"Z");   // use : for a range of characters
+<br>PATCHES=FONTP33("!"),  // put a character in "" quotes &nbsp &nbsp
+<br>FONTP65("A":"Z");   // use : for a range of characters &nbsp &nbsp
 <br>MISSING_PATCH=FONTP00;
 <br>
 </FONT>
@@ -107,20 +118,36 @@ The following is an example of a complete PATCH font entry:
 <br>
 <br>
 <p>
-The following is an example of a complete IMAGE font entry:
+The following is an example of a complete <b>IMAGE</b> font entry:
 </p>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 FRAME="box">
 <TR><TD>
 <FONT SIZE=2>
 [ENDFONT] //font used for the ENDOOM lump
 <br>TYPE=IMAGE;
-<br>IMAGE="ENDFONT";  //image with a 16x16 ASCII character layout
+<br>IMAGE="ENDFONT";  //image with a 16x16 ASCII character layout &nbsp &nbsp
 <br>SPACING = -3;
 <br>
 </FONT>
 </TD></TR>
 </TABLE>
 
+<br>
+<br>
+<p>
+The following is an example of a complete <b>TRUETYPE</b> font entry:
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 FRAME="box">
+<TR><TD>
+<FONT SIZE=2>
+[MESSAGE_FONT] 
+<br>TYPE=TRUETYPE;
+<br>TTF=TTFONT03;  //the lumpname of our TrueType font &nbsp &nbsp
+<br>SPACING = -3;  //make the letters bunch up a bit closer. &nbsp &nbsp
+<br>
+</FONT>
+</TD></TR>
+</TABLE>
 
 <!--begin footer-->
 <p>
@@ -131,7 +158,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body>
 </html>
