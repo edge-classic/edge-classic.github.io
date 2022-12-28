@@ -58,7 +58,7 @@ monsters (e.g archvile flames, lost souls, mancubus attacks). Anyway,
 if you want to create the world's coolest flamethrower, this is the
 place to start!
 <br>
-&nbsp
+&nbsp;
 </p>
 <p>
 <B><FONT SIZE=+1>COMMANDS</font></b>
@@ -323,7 +323,7 @@ backwards.</td></tr>
 </TABLE>
 
 
-&nbsp
+&nbsp;
 <br>
 
 <p>
@@ -368,9 +368,9 @@ In addition, any line may include a <tt>#Command</tt> at the end. This will eith
 <br>
 
 <p>
-&nbsp
+&nbsp;
 
-<A NAME="Speshstates">&nbsp;</A>
+<A NAME="Speshstates">&nbsp;</A><br>
 <font size=+1><B>Special STATES</B></font></A>
 </p>
 <p>
@@ -399,7 +399,8 @@ rotations (e.g rocket in flight).
 &nbsp
 </p>
 <p>
-<A NAME="attacktypes"><B><FONT SIZE=+1>ATTACKTYPES</B></FONT></A>
+<A NAME="attacktypes">&nbsp;</A>
+<br><B><FONT SIZE=+1>ATTACKTYPES</B></FONT>
 </p>
 <p>
 In DDF, player and monster attacks are completely interchangeable. You
@@ -457,9 +458,10 @@ Launches two creatures of the same type. e.g. D64 Pain Elemental death.</td></tr
 Launches three creatures of the same type. e.g. Pain Elemental death.</td></tr>
 
 </TABLE>
-&nbsp
+&nbsp;
 <p>
-<A NAME="attackspec"><B><FONT SIZE=+1>ATTACK SPECIALS</B></FONT></A>
+<A NAME="attackspec">&nbsp;</A>
+<br><B><FONT SIZE=+1>ATTACK SPECIALS</B></FONT>
 </p>
 <p>
 These are flags that are used to modify an attack in some way. <br>
@@ -519,9 +521,10 @@ Homing missile with a line of smoke behind it.</td></tr>
 Causes the inflictor of damage to gain the health from the damage done to the victim.  The health/damage ratio is hard-coded as 25% for monsters and 50% for players</td></tr>
 
 </TABLE>
-&nbsp
+&nbsp;
 <p>
-<A NAME="projspec"><B><FONT SIZE=+1>PROJECTILE_SPECIAL</B></FONT></A>
+<A NAME="projspec">&nbsp;</A>
+<br><B><FONT SIZE=+1>PROJECTILE_SPECIAL</B></FONT>
 </p>
 <p>
 Used in a very similar way to ATTACK_SPECIAL. <br>
@@ -585,9 +588,10 @@ Projectile will not pass through liquid extrafloors.</td></tr>
 
 
 </TABLE>
-&nbsp
+&nbsp;
 <p>
-<A NAME="actions"><B><FONT SIZE=+1>ACTIONS</B></FONT></A>
+<A NAME="actions">&nbsp;</A>
+<br><B><FONT SIZE=+1>ACTIONS</B></FONT>
 </p>
 <p>
 The following actions can be used in the attacks.ddf STATES:
@@ -703,7 +707,7 @@ Used like TRANS_SET(10%) to set the object transparency to the specified amount.
 </TABLE>
 <br>
 
-&nbsp
+&nbsp;
 <p>
 <B><FONT SIZE=+1>EXAMPLES</font></b>
 </p>
@@ -754,15 +758,15 @@ DLIGHT.INTENSITY=300;<br>
 DLIGHT.COLOUR=#FFFF00;<br>
 STATES(IDLE)=MISL:A:1:BRIGHT:NOTHING;<br>
 STATES(DEATH)=MISL:B:0:BRIGHT:DLIGHT_SET(1000),<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:B:0:BRIGHT:DLIGHT_FADE(0),<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:B:0:BRIGHT:TRANS_FADE(0%),<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:B:0:BRIGHT:KILLSOUND,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:B:0:BRIGHT:PLAYSOUND(BAREXP),<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:B:8:BRIGHT:EXPLOSIONDAMAGE,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:C:6:BRIGHT:NOTHING,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MISL:D:4:BRIGHT:NOTHING,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp #REMOVE;<br>
-&nbsp
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:B:0:BRIGHT:DLIGHT_FADE(0),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:B:0:BRIGHT:TRANS_FADE(0%),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:B:0:BRIGHT:KILLSOUND,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:B:0:BRIGHT:PLAYSOUND(BAREXP),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:B:8:BRIGHT:EXPLOSIONDAMAGE,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:C:6:BRIGHT:NOTHING,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MISL:D:4:BRIGHT:NOTHING,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#REMOVE;<br>
+&nbsp;
 <br>
 <br>
 <A NAME="skullfly">[SKULL_ASSAULT]</A><br>

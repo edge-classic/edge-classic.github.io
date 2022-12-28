@@ -50,7 +50,7 @@ Fonts.ddf allows you to define fonts (the set of character images for drawing te
 <p>
 Names should be descriptive of what the font is and/or when it is used.
 <br>
-&nbsp
+&nbsp;
 </p>
 <p>
 <B><FONT SIZE=+1>COMMANDS</font></b>
@@ -59,7 +59,7 @@ Names should be descriptive of what the font is and/or when it is used.
 The commands used for font entries are as follows:
 </p>
 
-<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=1>
 <TR><TH>COMMAND</TH><TH>TYPE</TH><TH>DESCRIPTION</TH></TR>
 
 <TR><TD>TYPE</TD><TD>[string]</TD><TD>
@@ -91,7 +91,7 @@ Only used with TYPE=TRUETYPE. "ALWAYS", "NEVER", or "ON_DEMAND". Affects behavio
 
 
 </TABLE>
-&nbsp
+&nbsp;
 <p>
 <B><FONT SIZE=+1>EXAMPLES</font></b>
 </p>
@@ -103,8 +103,8 @@ The following is an example of a complete <b>PATCH</b> font entry:
 <FONT SIZE=2>
 [FOO]
 <br>TYPE=PATCH; 
-<br>PATCHES=FONTP33("!"),  // put a character in "" quotes &nbsp &nbsp
-<br>FONTP65("A":"Z");   // use : for a range of characters &nbsp &nbsp
+<br>PATCHES=FONTP33("!"),  // put a character in "" quotes &nbsp;&nbsp
+<br>FONTP65("A":"Z");   // use : for a range of characters &nbsp;&nbsp
 <br>MISSING_PATCH=FONTP00;
 <br>
 </FONT>
@@ -126,7 +126,7 @@ The following is an example of a complete <b>IMAGE</b> font entry:
 <FONT SIZE=2>
 [ENDFONT] //font used for the ENDOOM lump
 <br>TYPE=IMAGE;
-<br>IMAGE="ENDFONT";  //image with a 16x16 ASCII character layout &nbsp &nbsp
+<br>IMAGE="ENDFONT";  //image with a 16x16 ASCII character layout &nbsp;&nbsp
 <br>SPACING = -3;
 <br>
 </FONT>
@@ -143,8 +143,8 @@ The following is an example of a complete <b>TRUETYPE</b> font entry:
 <FONT SIZE=2>
 [MESSAGE_FONT] 
 <br>TYPE=TRUETYPE;
-<br>TTF=TTFONT03;  //the lumpname of our TrueType font &nbsp &nbsp
-<br>SPACING = -3;  //make the letters bunch up a bit closer. &nbsp &nbsp
+<br>TTF=TTFONT03;  //the lumpname of our TrueType font &nbsp;&nbsp
+<br>SPACING = -3;  //make the letters bunch up a bit closer. &nbsp;&nbsp
 <br>
 </FONT>
 </TD></TR>

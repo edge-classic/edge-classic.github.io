@@ -50,7 +50,7 @@ Each entry represents an episode of Doom, for example the four 9-level episodes 
 
 The episode name should be descriptive and is referred to in the levels.ddf file.
 <br>
-&nbsp
+&nbsp;
 </p>
 <p>
 <B><FONT SIZE=+1>COMMANDS</font></b>
@@ -59,7 +59,7 @@ The episode name should be descriptive and is referred to in the levels.ddf file
 The commands used for game entries are as follows:
 </p>
 
-<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=1>
 
 <TR><TH>COMMAND</TH><TH>TYPE</TH><TH>DESCRIPTION</TH></TR>
 
@@ -148,7 +148,7 @@ This is the picture placed over the level you are at. (You are Here) -- Used in 
 If YAH1 doesn't fit on the page, this pic will be used instead  -- Used in Doom and Ultimate Doom episodes.</TD></TR>
 
 </TABLE>
-&nbsp
+&nbsp;
 <br>
 <p>
 <B><FONT SIZE=+1>NOTES</font></b>
@@ -156,7 +156,7 @@ If YAH1 doesn't fit on the page, this pic will be used instead  -- Used in Doom 
 
 <p>
 
-<A NAME="anim"> &nbsp </A> <B>ANIM Command</B>
+<A NAME="anim"> &nbsp; </A> <B>ANIM Command</B>
 </p>
 <p>
 A frame in the animation is specified by: <tt>picture:tics:x:y</tt>
@@ -170,19 +170,19 @@ Use #END to end the animation and loop back to the start.
 </p>
 <p>
 Eg ANIM=ADOOM:3:224:104,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp BDOOM:3:224:104,#END;<BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;BDOOM:3:224:104,#END;<BR>
 Plays 2 different graphics for a period of 3 tics each (about 1/10th second) at coordinates 224, 104.
 </p>
 <br>
 <p>
-<A NAME="map">&nbsp </A><B>MAP Command</B>
+<A NAME="map">&nbsp; </A><B>MAP Command</B>
 </p>
 <p>
 Specifies the position to draw splats on maps: <tt>mapname:x:y</tt><br>
 where <tt>mapname</tt> is the name of the map, and <tt>x</tt> and <tt>y</tt> are the screen coordinates to place the splat. These coordinates are also used for the "You are Here" graphic.
 
 
-&nbsp
+&nbsp;
 </p>
 <p>
 <B><FONT SIZE=+1>EXAMPLES</font></b>
@@ -225,44 +225,44 @@ TITLE_GRAPHIC="TITLEPIC","HELP2","CREDIT";<br>
 TITLE_TIME=170T;<br>
 TITLE_MUSIC=62;<br>
 MAP=E1M1:185:164,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M2:148:143,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M3:69:122,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M4:209:102,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M5:116:89,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M6:166:55,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M7:71:56,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M8:135:29,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E1M9:71:24;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M2:148:143,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M3:69:122,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M4:209:102,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M5:116:89,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M6:166:55,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M7:71:56,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M8:135:29,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1M9:71:24;<br>
 ANIM=WIA00000:3:224:104,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00001:3:224:104,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00002:3:224:104,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00100:4:184:160,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00101:4:184:160,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00102:4:184:160,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00200:3:112:136,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00201:2:112:136,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00202:3:112:136,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00300:3:72:112,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00301:3:72:112,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00302:4:72:112,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00400:5:88:96,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00401:5:88:96,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00402:3:88:96,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00500:2:64:48,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00501:3:64:48,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00502:2:64:48,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00600:3:192:40,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00601:2:192:40,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00602:3:192:40,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00700:3:136:16,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00701:5:136:16,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00702:3:136:16,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00800:3:80:16,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00801:7:80:16,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00802:3:80:16,#END,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00900:3:64:24,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00901:2:64:24,<br>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp WIA00902:3:64:24,#END;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00001:3:224:104,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00002:3:224:104,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00100:4:184:160,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00101:4:184:160,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00102:4:184:160,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00200:3:112:136,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00201:2:112:136,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00202:3:112:136,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00300:3:72:112,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00301:3:72:112,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00302:4:72:112,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00400:5:88:96,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00401:5:88:96,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00402:3:88:96,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00500:2:64:48,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00501:3:64:48,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00502:2:64:48,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00600:3:192:40,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00601:2:192:40,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00602:3:192:40,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00700:3:136:16,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00701:5:136:16,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00702:3:136:16,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00800:3:80:16,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00801:7:80:16,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00802:3:80:16,#END,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00900:3:64:24,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00901:2:64:24,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WIA00902:3:64:24,#END;<br>
 </FONT>
 </TD></TR>
 </TABLE>
