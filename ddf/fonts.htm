@@ -65,7 +65,7 @@ The commands used for font entries are as follows:
 <TR><TD>TYPE</TD><TD>[string]</TD><TD>
 PATCH: usual doom style patch font.<br>
 IMAGE: an image with a 16x16 ASCII character layout with either a transparent or solid color background.<br>
-TRUETYPE: usual doom style patch font.
+TRUETYPE: lump with a complete TTF or OTF font.
 </TD></TR>
 
 <TR><TD>IMAGE</TD><TD>[string]</TD><TD>
@@ -77,6 +77,9 @@ Only used with TYPE=IMAGE. Accepts positive or negative values to have fine-grai
 <TR><TD>PATCHES</TD><TD>[string]</TD><TD>
 Only used with TYPE=PATCH. What patch will be used for a character or range of characters. Put a character in "" quotes or use : for a range of characters e.g. FONTP33("!") or FONTP65("A":"Z"). </TD></TR>
 
+<TR><TD>MISSING_PATCH</TD><TD>[string]</TD><TD>
+Only used with TYPE=PATCH. Optional. The patch to be used when we're missing a character.</TD></TR>
+
 <TR><TD>TTF</TD><TD>[string]</TD><TD>
 Only used with TYPE=TRUETYPE. Refers to a TTF/OTF file or lump. </TD></TR>
 
@@ -86,8 +89,6 @@ Only used with TYPE=TRUETYPE. Default (scaled to HUD) rendering size for this fo
 <TR><TD>TTF_SMOOTHING</TD><TD>[special]</TD><TD>
 Only used with TYPE=TRUETYPE. "ALWAYS", "NEVER", or "ON_DEMAND". Affects behavior of the font when the Smoothing option in the Video Options menu is adjusted. Defaults to "ON_DEMAND". </TD></TR>
 
-<TR><TD>MISSING_PATCH</TD><TD>[string]</TD><TD>
-Only used with TYPE=PATCH. Optional. The patch to be used when we're missing a character.</td></tr>
 
 </TABLE>
 &nbsp
