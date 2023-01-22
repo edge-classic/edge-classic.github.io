@@ -36,6 +36,29 @@
 <table>
   <tbody>
       <tr>
+        <td><b>22 January 2023:
+  EDGE-Classic v1.32 released</b></span><br>
+        <br>
+  
+      New minor release of EDGE-Classic. Fixes and updates include:<br><br>
+  
+- Fixed a recently introduced bug which caused Secrets to not work after finding the first one.<br>
+- Fixed player.use_inventory() consuming item without running the associated script.<br>
+- COALHUDS: new commands<br>
+&nbsp;&nbsp;&nbsp;--hud.rts_isactive(tag): Returns 1 if the script "tag" is currently enabled, 0 if disabled.<br>
+&nbsp;&nbsp;&nbsp;--hud.rts_enable(name): Will execute RTS script with matching tag, if one exists. This replaces previous COAL command "player.rts_enable_tagged(name)" which should be considered deprecated.
+  
+      <br><br>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <br><br>
+
+<table>
+  <tbody>
+      <tr>
         <td><b>20 January 2023:
   EDGE-Classic v1.31 released</b></span><br>
         <br>
@@ -84,9 +107,9 @@ EDGE-Classic v1.3 released</b></span><br>
 - New DDF and COAL commands<br>
 - New StopTime powerup<br>
 - New Erraticism gameplay mode:<br> 
-&nbsp &nbsp &nbspTime will only advance when the player moves or fires ("SuperHot")<br>
-&nbsp &nbsp &nbspPlayer's momentum will be preserved if in mid-air/jumping, otherwise it will be lost when the movement keys are released<br>
-&nbsp &nbsp &nbspCan hold the Use key to advance time without having to move or fire (helpful when waiting for lifts, etc)<br>
+&nbsp;&nbsp;&nbsp;Time will only advance when the player moves or fires ("SuperHot")<br>
+&nbsp;&nbsp;&nbsp;Player's momentum will be preserved if in mid-air/jumping, otherwise it will be lost when the movement keys are released<br>
+&nbsp;&nbsp;&nbsp;Can hold the Use key to advance time without having to move or fire (helpful when waiting for lifts, etc)<br>
 
 <br> and many more new commands, bugfixes etc. (check out the changelog for a full list)<br>
 
@@ -114,9 +137,9 @@ EDGE-Classic v1.21 released</b></span><br>
 - UDMF 1.1 Support. The following UDMF namespaces are currently supported:
   Doom, Heretic, ZDoomTranslated<br>
 - Module Music:<br>
-&nbsp &nbsp &nbsp libxmp-lite music player replaced with libmodplug, providing far better performance and load times,
+&nbsp;&nbsp;&nbsp; libxmp-lite music player replaced with libmodplug, providing far better performance and load times,
    with all of the following formats now supported:<br>
-&nbsp &nbsp &nbspMOD, S3M, XM, IT, 669, AMF (both of them), AMS, DBM, DMF, DSM, FAR,
+&nbsp;&nbsp;&nbsp; MOD, S3M, XM, IT, 669, AMF (both of them), AMS, DBM, DMF, DSM, FAR,
    MDL, MED, MTM, OKT, PTM, STM, ULT, UMX, MT2, PSM<br>
 - Partial UMAPINFO support<br>
 - Heretic/Blasphemer support: vastly improved. Now 100% completable from start to finish.<br>
@@ -134,16 +157,16 @@ EDGE-Classic v1.21 released</b></span><br>
 - Custom standalone IWADs can be created by adding an EDGEIWAD lump to the WAD. This will allow it to pass the automatic IWAD
   detection<br>
 - Added 3 new BREAKABLE glass line types: <br>
-&nbsp &nbsp &nbsp[830] Breakable Glass: monsters can see through it and can break it<br>
-&nbsp &nbsp &nbsp[831] Breakable Glass: monsters: cannot see through it but can break it<br>
-&nbsp &nbsp &nbsp[832] Breakable Glass: monsters: cannot see through it and cannot break it<br>
+&nbsp;&nbsp;&nbsp;[830] Breakable Glass: monsters can see through it and can break it<br>
+&nbsp;&nbsp;&nbsp;[831] Breakable Glass: monsters: cannot see through it but can break it<br>
+&nbsp;&nbsp;&nbsp;[832] Breakable Glass: monsters: cannot see through it and cannot break it<br>
 - Added 6 new coloured sector types:<br>
-&nbsp &nbsp &nbsp[4471] EDGE Blue Hue<br>
-&nbsp &nbsp &nbsp[4472] EDGE Green Hue<br>
-&nbsp &nbsp &nbsp[4473] EDGE Red Hue<br>
-&nbsp &nbsp &nbsp[4474] EDGE Yellow Hue<br>
-&nbsp &nbsp &nbsp[4475] EDGE Purple Hue<br>
-&nbsp &nbsp &nbsp[4476] EDGE Grey Hue<br><br>
+&nbsp;&nbsp;&nbsp;[4471] EDGE Blue Hue<br>
+&nbsp;&nbsp;&nbsp;[4472] EDGE Green Hue<br>
+&nbsp;&nbsp;&nbsp;[4473] EDGE Red Hue<br>
+&nbsp;&nbsp;&nbsp;[4474] EDGE Yellow Hue<br>
+&nbsp;&nbsp;&nbsp;[4475] EDGE Purple Hue<br>
+&nbsp;&nbsp;&nbsp;[4476] EDGE Grey Hue<br><br>
 	  and many more new commands, bugfixes etc. (check out the changelog)<br>
 	 
 	  <br><br>
