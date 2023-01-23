@@ -48,13 +48,19 @@
 - Changed hardcoded finish/par time widths to prevent custom fonts from being clipped at 4:3 resolutions<br>
 - COALHUDS: new commands<br>
 &nbsp;&nbsp;&nbsp;--hud.rts_isactive(tag): Returns 1 if the script "tag" is currently enabled, 0 if disabled.<br>
-&nbsp;&nbsp;&nbsp;--hud.rts_enable(name): Will execute RTS script with matching tag, if one exists. This replaces previous<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COAL command "<b>player.rts_enable_tagged(name)</b>" which should be considered deprecated.<br>
+&nbsp;&nbsp;&nbsp;--hud.rts_enable(name): Will execute RTS script with matching tag, if one exists. This replaces previous COAL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command "<b>player.rts_enable_tagged(name)</b>" which should be considered deprecated.<br>
 - DDFSTYLE: new text style - SELECTED<br>
 &nbsp;&nbsp;&nbsp;--Uses all parameters that regular style font entries use (SELECTED.FONT, SELECTED.SCALE, etc)<br>
 &nbsp;&nbsp;&nbsp;--Will only apply to the currently selected/highlighted menu item<br>
 &nbsp;&nbsp;&nbsp;--If not defined, will fall back to previous behavior for backwards compatibility<br>
-  
+- DDFSTYLE: new command<br>
+&nbsp;&nbsp;&nbsp;-- CURSOR.FORCE_OFFSETS = TRUE<br>
+&nbsp;&nbsp;&nbsp;When set to true, will honor cursor image's offsets even if they cause misalignment with
+menu entries. Default value is false. <br>
+- DDFSTYLE: Menu items that are images instead of fonts will now also apply the font colormap setting in that menu's
+style entry (if defined)<br>
+
       <br><br>
   </td>
       </tr>
