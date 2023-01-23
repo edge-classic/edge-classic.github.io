@@ -36,17 +36,24 @@
 <table>
   <tbody>
       <tr>
-        <td><b>22 January 2023:
+        <td><b>23 January 2023:
   EDGE-Classic v1.32 released</b></span><br>
         <br>
   
       New minor release of EDGE-Classic. Fixes and updates include:<br><br>
   
-- Fixed a recently introduced bug which caused Secrets to not work after finding the first one.<br>
-- Fixed player.use_inventory() consuming item without running the associated script.<br>
+- Fixed a recently introduced bug which caused the Secrets Found % to not increment after finding the first one.<br>
+- Fixed player.use_inventory() consuming item without running the associated script if the script was already running.<br>
+- Fixed "Read This!" main menu item missing when Doom is current IWAD.<br>
+- Changed hardcoded finish/par time widths to prevent custom fonts from being clipped at 4:3 resolutions<br>
 - COALHUDS: new commands<br>
 &nbsp;&nbsp;&nbsp;--hud.rts_isactive(tag): Returns 1 if the script "tag" is currently enabled, 0 if disabled.<br>
-&nbsp;&nbsp;&nbsp;--hud.rts_enable(name): Will execute RTS script with matching tag, if one exists. This replaces previous COAL command "player.rts_enable_tagged(name)" which should be considered deprecated.
+&nbsp;&nbsp;&nbsp;--hud.rts_enable(name): Will execute RTS script with matching tag, if one exists. This replaces previous<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COAL command "<b>player.rts_enable_tagged(name)</b>" which should be considered deprecated.<br>
+- DDFSTYLE: new text style - SELECTED<br>
+&nbsp;&nbsp;&nbsp;--Uses all parameters that regular style font entries use (SELECTED.FONT, SELECTED.SCALE, etc)<br>
+&nbsp;&nbsp;&nbsp;--Will only apply to the currently selected/highlighted menu item<br>
+&nbsp;&nbsp;&nbsp;--If not defined, will fall back to previous behavior for backwards compatibility<br>
   
       <br><br>
   </td>

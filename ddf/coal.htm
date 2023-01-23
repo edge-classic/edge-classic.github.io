@@ -243,6 +243,19 @@ Will return an RGB vector with the average top border color of the named image l
 Will return an RGB vector with the average bottom border color of the named image lump.
 </p>
 
+<p><b>hud.rts_enable(tag)
+</b>
+<br>
+Run an RTS script, where 'tag' is the RTS script to be called. 
+</p>
+
+<p><b>hud.rts_isactive(tag)
+</b>
+<br>
+Returns 1 if the script "tag" is currently enabled, 0 if disabled. 
+</p>
+
+
 <br><br>
 <p><b><u>* Audio Functions</u></b></p>
 <br>
@@ -419,11 +432,7 @@ Returns the tag of the current sector we are in.
 <br>
 Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
 </p>
-<p><b>player.rts_enable_tagged(tag)
-</b>
-<br>
-Run an RTS script, where 'tag' is the RTS script to be called. 
-</p>
+
 <br><br>
 <p><b><u>* Counter stuff</u></b></p>
 <br>
