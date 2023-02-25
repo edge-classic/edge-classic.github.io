@@ -36,6 +36,97 @@
 <table>
   <tbody>
       <tr>
+          <td><b>25 February 2023:
+  EDGE-Classic v1.33 released</b></span><br>
+        <br>
+  
+        New minor release of EDGE-Classic. Fixes and updates include:<br><br>
+  
+- Fixed 1.32 secret sector fix not being preserved in save games; i.e. the same secret would increment the
+secret counter when re-loading the game<br>
+- Fixed jitter in Evil Eye and other animations<br>
+- Fixed sprite frame overrides in DDFIMAGE not applying if they were Doom formatted images<br>
+- Fixed SDL sound device frequency being allowed to be set far above intended values if OS doesn't report the ability
+to use 48kHz sample rate<br>
+- Fixed Boom tagged line effects also applying the effect to the control linedef (when a tag was present)<br>
+- Fixed Boom vector linedef scroll directions for angles other than 0/45/90<br>
+- Fixed Boom displacement scrollers not returning back to their exact original position<br>
+- Fixed Boom scrollers tied to permanently moving sectors (i.e., Door Open and Stay Open) being ineffective<br>
+- Fixed inanimate objects adhering to monster dropoff limits when being carried over a drop<br>
+- Fixed overzealous oofing when falling or bumping into a ceiling<br>
+- Doom2 Map05 bug fixed properly this time ;)<br>
+- Fixed some new DDFSTYLE additions (entry and cursor alignment, etc) not working as intended with the Episode Select menu<br>
+- Clip size was not being updated with RTS ReplaceWeapon and DDF weapon BECOME()<br>
+- Fixed items with the HOVER flag still hovering when time is stopped<br>
+- Fixed HUD and other non-game world animations unintentionally freezing during time stop<br>
+- Fixed ENDOOM bytes that happen to match the value of a newline character being intepreted as newline characters<br>
+<br>
+<br>
+- Improved model and unit rendering to thrash the GL state a bit less<br>
+
+- DDFSTYLE text styles can now have their own individual X_OFFSET and Y_OFFSET values,<br>
+  giving more flexibility for menu item placement i.e. TITLE.Y_OFFSET or TEXT.Y_OFFSET etc<br>
+  
+- Changed how LOSE_BENEFIT HEALTH is handled in RTS. Now it will simply subtract from current health and not<br>
+  behave like DAMAGE_PLAYER(which reduces armour, causes pain states, respects immunity/resistence/invulnerable/immortal etc).<br>
+
+- "Crosshair Size" option in Video Options menu will now apply to both the standard crosshair and custom weapon crosshair states<br>
+  (previously this only affected standard crosshairs)<br>
+  
+- Monsters resurrected by Archviles will no longer count as kills.<br>
+
+- Replaced WebSID SID backend with cRSID for easier compilation and better performance<br>
+
+- Things no longer constantly trigger splashes when walking on a flat defined as LIQUID (and having an IMPACT_OBJECT defined). <br>
+  They will only cause a splash when they step down onto the flat.<br>
+
+- Unsupported BEX INCLUDE directive for Dehacked downgraded from a program-ending error to a warning with an appropriate console/log message.<br>
+
+- Migrated from libXMP to Mod4Play (custom library) for portability/performance<br>
+  - Only the "Big 4" tracker formats are supported now (IT/S3M/XM/MOD)<br>
+
+- Upgraded to AJBSP 1.04<br>
+
+- Added support for ZGL3 compressed lumps to AJBSP and EDGE-Classic's node loading routines to conserve cache folder space. ZGL3 will now<br>
+  be the default node format.<br>
+
+- Replaced Gamma options with Sector Brightness for better results without affecting other windows on the same display<br>
+<br>
+<br>
+- Added support for MDL (Quake 1) model format<br>
+
+- Added support for KVX and KV6 voxel model formats<br>
+
+- Ported MD3 model support from EDGE 1.32 codebase<br>
+
+- DDFTHING:<br>
+  - New command: FALLPAIN_SOUND, which is the sfx to be played when the player is hurt from a big fall<br>
+  - New command: MODEL_ROTATE = <integer>, which for MDL/MD2/MD3/Voxels will rotate all vertices' x/y coordinates by the<br>
+    given (positive or negative) number of degrees. Used to correct imported models whose rotations are wrong. Default is 0.<br>
+
+- DDFIMAGE:<br>
+  - New command: ROTATE_HUE = <integer>, will rotate the hue of the given image while keeping other values the same. Valid range is -1800<br>
+    to 1800, with a default of 0.<br>
+
+- COAL:<br>
+  - C+- Interop: Can now retrieve and set individual vector elements with the VM_GetVectorX/Y/Z and VM_SetVectorX/Y/Z functions<br>
+  - COALHUDS: Can now access individual vector elements with .x, .y, or .z<br>
+
+- Transition from GWA to XWA cache file format<br>
+  - Improved organization of AJBSP-generated XGL/ZGL lumps<br>
+  - Legacy GWA files will be purged from cache directory on startup<br>
+
+      <br><br>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <br><br>
+
+<table>
+  <tbody>
+      <tr>
         <td><b>23 January 2023:
   EDGE-Classic v1.32 released</b></span><br>
         <br>
