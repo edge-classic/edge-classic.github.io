@@ -37,6 +37,73 @@
 <table>
   <tbody>
       <tr>
+          <td><b>12 June 2023:
+  EDGE-Classic v1.34 released</b></span><br>
+        <br>
+  
+        New release of EDGE-Classic. Some of the new stuff includes:<br>
+  
+<br>+ Added WebGL platform support (https://edge-classic.github.io/play.html)
+<br>+ UDMF: Vertex slope support: Must define "zfloor" or "zceiling" for a vertex.
+<br>+ Added GLES2 rendering backend using GL4ES (https://github.com/ptitSeb/gl4es) 
+<br>&nbsp;&nbsp;&nbsp;- Supports rendering with Direct3D, Vulkan, and Metal using ANGLE
+<br>+ WEAPONS.DDF: 10 new action commands. Behave identically as the things.ddf actions of the same name
+<br>&nbsp;&nbsp;&nbsp;- ZOOM
+<br>&nbsp;&nbsp;&nbsp;- SET_INVULNERABLE
+<br>&nbsp;&nbsp;&nbsp;- CLEAR_INVULNERABLE
+<br>&nbsp;&nbsp;&nbsp;- MOVE_FWD(num)
+<br>&nbsp;&nbsp;&nbsp;- MOVE_RIGHT(num)
+<br>&nbsp;&nbsp;&nbsp;- MOVE_UP(num)
+<br>&nbsp;&nbsp;&nbsp;- STOP
+<br>&nbsp;&nbsp;&nbsp;- TURN(angle)
+<br>&nbsp;&nbsp;&nbsp;- TURN_RANDOM(angle)
+<br>&nbsp;&nbsp;&nbsp;- MLOOK_TURN(angle)
+<br>+ Portable install option
+<br>&nbsp;&nbsp;&nbsp;- If the program is launched with "-portable" or "edge-classic.cfg" is found in the same directory as the program, files and folders will be written to that directory instead of a location in the user's home path
+<br>+ "Outdoor Culling Fog Color" option added to Performance Options menu
+<br>&nbsp;&nbsp;&nbsp;- Options are "Match Sky", "White", "Grey" and "Black"
+<br>+ STYLES.DDF: expanded control over [MAIN_MENU], [CHOOSE_EPISODE] and [CHOOSE_SKILL] menus. 
+<br>+ IMAGES.DDF: Added new SATURATION and BRIGHTNESS commands
+<br>&nbsp;&nbsp;&nbsp;- Will affect HSV Saturation and Value color components for the specified image
+<br>+ COALHUDS: new commands
+<br>&nbsp;&nbsp;&nbsp;- player.sector_light(): Returns the light level of the sector the player is currently in.
+<br>&nbsp;&nbsp;&nbsp;- player.sector_floor_height(): Returns floor height of the sector the player is currently in.
+<br>&nbsp;&nbsp;&nbsp;- player.sector_ceiling_height(): Returns ceiling height of the sector the player is currently in.
+<br>&nbsp;&nbsp;&nbsp;-player.is_outside(): Returns 1 if the ceiling of the sector the player is currently in is Sky.
+<br>&nbsp;&nbsp;&nbsp;- hud.get_image_width(image : string): Returns width of an image.
+<br>&nbsp;&nbsp;&nbsp;- hud.get_image_height(image : string): Returns height of an image.
+<br>&nbsp;&nbsp;&nbsp;- hud.map_author(): Returns the map author name, if not null
+<br>+ Load/Save Menu Rewrite: Restored savegame screenshot functionality
+<br>+ Implemented WAD-in-Archive support: Zip-compressed archives (.epk, .pk3, and .zip) are supported
+<br>+ Implemented EPK/Folder Mount system
+<br>&nbsp;&nbsp;&nbsp;- EPKs can contain images, scripts, WADs and other resources (similar to PK3, PKE, and the like from other source ports)
+<br>&nbsp;&nbsp;&nbsp;- Folders and EPKs are treated identically as far as loading and file/folder layout requirements
+<br>+ Console: New 'readme' command which ill search for a text file with a traditional readme name (readme.txt, readme.1st, etc)
+<br>+ Bot Deathmatch: New "Player Damage Resistance" option
+<br>+ New Scaling Options for Title/Intermission/Finale Assets
+<br>+ New Option Menu: Accessibility Options
+<br>&nbsp;&nbsp;&nbsp;- View Bobbing
+<br>&nbsp;&nbsp;&nbsp;- Reduce Flash 
+<br>&nbsp;&nbsp;&nbsp;- Automap: Keyed Doors Pulse
+<br>&nbsp;&nbsp;&nbsp;- Automap: Keyed Doors Named
+<br>+ Boom support improved, especially Scrollers
+<br>+ UMAPINFO: Will fallback to other types of MAPINFO lumps if UMAPINFO is not present
+<br>&nbsp;&nbsp;&nbsp;- The following lumps will be attempted: DMAPINFO, RMAPINFO, MAPINFO, ZMAPINFO
+<br>&nbsp;&nbsp;&nbsp;- Only fields that are present in the UMAPINFO spec will be parsed from fallback lumps
+
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.... and more new commands, bugfixes etc. (check out the changelog)</b>
+      <br><br>
+  </td>
+      </tr>
+    </tbody>
+ </table>
+  
+  <br><br>
+
+<table>
+  <tbody>
+      <tr>
           <td><b>25 February 2023:
   EDGE-Classic v1.33 released</b></span><br>
         <br>
