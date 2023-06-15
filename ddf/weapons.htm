@@ -409,6 +409,15 @@ Sets light around player to brightest.  </td></tr>
 Lowers the player's weapon sprite off the screen when selecting a new
 weapon or dead.</td></tr>
 
+<tr><td>MLOOK_TURN</td><td>Causes this player to turn by the MLOOK angle specified in brackets.</td></tr>
+
+<tr><td>MOVE_FWD</td><td>Causes the player to move forward by the amount specified in brackets. Use a negative value to move backwards.</td></tr>
+
+<tr><td>MOVE_RIGHT</td><td>Causes the player to move right by the amount specified in brackets. Use a negative value to move left.</td></tr>
+
+<tr><td>MOVE_UP</td><td>Causes the player to move up by the amount specified in brackets.</td></tr>
+
+
 <tr><td>NOFIRE</td><td>
 When using more than one attack per weapon, the firing sequence is
 reset once the player stops firing. e.g the quake super nailgun.
@@ -466,6 +475,11 @@ Same as SHOOT, but used for the secondary attack.</td></tr>
 <tr><td>SET_SKIN(skin number)</td><td>
 Dynamically change the current skin to a different one.</td></tr>
 
+<tr><td>SET_INVULNERABLE</td><td>
+Used to give the player shielded/blocking states (think riot shield).</td></tr>
+
+<tr><td>CLEAR_INVULNERABLE</td><td>
+Used to remove the player shielded/blocking states (think riot shield).</td></tr>
 
 <tr><td>SHOOT</td><td>
 Starts attack associated with weapon.  If the FLASH action hasn't been
@@ -473,12 +487,20 @@ called, starts the flash state. The SHOOT action uses the weapon's
 default attack, but a valid attack can be placed in brackets after the
 statement, for example: SHOOT(GRENADE).</td></tr>
 
+<tr><td>STOP</td><td>
+Stops the player from moving.</td></tr>
+
 <tr><td>TRANS_SET</td><td>
 Used like TRANS_SET(xx%) to set the transparency of the animation as a percentage of it's original.</td></tr>
 
 <tr><td>TRANS_FADE</td><td>
 Used like TRANS_FADE(xx%) to fade the transparency of the animation from it's previous level to that specified.</td></tr>
 
+<tr><td>TURN</td><td>
+Turns the player to the angle specified in brackets.</td></tr>
+
+<tr><td>TURN_RANDOM</td><td>
+Turns the player randomly between the current angle and that specified in brackets.</td></tr>
 
 <tr><td>SETCROSS(FRAME)</td><td>
 Crosshair jumps to the given frame</td></tr>
@@ -507,6 +529,9 @@ states.
 
 
 </td></tr>
+
+<tr><td>ZOOM</td><td>
+Forces the screen to be zoomed. Basically forces zoom activation.</td></tr>
 
 <tr><td>UNZOOM</td><td>
 Forces the screen to be unzoomed if zoom is active. Basically deactivates zoom for this weapon.</td></tr>
@@ -681,6 +706,6 @@ back to <a href="#top">top</a>
 DDF docs written by Andy Baker and <a href="mailto:ziggy@doomworld.com">Ziggy Gnarly</a>, with updates by Andrew Apted, Andy Brewood and Luke Brennan.<br>
 Problems with the docs, errors and comments should be directed to the EDGE team.</p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body></html>

@@ -72,8 +72,7 @@ sound).  You don't necessarily have to be inside the sector to hear
 the sound.</td></tr>
 
 <tr><td>L</td><td>AUTO</td><td>[boolean]</td><td>
-Triggers this line automatically at level start.  This line must be
-pushable.</td></tr>
+Triggers this line automatically at level start.  This line must be pushable.</td></tr>
 
 <tr><td>L</td><td>BROKEN_TEXTURE</td><td>[string]</td><td>
 When combined with GLASS=TRUE, will replace the mid-texture with this one instead of just removing it i.e. for shooting out a vent and replacing it with a broken vent. See GLASS command below.</td></tr>
@@ -131,8 +130,9 @@ per tic, plats move at 4 units per tic. Fractional values are allowed,
 e.g. 0.1 for an ultra-slow mover. </td></tr>
 
 <tr><td>L,S</td><td>CEILING.TEXTURE</td><td>[string]</td><td>
-Specifies what texture to change the ceiling to. This can either be specified as a texture from a wadfile or as one of the following special referances "-" or "+". E.g. if CEILING.TEXTURE is "-" the ceiling texture will change to a surrounding sector's ceiling texture, or if it is "+" the ceiling texture will change to the sector on
-the front side of the activating line's ceiling texture.</td></tr>
+Specifies what texture to change the ceiling to. This can either be specified as a texture from a wadfile or as one of the following special references "-" or "+". E.g. if CEILING.TEXTURE is "-" the ceiling texture will change to a surrounding sector's ceiling texture, or if it is "+" the ceiling texture will change to the sector on
+the front side of the activating line's ceiling texture. 
+<br>For Boom TX types "+changetexonly" can be used. For Boom Tx0 types "+changezero" can be used.</td></tr>
 
 <tr><td>L,S</td><td>CEILING.TYPE</A></td><td>[special]</td><td>
 Specifies how the ceiling moves. See the list of <A HREF="#floor_type">ceiling types</a> below.</td></tr>
@@ -238,7 +238,8 @@ per tic, plats move at 4 units per tic. Fractional values are allowed,
 e.g. 0.1 for an ultra-slow mover. </td></tr>
 
 <tr><td>L,S</td><td>FLOOR.TEXTURE</td><td>[string]</td><td>
-Specifies what texture to change the floor to. This can either be specified as a texture from a wadfile or as one of the following special referances "-" or "+". e.g. if FLOOR.TEXTURE is "-" the floor texture will change to a surrounding sector's floor texture, or if it is "+" the floor texture will change to the sector on the front side of the activating line's floor texture.</td></tr>
+Specifies what texture to change the floor to. This can either be specified as a texture from a wadfile or as one of the following special referances "-" or "+". e.g. if FLOOR.TEXTURE is "-" the floor texture will change to a surrounding sector's floor texture, or if it is "+" the floor texture will change to the sector on the front side of the activating line's floor texture.
+<br>For Boom TX types "+changetexonly" can be used. For Boom Tx0 types "+changezero" can be used.</td></tr>
 
 <tr><td>L,S</td><td>FLOOR.TYPE</td><td>[special]</td><td>
 Specifies how the floor moves. See the list of <A HREF="#floor_type">floor types</a> below.</td></tr>

@@ -198,6 +198,8 @@ Extra options to identify the object. Options used in QDoom include are LOOPING_
 
 <tr><td>FALLING_SOUND</td><td>[sound]</td><td>Players only. Sound made when falling from a really great height.</td></tr>
 
+<tr><td>FALLPAIN_SOUND</td><td>[sound]</td><td>Players only. Sound made when the player is hurt from a big fall.</td></tr>
+
 <tr><td>FAST</td><td>[float] </td><td>
 Multiplier for nightmare mode and -fastparm.</td></tr>
 
@@ -307,6 +309,9 @@ Change the models width and length, therefore making it fatter/skinnier. 0.5 wou
 
 <tr><td>MODEL_BIAS</td><td>[float]</td><td>
 Move model up or down. Negative numbers move the model lower on-screen, postive numbers move it up.</td></tr>
+
+<tr><td>MODEL_ROTATE</td><td>[integer]</td><td>
+Will rotate left or right by the given (positive or negative) number of degrees. Used to correct imported models whose rotations are wrong. Default is 0.</td></tr>
 
 <tr><td>MODEL_SCALE</td><td>[float]</td><td>
 Draw the model bigger (e.g. 0.5 is half size, 2.0 is double)</td></tr>

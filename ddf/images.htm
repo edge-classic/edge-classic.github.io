@@ -154,12 +154,20 @@ Bigger aspect makes the image wider (height is unchanged)</TD></TR>
 <TR><TD>FIX_TRANS</TD><TD>BLACKEN</TD><TD>
 Ensures that every completely transparent pixel (alpha=0) in the image is black.  If you are getting a wierd green/purple/white/blue border around your PNG sprites, this fixes it!</TD></TR>
 
-
 <TR><TD>SPECIAL</TD><TD><a href="#special">[special]</a></TD><TD>
 A comma separated list of special flags. See below.</td></tr>
 
 <TR><TD>IS_FONT</TD><TD>[bool]</TD><TD>
 Needed when using an image in conjunction with the new IMAGE DDFFONT type. Will automatically set the background to transparent (if it isn't already), as well as apply the required mip/clamping flags to the texture</TD></TR>
+
+<TR><TD>ROTATE_HUE </TD><TD>[integer]</TD><TD>
+Changes the hue of the given image while keeping other values the same. Valid range is -1800 to 1800. Default of 0</TD></TR>
+
+<TR><TD>BRIGHTNESS </TD><TD>[integer]</TD><TD>
+Will affect HSV Saturation and Value color components for the specified image. Valid range is 0 to 255.</TD></TR>
+
+<TR><TD>SATURATION </TD><TD>[integer]</TD><TD>
+Will affect HSV Saturation and Value color components for the specified image. Valid range is 0 to 255.</TD></TR>
 
 </table>
 
@@ -223,7 +231,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2023.
 </p>
 </body>
 </html>

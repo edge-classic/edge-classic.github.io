@@ -99,6 +99,11 @@ For a HUD which never changes, simply ignore this value.
 <p><b>hud.map_title() : string</b>
 <br>This function returns the title of the map being played, mainly to be displayed on the automap.
 </p>
+<p><b>hud.map_author() : string</b>
+<br>This function returns the author of the map being played(defined via UMAPINFO or LEVELS.DDF), mainly to be displayed on the automap.
+</p>
+
+
 <br><br>
 <p><b><u>* Drawing Stuff</u></b></p>
 
@@ -212,25 +217,37 @@ This function can be used to change some or all of the colors used when drawing 
 <br><b>hud.AM_SCENERY</b> Scenery items
 </p>
 
-<p><b>hud.get_average_color(image)
+<p><b>hud.get_image_width(image)
 </b>
 <br>
-Will return an RGB vector with the average color of the named image lump.
+Returns width of the named image lump.
 </p>
-<p><b>hud.get_average_hue(image)
+
+<p><b>hud.get_image_height(image)
 </b>
 <br>
-Will return an RGB vector with the average hue of the named image lump.
+Returns height of the named image lump.
 </p>
-<p><b>hud.get_lightest_color(image)
+
+<p><b>hud.get_average_color(image, [from_x], [to_x], [from_y], [to_y])
 </b>
 <br>
-Will return an RGB vector with the lightest color of the named image lump.
+Will return an RGB vector with the average color of the named image lump. Using the optional <i>from_</i> and <i>to_</i> paramters allow for a specific portion of an image to be sampled.
 </p>
-<p><b>hud.get_darkest_color(image)
+<p><b>hud.get_average_hue(image, [from_x], [to_x], [from_y], [to_y])
 </b>
 <br>
-Will return an RGB vector with the darkest color of the named image lump.
+Will return an RGB vector with the average hue of the named image lump. Using the optional <i>from_</i> and <i>to_</i> paramters allow for a specific portion of an image to be sampled.
+</p>
+<p><b>hud.get_lightest_color(image, [from_x], [to_x], [from_y], [to_y])
+</b>
+<br>
+Will return an RGB vector with the lightest color of the named image lump. Using the optional <i>from_</i> and <i>to_</i> paramters allow for a specific portion of an image to be sampled.
+</p>
+<p><b>hud.get_darkest_color(image, [from_x], [to_x], [from_y], [to_y])
+</b>
+<br>
+Will return an RGB vector with the darkest color of the named image lump. Using the optional <i>from_</i> and <i>to_</i> paramters allow for a specific portion of an image to be sampled.
 </p>
 <p><b>hud.get_average_top_border_color(image)
 </b>
@@ -269,6 +286,13 @@ Returns 1 if the script "tag" is currently enabled, 0 if disabled.
 <br>
 Returns true if the current player is a bot.
 </p>
+
+
+<p><b>player.is_outside()</b>
+<br>
+Returns 1 if the ceiling of the sector the player is currently in is Sky.
+</p>
+
 <p><b>player.get_name()</b>
 <br>
 Returns the name of the current player.
@@ -431,6 +455,23 @@ Returns the tag of the current sector we are in.
 <p><b>player.play_footstep(flatname)</b>
 <br>
 Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
+</p>
+
+<p><b>player.sector_light()</b>
+<br>
+Returns the light level of the sector the player is currently in.
+</p>
+
+
+<p><b>player.sector_floor_height()</b>
+<br>
+Returns floor height of the sector the player is currently in.
+</p>
+
+
+<p><b>player.sector_ceiling_height()</b>
+<br>
+Returns ceiling height of the sector the player is currently in.
 </p>
 
 <br><br>
