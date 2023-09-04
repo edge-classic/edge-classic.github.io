@@ -1,0 +1,208 @@
+
+<HTML>
+<head>
+<title>EDGE DDF USAGE - MAIN PAGE</title>
+ <link rel="stylesheet" type="text/css" href="ddfstylesheet.css">
+
+</head>
+
+<BODY>
+
+<A HREF="https://edge-classic.github.io"><IMG SRC="ECLOGOCIRCLE.png" HEIGHT="110" BORDER=0 style="margin:0px 20px" ALT=""></A>
+
+
+<nav class="navMenu">
+	<ul>
+		<li><a href="./index.htm">Tutorials index</a></li>
+	</ul>
+</nav>  
+
+<br>
+<br>
+
+
+<p>
+<H2>Tutorials for EDGE-Classic.</H2>
+</p>
+<br>
+<br>
+<br>
+<h2><A NAME="top"><B>Mapping tutorials</B></a></h2>
+
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial ONE: <b>How to make a 3d floor.</b>
+<br>
+<IMG SRC="3dfloor.jpg" HEIGHT="300" BORDER=0 style="margin:0px 20px" ALT="">
+<BR><BR>
+	<B>A)</B> Make a dummy sector. <SMALL><I>(A dummy sector is just a little sector not connected to anything else in case you were wondering)</I></SMALL>. 
+	<br>This dummy sector will have most of the properties of the 3D floor. It's floor and ceiling textures control those on the extrafloor. The lighting level (and blink effects) control those underneath the extrafloor.
+	<br>Give it a distance between floor and ceiling of the thickness you want the 3d floor to be: by this I mean that the floor height of the dummy sector will be the bottom of the extrafloor, and the ceiling height will be the top. 
+	<br>One of the lines of this dummy sector should be <b>400</b> which corresponds to our <CODE><B>EDGE Thick Extrafloor (dummy texture)</B></CODE>. Give this line a tag number(for example 106).The texture on the tagged line in the dummy sector will appear on the side of the extrafloor.
+	
+	<BR><BR>
+
+	<B>B)</B> Now place a sector where you want it to appear in the map and tag this sector to the line defined earlier(106)
+	<br>
+
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial TWO: <b>How to make swimmable water.</b>
+<br>
+<IMG SRC="water1.jpg" HEIGHT="300" BORDER=0 ALT=""><IMG SRC="water2.jpg" HEIGHT="300" ALT="">
+<BR><BR>
+	<B>A)</B> Make a dummy sector. <SMALL><I>(A dummy sector is just a little sector not connected to anything else in case you were wondering)</I></SMALL>. 
+	<br>This dummy sector will have a sector type of <b>4466</b> which corresponds to our <CODE><B>EDGE Blue Hue (SWIMMABLE WATER)</B></CODE>.
+	<br>The lighting level (and blink effects) control those we'll see when we're underneath the water.
+	<br>One of the lines of this dummy sector should be of type <b>407</b> which corresponds to our <CODE><B>EDGE Liquid Extrafloor (80% Translucent)</B></CODE>. Give this line a tag number(for example 108).
+	<br>Now, the floor height of the dummy sector will be the water level(i.e. the top of the water). Lets make it -8. This will make any sector tagged to 108 (the line we defined earlier) with a floor height BELOW -8 be a pool of water. The ceiling height can be anything higher than the floor height, though a good habit is to just set floor and ceiling to be the same height to avoid confusion.
+
+	<BR><BR>
+
+	<B>B)</B> Now place a sector where you want the water pool to appear in the map and tag this sector to the line defined earlier(108). This new sector should have a floor height LESS than what you have defined in the dummy sector, otherwise the "hole" won't reach the underlying water level.  Let's make it -104 deep.
+	<br>
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial THREE: <b>How to make a horizontal sliding door.</b>
+<br>
+<IMG SRC="slidingdoor.jpg" HEIGHT="300" BORDER=0 style="margin:0px 20px" ALT="">
+<BR><BR>
+
+	<B>A)</B> Place a two-sided linedef on the map. It should be placed inside a sector of appropriate height(say 128 high) so that the texture tiles well. Give it a main(mid) texture which looks good for this kind of effect(say MIDBRN1).
+	
+	<BR><BR>
+
+	<B>B)</B> Give this line a type of <b>442</b>, which corresponds to our <CODE><B>EDGE Sliding door (LEFT), DR + MONSTERS</B></CODE>
+
+	<br><br>Now when we "use" this line the door will open by sliding off to one side!
+
+	<br><br><SMALL><I>Note that in the example wad I've left a bit of a gap between the sliding door and the wall, so you can see better that it's a single unconnected line.</I></SMALL>
+	<br>
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial FOUR: <b>How to make a ladder.</b>
+<br>
+<IMG SRC="ladders.jpg" HEIGHT="300" BORDER=0 style="margin:0px 20px" ALT="">
+<BR><BR>
+
+	<B>A)</B> Make a platform in your map of a height of around 120. Give one of the lines an appropriate texture for a ladder.
+	
+	<BR><BR>
+
+	<B>B)</B> Place a two-sided linedef on the map, just in front of the line with the ladder texture. Don't give it any textures so it stays invisible to the player. Make sure the line is two-sided and that it's not set to impassable or block player in your editor.
+
+	<BR>Give this line a type of <b>472</b>, which corresponds to our <CODE><B>EDGE Ladder, 120 units high</B></CODE>
+
+	<BR><BR>Now when we press "UP" standing on top of this line we will start to climb.
+	<br>
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial FIVE: <b>How to make a breakable window.</b>
+<br>
+<IMG SRC="breakingglass.jpg" HEIGHT="300" BORDER=0 style="margin:0px 20px" ALT="">
+<BR><BR>
+
+	<B>A)</B> Place a two-sided linedef on the map. It should be placed inside a sector of apropriate height(say 128 high) so that the texture tiles well. Give it a main(mid) texture which looks good for this kind of effect(say SHAWN2). It doesn't matter if it's not set to impassable or block player in your editor: EC will take care of that for you.
+	The translucency of the texture will be set to 60% automatically too.
+	<BR><BR>
+
+	<B>B)</B> Give this line a type of <b>830</b>, which corresponds to our <CODE><B>Breakable Glass:monster: can see, can break</B></CODE> 
+
+	<BR><BR>Now when we shoot the line: 
+	<br>-the texture will be removed
+	<br>-the line will no longer be blocking
+	<br>-glass shards will spawn at the spot where the impact occurred.
+	<br>
+</blockquote>
+</td></tr>
+</table>
+
+<!--
+<br>
+<br>
+<br>
+<br>
+<h2><A NAME="top"><B>DDF tutorials</B></a></h2>
+
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+<b> DDF tutorial ONE: How to make ...</b>
+<br>
+<br>First, second, then third. First, second, then third. First, second, then third. First, second, then third. First, second, then third.
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+<b> DDF tutorial TWO: How to make ...</b>
+<br>
+<br>First, second, then third. First, second, then third. First, second, then third. First, second, then third. First, second, then third.
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+<b> DDF tutorial THREE: How to make ...</b>
+<br>
+<br>First, second, then third. First, second, then third. First, second, then third. First, second, then third. First, second, then third.
+</blockquote>
+</td></tr>
+</table>
+
+-->
+
+<br>
+<br>
+<p>
+back to <A HREF="#top">top</A>
+</p>
+<p>
+Tutorials written by Luke Brennan.<BR>
+Problems with the docs, errors and comments should be directed to the EDGE team.
+</p>
+<p>
+&copy; EDGE Team 2023.
+</p>
+
+</BODY>
+</HTML>
