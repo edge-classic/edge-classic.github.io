@@ -136,11 +136,11 @@
 <IMG SRC="breakingglass.jpg" HEIGHT="300" BORDER=0 style="margin:0px 20px" ALT="">
 <BR><BR>
 
-	<B>A)</B> Place a two-sided linedef on the map. It should be placed inside a sector of apropriate height(say 128 high) so that the texture tiles well. Give it a main(mid) texture which looks good for this kind of effect(say SHAWN2). It doesn't matter if it's not set to impassable or block player in your editor: EC will take care of that for you.
+	<B>A)</B> Place a two-sided linedef on the map. It should be placed inside a sector of appropriate height(say 128 high) so that the texture tiles well. Give it a main(mid) texture which looks good for this kind of effect(say SHAWN2). It doesn't matter if it's not set to impassable or block player in your editor: EC will take care of that for you.
 	The translucency of the texture will be set to 60% automatically too.
 	<BR><BR>
 
-	<B>B)</B> Give this line a type of <b>830</b>, which corresponds to our <CODE><B>Breakable Glass:monster: can see, can break</B></CODE> 
+	<B>B)</B> Give this line a type of <b>830</b>, which corresponds to our <CODE><B>Breakable Glass: monster can see, can break</B></CODE> 
 
 	<BR><BR>Now when we shoot the line: 
 	<br>-the texture will be removed
@@ -149,6 +149,82 @@
 	<br>
 	<BR><A HREF="breakingglass.wad">&nbsp;&nbsp;**Download demo wad**&nbsp;&nbsp;</A><BR><BR>
 </blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial SIX: <b>How to make breakable vent/wall.</b>
+<br>
+<IMG SRC="breakablewall1.jpg" HEIGHT="300" BORDER=0 ALT=""><IMG SRC="breakablewall2.jpg" HEIGHT="300" ALT="">
+<BR><BR>
+
+	<br>Similar to breakable glass but with a few important differences:
+	<br>Firstly, we will replace the texture with another one instead of just removing it, translucency of the texture will not be set to 60% and finally we do not spawn glass debris.
+	<br><br>
+	<B>A)</B> Place a two-sided linedef on the map. Since we're going with a vent effect, it should be placed inside a sector of appropriate height(say 64 high) so that ideally the texture does not tile. Give it a main(mid) texture which looks good for this kind of effect(the demo wad includes a custom vent texture <CODE><B>"VENT01OK"</B></CODE>). It doesn't matter if the line is set to impassable or block player in your editor: EC will take care of that for you.
+
+	<BR><BR>
+
+	<B>B)</B> Give this line a type of <b>837</b>, which corresponds to our <CODE><B>Breakable Wall: midtex to front lower.</B></CODE>
+	<br> Set the lower front side texture to what you want displayed when this line is shot (the demo wad includes a custom vent texture <CODE><B>"VENT01KO"</B></CODE>).
+
+	<BR><BR>Now when we shoot the line: 
+	<br>-the middle texture will be swapped for the lower texture.
+	<br>-if the line is 2-sided, it will no longer be blocking.
+	<br>
+	<BR><A HREF="breakablewall.wad">&nbsp;&nbsp;**Download demo wad**&nbsp;&nbsp;</A><BR><BR>
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+ Mapping tutorial SEVEN: <b>How to make a floor with different friction effects (Icy/Quicksand)</b>
+<br>
+<IMG SRC="sectorfriction.jpg" HEIGHT="300" BORDER=0 ALT="">
+<BR><BR>
+
+
+	<B>A)</B> Create a sector for our "Icy pool" with an appropriate floor flat e.g.<CODE><B>"MFLR8_3"</B></CODE>. 
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create another sector for our "Quicksand pool" with an appropriate floor flat e.g.<CODE><B>"SLIME05"</B></CODE>
+
+	<BR><BR>
+
+	<B>B)</B> Give the "Icy pool" sector a type of <b>4531</b>, which corresponds to our <CODE><B>Friction: Very slippy.</B></CODE>
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Give the "Quicksand pool" sector a type of <b>4533</b>, which corresponds to our <CODE><B>Friction: Very sticky.</B></CODE>
+	<br>
+	<BR><A HREF="sectorfriction.wad">&nbsp;&nbsp;**Download demo wad**&nbsp;&nbsp;</A><BR><BR>
+</blockquote>
+</td></tr>
+</table>
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><td>
+<blockquote>
+<br>
+<b>To Do:</b>
+<br>
+ 
+<br>-Mirrors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>-Portals
+<br>-Glow effects: sector glow and wall glow
+<br>-Fog
+<br>-Slopes
+<br>-Windy (pushy) sectors
+<br>&nbsp;
+ </blockquote>
 </td></tr>
 </table>
 
