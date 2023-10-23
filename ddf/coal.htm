@@ -272,6 +272,11 @@ Run an RTS script, where 'tag' is the RTS script to be called.
 Returns 1 if the script "tag" is currently enabled, 0 if disabled. 
 </p>
 
+<p><b>hud.rts_disable(tag)
+</b>
+<br>
+Stop an RTS script, where 'tag' is the RTS script to be stopped. 
+</p>
 
 <br><br>
 <p><b><u>* Audio Functions</u></b></p>
@@ -455,6 +460,7 @@ Returns the tag of the current sector we are in.
 <p><b>player.play_footstep(flatname)</b>
 <br>
 Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
+<br>Returns 0 if unsuccessful i.e. no corresponding FLATS.DDF entry exists.
 </p>
 
 <p><b>player.sector_light()</b>

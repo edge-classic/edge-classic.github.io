@@ -111,6 +111,12 @@ Picture to draw which can be used to override the intermission background define
 Specifies which episode the map belongs to. e.g always HELL_ON_EARTH
 for Doom2.</td></tr>
 
+<tr><td>INDOOR_FOG_COLOR</td><td>[colmap entry]</td><td>
+Sets the fog color for all indoor sectors to the RGB value of the provided colormap entry in colmap.ddf. </td></tr>
+
+<tr><td>INDOOR_FOG_DENSITY</td><td>[percentage]</td><td>
+Sets the fog density for all indoor sectors to the provided percentage. </td></tr>
+
 <tr><td>LEAVING_BACKGROUND</td><td>[lumpname]</td><td>
 Picture to draw which can be used to override the intermission background defined in games.ddf on a per level basis.</td></tr>
 
@@ -127,6 +133,12 @@ Picture of the level's name for the intermissions.</td></tr>
 
 <tr><td>NEXT_MAP</td><td>[string]</td><td>
 The level to go to when this level is finished.</td></tr>
+
+<tr><td>OUTDOOR_FOG_COLOR</td><td>[colmap entry]</td><td>
+Sets the fog color for all outdoor sectors to the RGB value of the provided colormap entry in colmap.ddf. </td></tr>
+
+<tr><td>OUTDOOR_FOG_DENSITY</td><td>[percentage]</td><td>
+Sets the fog density for all outdoor sectors to the provided percentage. </td></tr>
 
 <tr><td>PARTIME</td><td>[time]</td><td>
 The par time for this level.</td></tr>
@@ -163,6 +175,10 @@ How long, in tics, to wait after writing all the text.</td></tr>
 
 <tr><td>SECRET_MAP</td><td>[string]</td><td>
 The level to go to if the secret exit is found.</td></tr>
+
+<tr><td><A HREF="#SKY_STRETCH">SKY_STRETCH</A></td><td>[flags]</td><td>
+See below</td></tr>
+
 
 <tr><td>SKY_TEXTURE</td><td>[lumpname]</td><td>
 The texture for the sky for this level.</td></tr>
@@ -271,6 +287,34 @@ Enables/disables True3Dgameplay for this level.</td></tr>
 
 <tr><td>WEAPON_KICK</td><td>
 Turns Weapon Kick effects on for the level.</td></tr>
+
+</table>
+&nbsp;
+
+<p>
+<A NAME="SKY_STRETCH"> &nbsp;</A>
+<br><font size=+1><b>SKY_STRETCH Flags</b></font>
+</p>
+<p>
+These special flags force methods of drawing non-skybox skies.
+</p>
+
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<tr><th>SPECIAL</th><th>DESCRIPTION</th></tr>
+
+<tr><td>MIRROR</td><td>
+Will invert the sky texture at the horizon, scaled to account for vertical mouselook.</td></tr>
+
+<tr><td>REPEAT</td><td>
+Will repeat the sky texture at the horizon, scaled to account for vertical mouselook.</td></tr>
+
+
+<tr><td>STRETCH</td><td>
+Will stretch from top to bottom to avoid texture repeat, scaled to account for vertical mouselook. 
+<br>Does not preserve the original width/height ratio of the image.</td></tr>
+
+<tr><td>VANILLA</td><td>
+Will draw the sky texture once, but does not scale or otherwise account for vertical mouselook.</td></tr>
 
 </table>
 &nbsp;
