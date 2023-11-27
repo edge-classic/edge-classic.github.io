@@ -613,6 +613,10 @@ Item will bob up and down.</td></tr>
 <tr><td>IMMORTAL</td><td>
 Never takes damage from attacks, but will go into pain states as usual. </td></tr>
 
+<tr><td>IMMOVABLE</td><td>
+Makes this thing be unaffected by thrust from attack impacts irrespective 
+of whether it has a small MASS or a very large one </td></tr>
+
 <tr><td>INERT</td><td>
 Another name for NOBLOCKMAP. The brain stem, and pools of blood are
 declared as INERT, as they are completely unaffected by
@@ -1109,6 +1113,13 @@ Used to make monsters with shielded/blocking states (like the Centaurs in Hexen)
 
 <tr><td>CLEAR_INVULNERABLE</td><td>
 Used to make monsters with shielded/blocking states (like the Centaurs in Hexen).</td></tr>
+
+<tr><td>SET_PAINCHANCE</td><td>
+Used like SET_PAINCHANCE(0%) and will dynamically change a monsters painchance.
+<br>Possible usage: if we do SET_PAINCHANCE(0%) at the start of a lengthy PAIN state,
+this will make sure the whole animation is played out and won't be interrupted by another
+ shot which would normally make us re-start the pain animation again.
+</td></tr>
 
 <tr><td>SMOKING</td><td>
 Creates a smoke trail behind the object.</td></tr>

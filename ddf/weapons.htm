@@ -174,24 +174,64 @@ If TRUE, then shots from this weapon in, automatic firing mode, will
 become less accurate E.g The Chaingun. Attack states must contain the
 REFIRE action for this to work.</td></tr>
 
-<tr><td>SEC_AMMOPERSHOT</td><td>[integer]</td><td>
+<tr><td>2ND_AMMOPERSHOT (aka SEC_AMMOPERSHOT)</td><td>[integer]</td><td>
 Like AMMOPERSHOT but for the weapon's secondary attack.</td></tr>
 
-<tr><td>SEC_AMMOTYPE</td><td>[special]</td><td>
+<tr><td>2ND_AMMOTYPE (aka SEC_AMMOTYPE)</td><td>[special]</td><td>
 Like AMMOTYPE but for the weapon's secondary attack.</td></tr>
 
-<tr><td>SEC_AUTOMATIC</td><td>[boolean]</td><td>
+<tr><td>2ND_AUTOMATIC (aka SEC_AUTOMATIC)</td><td>[boolean]</td><td>
 Like AUTOMATIC but for the weapon's secondary attack.</td></tr>
 
-<tr><td>SEC_CLIPSIZE</td><td>[integer]</td><td>
+<tr><td>2ND_CLIPSIZE (aka SEC_CLIPSIZE)</td><td>[integer]</td><td>
 Like CLIPSIZE but for the weapon's secondary attack.</td></tr>
 
-<tr><td>SEC_REFIRE_INACCURATE</td><td>[boolean]</td><td>
+<tr><td>2ND_REFIRE_INACCURATE (aka SEC_REFIRE_INACCURATE)</td><td>[boolean]</td><td>
 Like REFIRE_INACCURATE but for the weapon's secondary attack.</td></tr>
 
-<tr><td>SECOND_ATTACK</td><td>[attack]</td><td>
+<tr><td>2ND_ATTACK (aka SECOND_ATTACK)</td><td>[attack]</td><td>
 Attack type to use by default for the weapon's secondary attack. Weapon
-must have SECATTACK states and use the SEC_SHOOT and/or SEC_REFIRE
+must have 2ND_ATTACK states and use the 2ND_SHOOT and/or 2ND_REFIRE
+actions.</td></tr>
+
+<tr><td>3RD_AMMOPERSHOT</td><td>[integer]</td><td>
+Like AMMOPERSHOT but for the weapon's third attack.</td></tr>
+
+<tr><td>3RD_AMMOTYPE</td><td>[special]</td><td>
+Like AMMOTYPE but for the weapon's third attack.</td></tr>
+
+<tr><td>3RD_AUTOMATIC</td><td>[boolean]</td><td>
+Like AUTOMATIC but for the weapon's third attack.</td></tr>
+
+<tr><td>3RD_CLIPSIZE</td><td>[integer]</td><td>
+Like CLIPSIZE but for the weapon's third attack.</td></tr>
+
+<tr><td>3RD_REFIRE_INACCURATE</td><td>[boolean]</td><td>
+Like REFIRE_INACCURATE but for the weapon's third attack.</td></tr>
+
+<tr><td>3RD_ATTACK</td><td>[attack]</td><td>
+Attack type to use by default for the weapon's third attack. Weapon
+must have 3RD_ATTACK states and use the 3RD_SHOOT and/or 3RD_REFIRE
+actions.</td></tr>
+
+<tr><td>4TH_AMMOPERSHOT</td><td>[integer]</td><td>
+Like AMMOPERSHOT but for the weapon's fourth attack.</td></tr>
+
+<tr><td>4TH_AMMOTYPE</td><td>[special]</td><td>
+Like AMMOTYPE but for the weapon's fourth attack.</td></tr>
+
+<tr><td>4TH_AUTOMATIC</td><td>[boolean]</td><td>
+Like AUTOMATIC but for the weapon's fourth attack.</td></tr>
+
+<tr><td>4TH_CLIPSIZE</td><td>[integer]</td><td>
+Like CLIPSIZE but for the weapon's fourth attack.</td></tr>
+
+<tr><td>4TH_REFIRE_INACCURATE</td><td>[boolean]</td><td>
+Like REFIRE_INACCURATE but for the weapon's fourth attack.</td></tr>
+
+<tr><td>4TH_ATTACK</td><td>[attack]</td><td>
+Attack type to use by default for the weapon's fourth attack. Weapon
+must have 4TH_ATTACK states and use the 4TH_SHOOT and/or 4TH_REFIRE
 actions.</td></tr>
 
 <tr><td>SHARED_CLIP</td><td>[boolean]</td><td>
@@ -203,9 +243,14 @@ If TRUE, then shows clipsize remaining on the status bar instead of total ammo o
 <tr><td><a href="#special">SPECIAL</a></td><td>[special]</td><td>
 Special characteristics of the weapon. See 'list' of specials below.</td></tr>
 
-<tr><td><a href="#special">SEC_SPECIAL</a></td><td>[special]</td><td>
+<tr><td><a href="#special">2ND_SPECIAL (aka SEC_SPECIAL)</a></td><td>[special]</td><td>
 Special characteristics of the secondary attack. See 'list' of specials below.</td></tr>
 
+<tr><td><a href="#special">3RD_SPECIAL</a></td><td>[special]</td><td>
+Special characteristics of the third attack. See 'list' of specials below.</td></tr>
+
+<tr><td><a href="#special">4TH_SPECIAL</a></td><td>[special]</td><td>
+Special characteristics of the fourth attack. See 'list' of specials below.</td></tr>
  
 <tr><td>START_SOUND</td><td>[sound]</td><td>
 Sound played when the weapon is selected.</td></tr>
@@ -339,17 +384,42 @@ State for reloading weapon. (See shotgun)</td></tr>
 
 <tr><td>UP</td><td>The states to use when this weapon is selected.</td></tr>
 
-<tr><td>SECATTACK</td><td>
+<tr><td>2NDATTACK (aka SECATTACK)</td><td>
 State for when user triggers secondary attack.</td></tr>
 
-<tr><td>SECDISCARD</td><td>
+<tr><td>2NDDISCARD (aka SECDISCARD</td><td>
 Same as DISCARD, but for secondary attack.</td></tr>
 
-<tr><td>SECRELOAD</td><td>
+<tr><td>2NDRELOAD (aka SECRELOAD)</td><td>
 Like RELOAD, but for the secondary attack.</td></tr>
 
-<tr><td>SECFLASH</td><td>
+<tr><td>2NDFLASH (aka SECFLASH)</td><td>
 Like FLASH, but for the secondary attack.</td></tr>
+
+<tr><td>3RDATTACK</td><td>
+State for when user triggers third attack.</td></tr>
+
+<tr><td>3RDDISCARD</td><td>
+Same as DISCARD, but for third attack.</td></tr>
+
+<tr><td>3RDRELOAD</td><td>
+Like RELOAD, but for the third attack.</td></tr>
+
+<tr><td>3RDFLASH</td><td>
+Like FLASH, but for the third attack.</td></tr>
+
+<tr><td>4THATTACK</td><td>
+State for when user triggers third attack.</td></tr>
+
+<tr><td>4THDISCARD</td><td>
+Same as DISCARD, but for third attack.</td></tr>
+
+<tr><td>4THRELOAD</td><td>
+Like RELOAD, but for the third attack.</td></tr>
+
+<tr><td>4THFLASH</td><td>
+Like FLASH, but for the third attack.</td></tr>
+
 
 <tr><td>ZOOM</td><td>
 States used for this weapon in zoomed field of view mode.</td></tr>
@@ -450,6 +520,9 @@ returns to the READY states.  If not, the weapon goes back to the
 ATTACK states.  Only needed for automatic weapons.
 </td></tr>
 
+<tr><td>REFIRE_TO</td><td>Usage: REFIRE_TO(state_name:frame), if we are refiring then jump 
+to the specified frame of the named state. Useful for skipping over initial frames</td></tr>
+
 <tr><td>RTS_ENABLE_TAGGED(tagnum)</td><td>
 Trigger an RTS script with this tag number.</td></tr>
 
@@ -460,20 +533,59 @@ Disable an RTS script with this tag number.</td></tr>
 Same as CHECKRELOAD, but used for the secondary attack.</td></tr>
 
 
-<tr><td>SEC_FLASH</td><td>
+<tr><td>2ND_FLASH (aka SEC_FLASH)</td><td>
 Starts the weapon's SEC_FLASH states.</td></tr>
 
-<tr><td>SEC_NOFIRE</td><td>
+<tr><td>2ND_NOFIRE (aka SEC_NOFIRE)</td><td>
 Same as NOFIRE, but used for the secondary attack.</td></tr>
 
-<tr><td>SEC_NOFIRE_RETURN</td><td>
+<tr><td>2ND_NOFIRE_RETURN (aka SEC_NOFIRE_RETURN)</td><td>
 Same as NOFIRE_RETURN, but used for the secondary attack.</td></tr>
 
-<tr><td>SEC_REFIRE</td><td>
+<tr><td>2ND_REFIRE (aka SEC_REFIRE)</td><td>
 Same as REFIRE, but used for the secondary attack.</td></tr>
 
-<tr><td>SEC_SHOOT</td><td>
+<tr><td>2ND_REFIRE_TO</td><td>
+Same as REFIRE_TO, but used for the secondary attack.</td></tr>
+
+<tr><td>2ND_SHOOT (aka SEC_SHOOT)</td><td>
 Same as SHOOT, but used for the secondary attack.</td></tr>
+
+<tr><td>3RD_FLASH</td><td>
+Starts the weapon's 3RD_FLASH states.</td></tr>
+
+<tr><td>3RD_NOFIRE</td><td>
+Same as NOFIRE, but used for the third attack.</td></tr>
+
+<tr><td>3RD_NOFIRE_RETURN</td><td>
+Same as NOFIRE_RETURN, but used for the third attack.</td></tr>
+
+<tr><td>3RD_REFIRE</td><td>
+Same as REFIRE, but used for the third attack.</td></tr>
+
+<tr><td>3RD_REFIRE_TO</td><td>
+Same as REFIRE_TO, but used for the third attack.</td></tr>
+
+<tr><td>3RD_SHOOT</td><td>
+Same as SHOOT, but used for the third attack.</td></tr>
+
+<tr><td>4TH_FLASH</td><td>
+Starts the weapon's 4TH_FLASH states.</td></tr>
+
+<tr><td>4TH_NOFIRE</td><td>
+Same as NOFIRE, but used for the fourth attack.</td></tr>
+
+<tr><td>4TH_NOFIRE_RETURN</td><td>
+Same as NOFIRE_RETURN, but used for the fourth attack.</td></tr>
+
+<tr><td>4TH_REFIRE</td><td>
+Same as REFIRE, but used for the fourth attack.</td></tr>
+
+<tr><td>4TH_REFIRE_TO</td><td>
+Same as REFIRE_TO, but used for the fourth attack.</td></tr>
+
+<tr><td>4TH_SHOOT</td><td>
+Same as SHOOT, but used for the fourth attack.</td></tr>
 
 <tr><td>SET_SKIN(skin number)</td><td>
 Dynamically change the current skin to a different one.</td></tr>

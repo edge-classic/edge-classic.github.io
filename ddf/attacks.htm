@@ -155,6 +155,15 @@ The custom states to be used (defined in things.ddf) when this attack causes pai
 <tr><td>DAMAGE.VAL</td><td>[float]</td><td>
 On it's own this command sets a fixed amount of damage done by the attack. It can also be combined with either the DAMAGE.MAX or DAMAGE.ERROR commands to allow a range of possible damage values.</td></tr>
 
+<tr><td>DAMAGE.DAMAGE_IF_BENEFIT</td><td>[benefit]</td><td>
+A list of benefits (separated by commas): Player will take damage if they have at least one of these benefits. See below for benefit format.  </td></tr>
+
+<tr><td>DAMAGE.DAMAGE_UNLESS_BENEFIT</td><td>[benefit]</td><td>
+A list of benefits (separated by commas): Player will take damage unless they have at least one of these benefits. See below for benefit format.  </td></tr>
+
+<tr><td>DAMAGE.FLASH_COLOUR</td><td>[colourmap]</td><td>
+Allows a custom color to be used as the pain effect when a player is hit by this damage type i.e. to emulate effects like Hexen's cold/poison damage.</td></tr>
+
 
 <tr><td>DEATH_SOUND</td><td>[sound]</td><td>
 The sound played when the projectile explodes.</td></tr>
@@ -504,6 +513,8 @@ player (or whatever their parent has a grudge against)</td></tr>
 <tr><td>NO_TRIGGER_LINES</td><td>
 This attack will not trigger any special linedef types it passes or strikes.</td></tr>
 
+<tr><td>PLAYER_ATTACK</td><td>
+The attack behaves as if originating from the player, even if it's an indirect secondary attack: this ensures the player gets his VAMPIRE health and KillBenefits.</td></tr>
 
 <tr><td>PRESTEP_SPAWN</td><td>
 Moves a SPAWNED object slightly forward so it is not spawned on top of
