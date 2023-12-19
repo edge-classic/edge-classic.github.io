@@ -110,13 +110,33 @@ Specifies how far an object bounces from the surface it strikes e.g. floor, ceil
 <tr><td>CASTORDER</td><td>[integer]</td><td>
 The order this object appears in the cast list. (The cast list is the sequence that follows Doom2 MAP30).</td></tr>
 
-<tr><td>CHOKE_DAMAGE.DEATH_STATE</td><td>[state]</td><td>What STATES this object should use if it dies from choking underwater. e.g. DEATHDROWN</td></tr>
 
 <tr><td>CHOKE_DAMAGE.DELAY</td><td>[tics]</td><td>How often this creature takes damage due to choking.</td></tr>
 
+<tr><td>CHOKE_DAMAGE.VAL</td><td>[float]</td><td>
+Simple damage value for when this creature is choking. It can also be combined with either the CHOKE_DAMAGE.MAX or CHOKE_DAMAGE.ERROR commands to allow a range of possible damage values.</td></tr>
+
+<tr><td>CHOKE_DAMAGE.FLASH_COLOUR</td><td>[colourmap]</td><td>
+Allows a custom color to be used as the pain effect when a player is hit by choking damage.</td></tr>
+
+<tr><td>CHOKE_DAMAGE.DEATH_STATE</td><td>[state]</td><td>What STATES this object should use if it dies from choking underwater. e.g. DEATHDROWN</td></tr>
+
 <tr><td>CHOKE_DAMAGE.PAIN_STATE</td><td>[state]</td><td>What STATES this object should use if it is in pain because of choking underwater. E.g. PAINDROWN</td></tr>
 
-<tr><td>CHOKE_DAMAGE.VAL</td><td>[float]</td><td>Simple damage value for when this creature is choking.</td></tr>
+<tr><td>CHOKE_DAMAGE.ERROR</td><td>[float]</td><td>
+When combined with the CHOKE_DAMAGE.VAL command this forces the choking damage to be calculated on a weighted average basis in the range from (CHOKE_DAMAGE.VAL - CHOKE_DAMAGE.ERROR) to (CHOKE_DAMAGE.VAL + CHOKE_DAMAGE.ERROR). The value for CHOKE_DAMAGE.ERROR should be less than the value for CHOKE_DAMAGE.VAL otherwise this won't work properly.</td></tr>
+
+<tr><td>CHOKE_DAMAGE.MAX</td><td>[float]</td><td>
+When combined with the CHOKE_DAMAGE.VAL command this forces the choking damage to be calculated in the range from CHOKE_DAMAGE.VAL to CHOKE_DAMAGE.MAX. The value for CHOKE_DAMAGE.MAX should be more than the value for CHOKE_DAMAGE.VAL otherwise this won't work.</td></tr>
+
+<TR><TD>CHOKE_DAMAGE.OBITUARY</TD><TD>[lang]</TD><TD>
+Message shown when the player dies from choking underwater. </TD></TR>
+
+<tr><td>CHOKE_DAMAGE.DAMAGE_IF_BENEFIT</td><td>[benefit]</td><td>
+A list of benefits (separated by commas): Player will take choking damage if they have at least one of these benefits. See below for benefit format.  </td></tr>
+
+<tr><td>CHOKE_DAMAGE.DAMAGE_UNLESS_BENEFIT</td><td>[benefit]</td><td>
+A list of benefits (separated by commas): Player will take choking damage unless they have at least one of these benefits. See below for benefit format.  </td></tr>
 
 <tr><td>CLOSE_ATTACK</td><td>[attack]</td><td>
 Attack to use when attacking from close range.</td></tr>
