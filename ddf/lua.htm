@@ -105,6 +105,18 @@ For a HUD which never changes, simply ignore this value.
 <p><b>hud.game_paused() : float</b>
 <br>This function returns 1 if we are in a title screen menu or the game is paused.
 </p>
+
+<p><b>hud.game_skill() : float</b>
+<br>This function returns the current a number representing the current skill mode (0 to 4): 0="I'm to young to die" and 4="Nightmare".
+</p>
+
+<p><b>hud.erraticism_active() : float</b>
+<br>This function returns 1 if Erratiscism mode is activated.
+</p>
+<p><b>hud.time_stop_active() : float</b>
+<br>This function returns 1 if Time_Stop powerup is active.
+</p>
+
 <p><b>hud.map_name() : string</b>
 <br>This function returns the DDF name of the current map being played (the one defined in LEVELS.DDF).
 </p>
@@ -113,6 +125,10 @@ For a HUD which never changes, simply ignore this value.
 </p>
 <p><b>hud.map_author() : string</b>
 <br>This function returns the author of the map being played(defined via UMAPINFO or LEVELS.DDF), mainly to be displayed on the automap.
+</p>
+
+<p><b>hud.lookup_LDF(languages entry) : string</b>
+<br>This function returns the corresponding languages DDF string.
 </p>
 
 
@@ -151,12 +167,10 @@ The 'color' parameter is a vector with fields called 'r', 'g' and 'b' (for red, 
 <br>Draws an image at the given coordinates, which specify the top/left corner of the image. The current alpha and scaling factors are applied as well. 
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
 </p>
-
 <p><b>hud.stretch_image(x, y, w, h, name, [NoOffset])</b>
 <br>Similar to hud.draw_image(), but the image will be stretched or squashed so that it fits exactly into the given rectangle on the screen. The current alpha value is also applied. 
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
 </p>
-
 <p><b>hud.tile_image(x, y, w, h, name, [x_offset, y_offset])</b>
 <br>Draws an image (usually a texture or flat) on the screen, where the image is tiled (repeated) to fill up the given rectangle. The current alpha and scaling factors are also applied. The 'x_offset' and 'y_offset' parameters are optional, and can be used to offset the texture by a certain number of pixels.
 </p>
@@ -166,7 +180,6 @@ The 'color' parameter is a vector with fields called 'r', 'g' and 'b' (for red, 
 <br>The parameter "sy" controls vertical scrolling speed and direction(positive value scrolls Up, negative Down).
 <br>If we specify the optional [NoOffset] argument as 1, then we will ignore any X or Y offsets the image may have, both doom style and any defined in images.ddf
 </p>
-
 <p><b>hud.draw_text(x, y, str, [size])</b>
 <br>Draws some text on the screen using the current text font, color, alpha and scaling values. Newlines ("\n") in the string can be used to draw multi-line text.
 <br>We can specify the optional [size] argument to set the font size in pixels i.e. 16
@@ -187,6 +200,10 @@ The 'color' parameter is a vector with fields called 'r', 'g' and 'b' (for red, 
 <p><b>hud.render_automap(x, y, w, h)</b>
 <br>Renders the automap for the player on the screen, in a rectangle with the given coordinates. Note that no background is drawn, hence you can use this function to create an overlay automap (drawn over the top of the player's view). If you need a solid color behind it, use the hud.solid_box() function first.
 </p>
+<p><b>hud.set_render_who(index)</b>
+<br>
+Sets the current player for rendering the world or the automap. The 'index' parameter is a small number: 1 for the "main player" on this computer (the person at the keyboard), 2 for the next player in the list, etc... upto the number of players in the game.
+</p>
 <p><b>hud.automap_option(option, value)</b>
 <br> Turn ON or OFF automap options.
 <br>Example usage: 
@@ -203,12 +220,18 @@ The following list shows all the possible options:
 <br><b>hud.AM_HIDELINES</b> Show no map lines whatsoever
 </p>
 
-
-
-<p><b>hud.set_render_who(index)</b>
+<p><b>hud.automap_zoom(value)</b>
 <br>
-Sets the current player for rendering the world or the automap. The 'index' parameter is a small number: 1 for the "main player" on this computer (the person at the keyboard), 2 for the next player in the list, etc... upto the number of players in the game.
+Sets the current zoom for the automap. A number between 0.2 and 100.
 </p>
+
+<p><b>hud.automap_player_arrow(type)</b>
+<br>
+Sets the arrow that represents the player on the automap. There are 2 possible values:  AM_ARROW_DOOM or AM_ARROW_HERETIC.
+</p>
+
+
+
 <p><b>hud.automap_color(part, colour)</b>
 <br>
 This function can be used to change some or all of the colors used when drawing the automap. 
@@ -229,17 +252,19 @@ This function can be used to change some or all of the colors used when drawing 
 <br><b>hud.AM_SCENERY</b> Scenery items
 </p>
 
+
 <p><b>hud.get_image_width(image)
 </b>
 <br>
-Returns width of the named image lump.
+Returns width of the named image lump. Will return 0 if the image does not exist.
 </p>
 
 <p><b>hud.get_image_height(image)
 </b>
 <br>
-Returns height of the named image lump.
+Returns height of the named image lump. Will return 0 if the image does not exist.
 </p>
+
 
 <p><b>hud.get_average_color(image, [from_x], [to_x], [from_y], [to_y])
 </b>
@@ -272,18 +297,24 @@ Will return an RGB vector with the average top border color of the named image l
 Will return an RGB vector with the average bottom border color of the named image lump.
 </p>
 
+
+<p><b>hud.get_text_width(str, size)
+</b>
+<br>
+Returns approximate width of the given text string assuming <b>size</b> as the font size in pixels.
+</p>
+
+
 <p><b>hud.rts_enable(tag)
 </b>
 <br>
 Run an RTS script, where 'tag' is the RTS script to be called. 
 </p>
-
 <p><b>hud.rts_isactive(tag)
 </b>
 <br>
 Returns 1 if the script "tag" is currently enabled, 0 if disabled. 
 </p>
-
 <p><b>hud.rts_disable(tag)
 </b>
 <br>
@@ -292,24 +323,24 @@ Stop an RTS script, where 'tag' is the RTS script to be stopped.
 
 <br><br>
 <p><b><u>* Audio Functions</u></b></p>
-<br>
 <p><b>hud.play_sound(name)</b>
 <br>Plays the given sound, which must be an entry in SOUNDS.DDF.
-<br><br><br>
+
 </p>
+<p><b>player.play_footstep(flatname)</b>
+<br>
+Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
+<br>Returns 0 if unsuccessful i.e. no corresponding FLATS.DDF entry exists.
+</p>
+
+<br><br><br>
 <p><b><u>PLAYER MODULE</u></b></p>
 <p><b><u>General Queries</u></b></p>
+
 <p><b>player.is_bot()</b>
 <br>
 Returns true if the current player is a bot.
 </p>
-
-
-<p><b>player.is_outside()</b>
-<br>
-Returns 1 if the ceiling of the sector the player is currently in is Sky.
-</p>
-
 <p><b>player.get_name()</b>
 <br>
 Returns the name of the current player.
@@ -381,9 +412,53 @@ Returns true if the player currently has the specified powerup. The 'power' para
 <br>
 Returns the number of seconds remaining for the specified powerup, or zero when the player does not have it. The berserk powerup only counts down the red-screen effect, and returns -1 when that is finished. The automap powerup returns a large value when active and it never counts down. The result for invulnerability is not affected by the God-mode cheat.
 </p>
+<p><b>player.kills()</b>
+<br>
+Returns how many enemies killed on the current map.
+</p>
+<p><b>player.secrets()</b>
+<br>
+Returns how many secrets discovered on current map.
+</p>
+<p><b>player.items()</b>
+<br>
+Returns how many items picked up on the current map.
+</p>
+<p><b>player.map_enemies()</b>
+<br>
+Returns total enemies on current map.
+</p>
+<p><b>player.map_secrets()</b>
+<br>
+Returns total number of secrets on current map.
+</p>
+<p><b>player.map_items()</b>
+<br>
+Returns total items on current map.
+</p>
+<p><b>player.floor_flat()</b>
+<br>
+Returns the floor flat of the current sector we are in.
+</p>
+<p><b>player.sector_tag()</b>
+<br>
+Returns the tag of the current sector we are in.
+</p>
+<p><b>player.sector_light()</b>
+<br>
+Returns the light level of the sector the player is currently in.
+</p>
+<p><b>player.sector_floor_height()</b>
+<br>
+Returns floor height of the sector the player is currently in.
+</p>
+<p><b>player.sector_ceiling_height()</b>
+<br>
+Returns ceiling height of the sector the player is currently in.
+</p>
+
 <br><br>
 <p><b><u>* Weapon Stuff</u></b></p>
-<br>
 
 <p><b>player.has_weapon(name)</b>
 <br>
@@ -437,64 +512,17 @@ Returns the maximum amount of ammo the clip in the player's current weapon can h
 <br>
 Returns true if the player's current weapon is sharing a single clip between primary and secondary attackes (the SHARED_CLIP command).
 </p>
-<p><b>player.kills()</b>
-<br>
-Returns how many enemies killed on the current map.
-</p>
-<p><b>player.secrets()</b>
-<br>
-Returns how many secrets discovered on current map.
-</p>
-<p><b>player.items()</b>
-<br>
-Returns how many items picked up on the current map.
-</p>
-<p><b>player.map_enemies()</b>
-<br>
-Returns total enemies on current map.
-</p>
-<p><b>player.map_secrets()</b>
-<br>
-Returns total number of secrets on current map.
-</p>
-<p><b>player.map_items()</b>
-<br>
-Returns total items on current map.
-</p>
-<p><b>player.floor_flat()</b>
-<br>
-Returns the floor flat of the current sector we are in.
-</p>
-<p><b>player.sector_tag()</b>
-<br>
-Returns the tag of the current sector we are in.
-</p>
-<p><b>player.play_footstep(flatname)</b>
-<br>
-Checks FLATS.DDF for corresponding 'flatname' and plays the sfx associated with this flat.
-<br>Returns 0 if unsuccessful i.e. no corresponding FLATS.DDF entry exists.
-</p>
 
-<p><b>player.sector_light()</b>
+
+<p><b>player.weapon_state(weapon name, weapon state)</b>
 <br>
-Returns the light level of the sector the player is currently in.
+Force a player to switch to the weapon and weapon state indicated. Returns 0 if unsuccessful (i.e. do not have the weapon, or the state does not exist)
 </p>
 
 
-<p><b>player.sector_floor_height()</b>
-<br>
-Returns floor height of the sector the player is currently in.
-</p>
-
-
-<p><b>player.sector_ceiling_height()</b>
-<br>
-Returns ceiling height of the sector the player is currently in.
-</p>
 
 <br><br>
 <p><b><u>* Counter stuff</u></b></p>
-<br>
 
 <p><b>player.counter(type)</b>
 <br>
@@ -513,7 +541,6 @@ Allows us to set the amount of a counter type the player has. The 'type' paramet
 
 <br><br>
 <p><b><u>* Inventory stuff</u></b></p>
-<br>
 
 <p><b>player.inventory(type)</b>
 <br>
@@ -548,7 +575,6 @@ Use/spend an inventory item. The 'type' parameter is a number in the range 1-99.
 
 <br><br>
 <p><b><u>* Conditions</u></b></p>
-<br>
 
 <p><b>player.on_ground()</b>
 <br>
@@ -598,11 +624,22 @@ Returns true if player is holding the USE button down.
 <p><b>player.is_grinning()</b>
 <br>
 Returns true if player is grinning (after picking up a weapon).
-<br><br>
 </p>
 
-<p><b><u>* Miscellaneous</u></b></p>
+
+<p><b>player.is_outside()</b>
 <br>
+Returns 1 if the ceiling of the sector the player is currently in is Sky.
+</p>
+
+<p><b>player.is_zoomed()</b>
+<br>
+Returns true if player (weapon) is zoomed in.
+</p>
+<br><br>
+
+
+<p><b><u>* Miscellaneous</u></b></p>
 
 <p><b>player.num_players()</b>
 <br>
@@ -745,7 +782,7 @@ back to <A HREF="#top">top</A>
 
 <p>
 Problems with the docs, errors and comments should be directed to the EDGE-Classic team.<P>
-&copy; EDGE-Classic community 2023.
+&copy; EDGE-Classic community 2024.
 </p>
 
 
