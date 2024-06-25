@@ -107,7 +107,7 @@ For a HUD which never changes, simply ignore this value.
 </p>
 
 <p><b>hud.game_skill() : float</b>
-<br>This function returns the current a number representing the current skill mode (0 to 4): 0="I'm to young to die" and 4="Nightmare".
+<br>This function returns a number representing the current skill mode (0 to 4): 0="I'm to young to die" and 4="Nightmare".
 </p>
 
 <p><b>hud.erraticism_active() : float</b>
@@ -351,7 +351,12 @@ Returns the angle of the current player.
 </p>
 <p><b>player.get_pos()</b>
 <br>
-Returns the position of the current player.
+Returns the position of the current player. Will be a vector which can be accessed like:<br>
+<i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local playpos = player.get_pos()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local x2 = playpos.x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local y2 = playpos.y<br>
+</i>
 </p>
 <p><b>player.get_mlook()</b>
 <br>
@@ -774,6 +779,63 @@ Returns information about the currently targetted weapon. <br>
 &nbsp&nbsp 9 (AUTOMATIC)<br>
 - <i>secAttackInfo</i> is optional, and is the same as WhatInfo but applies only to the weapons secondary attack. 
 </p>
+
+
+<p><b>game.info()</b>
+<br>
+Returns an object/table with information about the current game. <br>
+
+&nbsp;&nbsp; Structure of returned <b>object/table</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>game.name</i> is the DDF episode description or DDF name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>game.mode</i> returns "sp", "dm" or "coop".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>game.skill</i> returns a number representing the current skill mode (0 to 4): 0="I'm to young to die" and 4="Nightmare".<br>
+
+</p>
+
+
+<p><b>map.info()</b>
+<br>
+Returns an object/table with information about the current map. <br>
+
+&nbsp;&nbsp; Structure of returned <b>object/table</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.name</i> returns the DDF name of the current map being played (the one defined in LEVELS.DDF).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.title</i> returns the title of the map being played.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.author</i> returns the author of the map being played(defined via UMAPINFO or LEVELS.DDF).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.secrets</i> returns total number of secrets on current map.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.enemies</i> returns total enemies on current map.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>map.items</i> returns total items on current map.<br>
+
+</p>
+
+<p><b>sector.info()</b>
+<br>
+Returns an object/table with information about the sector the player is currently in. <br>
+
+&nbsp;&nbsp; Structure of returned <b>object/table</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.tag</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.light_level</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.floor_height</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.floor_flat</i> returns the name of the current floor flat/texture.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.ceiling_height</i> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.type</i> returns the number corresponding to SECTORS.DDF entry.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.is_outside</i> returns 1 if player is outside.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.is_airless</i> returns 1 if player is in an airless sector.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.is_swimmable</i> returns 1 if player is in a swimmable sector.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.gravity</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.friction</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.viscosity</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.drag</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.fog_density</i> returns the current fog density as a percentage (i.e. 0 to 100).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>sector.fog_color</i> Will be a vector which can be accessed like:<br>
+<i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local SectorFogCol = sector.fog_color()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local FogRed = SectorFogCol.R<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local FogGreen= SectorFogCol.G<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local FogBlue= SectorFogCol.B<br>
+</i>
+
+</p>
+
 
 <br><br>
 <p>
