@@ -24,6 +24,7 @@
 			<li><a href="./lang.htm">language.ldf</a></li>
 			<li><a href="./levels.htm">levels.ddf</a></li>
 			<li><a href="./mapstuff.htm">lines/sectors.ddf</a></li>
+			<li><a href="./movies.htm">movies.ddf</a></li>
 			<li><a href="./playlist.htm">playlist.ddf</a></li>
 			<li><a href="./sfx.htm">sounds.ddf</a></li>
 			<li><a href="./styles.htm">styles.ddf</a></li>
@@ -79,11 +80,12 @@ A two digit number, used to reference this entry in games.ddf and level.ddf.</td
 
 
 <tr><td>[TYPE]</td><td>
-This can be MIDI, MUS, MP3, OGG, FLAC, XMP, GME, SID, VGM, IMF280, IMF560 or IMF700 and should refer to the type of music source that is being used.</td></tr>
+This can be MIDI, MUS, MP3, OGG, SID, FLAC, M4P, RAD, IMF280, IMF560 or IMF700 <!--, XMP, GME, VGM -->  and should refer to the type of music source that is being used.</td></tr>
 
 <tr><td>[FORMAT]</td><td>
-If the music is in a wadfile, this must be <b>LUMP</b>. 
-<br>If the music is a file on the hard drive this must be <b>FILE</b>.</td></tr>
+If the music is in a wadfile, this must be <b>LUMP</b>.<br>
+If the music is in a pack, this must be <b>PACK</b>. <br> 
+If the music is a file on the hard drive this must be <b>FILE</b>.</td></tr>
 
 <tr><td>[SONG NAME]</td><td>
 Name of the actual file in the wadfile or on the hard drive. Entries with an underscore "_" in <b>require</b> quotes around the name (e.g. "D_DEAD").</td></tr>
@@ -123,7 +125,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2022.
+&copy; EDGE Team 1998 - 2024.
 </p>
 </body>
 </html>

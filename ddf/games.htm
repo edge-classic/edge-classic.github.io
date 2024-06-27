@@ -24,6 +24,7 @@
 			<li><a href="./lang.htm">language.ldf</a></li>
 			<li><a href="./levels.htm">levels.ddf</a></li>
 			<li><a href="./mapstuff.htm">lines/sectors.ddf</a></li>
+			<li><a href="./movies.htm">movies.ddf</a></li>
 			<li><a href="./playlist.htm">playlist.ddf</a></li>
 			<li><a href="./sfx.htm">sounds.ddf</a></li>
 			<li><a href="./styles.htm">styles.ddf</a></li>
@@ -140,6 +141,9 @@ This allows a new DDF entry to be based off an existing one. Inheritance for DDF
 <TR><TD>TITLE_GRAPHIC</TD><TD>[lumpname]</TD><TD>
 Specifies a picture to add to the sequence when the game starts. You
 can specify more than one graphic, separated commas.</TD></TR>
+
+<TR><TD>TITLE_MOVIE</TD><TD>[lumpname]</TD><TD>
+Specifies a movie to add to the sequence when the game starts. Will always play before any defined TITLE_GRAPHIC entry in the same definition.</TD></TR>
 
 <TR><TD>TITLE_MUSIC</TD><TD>[music]</TD><TD>
 Some music to play when the TITLE_GRAPHIC is displayed. Note that the
