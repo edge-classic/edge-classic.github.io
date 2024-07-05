@@ -188,6 +188,19 @@ This value is the type of dynamic lighting to use for the projectile. Possible v
 <br>ADD (adds the light to the texture). 
 <br>Note: old QUADRATIC and LINEAR types have been depricated. </td></tr>
 
+<tr>
+<td>DUALATTACK1</td>
+<td>[attack]</td>
+<td>Attack number 1 to use for an attack of type DUALATTACK. A dual attack can execute other dual attacks, but cannot reference itself</td>
+</tr>
+
+
+<tr>
+<td>DUALATTACK2</td>
+<td>[attack]</td>
+<td>Attack number 2 to use for an attack of type DUALATTACK. A dual attack can execute other dual attacks, but cannot reference itself</td>
+</tr>
+
 <tr><td>ENGAGED_SOUND</td><td>[sound]</td><td>
 The sound to make when attacking.</td></tr>
 
@@ -388,7 +401,7 @@ In addition, any line may include a <tt>#Command</tt> at the end. This will eith
 <font size=+1><B>Special STATES</B></font></A>
 </p>
 <p>
-The following are predefined state names that have specifc purposes:
+The following are predefined state names that have specific purposes:
 </p>
 
 <TABLE BORDER=1  CELLSPACING=0 CELLPADDING=1>
@@ -430,6 +443,11 @@ pick from the list of attack types below.
 <tr><td>CLOSECOMBAT</td><td>
 Any close combat attack, like the demon's bite, the baron's scratch,
 or the chainsaw.</td></tr>
+
+<tr>
+<td>DUALATTACK</td>
+<td>Can execute two independent attack definitions with a single action. DUALATTACK1/2 must both be present, even if referring to the same attack</td>
+</tr>
 
 <tr><td>FIXED_SPREADER</td><td>
 Launches missiles in an ordered way like the Mancubus.</td></tr>

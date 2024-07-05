@@ -342,6 +342,8 @@ Draw the model bigger (e.g. 0.5 is half size, 2.0 is double)</td></tr>
 <tr><td>MODEL_SKIN</td><td>[integer]</td><td>
 Up to nine skins can currently be used (1 to 9). Skins must be defined in DDFImages <!-- and follow the naming scheme [sprite base name] + "SKN" + [integer] e.g. TROOSKN3 would be the 3rd skin.--> </td></tr>
 
+<tr><td>MORPH_TIMEOUT</td><td>[tics]</td><td>Force object into it's MORPH states after a period of time. If it has no "MORPH" state then the thing is simply removed.</td></tr>
+
 <tr><td>NOWAY_SOUND</td><td>[sound]</td><td>
 Sound the creature (player) makes when they try to use an object they can't.</td></tr>
 
@@ -1071,6 +1073,9 @@ Walk around aimlessly. Find targets to attack.</td></tr>
 
 <tr><td>MOVE_UP</td><td>Causes this object to move up by the amount specified in brackets.</td></tr>
 
+<tr><td>MORPH</td><td>
+Allows a thing to turn into another thing. Identical behaviour to BECOME, except health is filled up. </td></tr>
+
 <tr><td>NOISE_ALERT</td><td>
 Will cause nearby monsters to be alerted. Add it to a monsters death states so his final groan will warn nearby monsters to expect trouble ;)</td></tr>
 
@@ -1201,6 +1206,15 @@ Turns the object to the angle specified in brackets.</td></tr>
 
 <tr><td>TURN_RANDOM</td><td>
 Turns the object randomly between the current angle and that specified in brackets.</td></tr>
+
+
+<tr><td>UNBECOME</td><td>
+Return a thing to it's original type if it has suffered a BECOME() previously.
+<br>If it has not been BECOMEd previously then nothing will happen.</td></tr>
+
+<tr><td>UNMORPH</td><td>
+Return a thing to it's original type if it has suffered a MORPH() previously.
+<br>If it has not been MORPHed previously then nothing will happen.</td></tr>
 
 <tr><td>WALKSOUND_CHASE</td><td>
 CHASE + play walksound.</td></tr>

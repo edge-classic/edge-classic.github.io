@@ -79,6 +79,11 @@ Triggers this line automatically at level start.  This line must be pushable.</t
 <tr><td>L</td><td>BROKEN_TEXTURE</td><td>[string]</td><td>
 When combined with GLASS=TRUE, will replace the mid-texture with this one instead of just removing it i.e. for shooting out a vent and replacing it with a broken vent. See GLASS command below.</td></tr>
 
+
+
+<tr><td>S</td><td>CEILING_BOB</td><td>[integer]</td><td>
+Surface will rise and fall rhythmically in a wave pattern, with peak values governed by the value passed to it </td></tr>
+
 <tr><td>L,S</td><td>CEILING.CRUSH_DAMAGE</td><td>[float]</td><td>
 The amount of damage when crushing (the rate of damage is still hard-coded to be every 4 tics) </td></tr>
 
@@ -187,6 +192,10 @@ Adds an extra floor to the tagged sector(s). See the list of <a href="#extrafloo
 
 <tr><td>L</td><td>FAILED_SFX</td><td>[sound]</td><td>
 The sound to play when the player tries to use a locked door without the key</td></tr>
+
+
+<tr><td>S</td><td>FLOOR_BOB</td><td>[integer]</td><td>
+Surface will rise and fall rhythmically in a wave pattern, with peak values governed by the value passed to it </td></tr>
 
 <tr><td>L,S</td><td>FLOOR.CRUSH_DAMAGE</td><td>[float]</td><td>
 The amount of damage when crushing (the rate of damage is still hard-coded to be every 4 tics) </td></tr>
