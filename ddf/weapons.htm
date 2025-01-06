@@ -455,6 +455,8 @@ Like SHOOT, but without any kick, flash or change in player
 state, and without using any ammo. Used to create ejecting shells from
 weapons. Used like EJECT(attack_name), but will use the weapons EJECT_ATTACK (if defined) if no attack_name is specified.</td></tr>
 
+<tr><td>FACE</td><td>Changes the vertical direction the player is facing by the angle specified in brackets.</td></tr>
+
 <tr><td>FLASH</td><td>
 Starts the weapon's FLASH states.</td></tr>
 
@@ -483,8 +485,6 @@ Sets light around player to brightest.  </td></tr>
 <tr><td>LOWER</td><td>
 Lowers the player's weapon sprite off the screen when selecting a new
 weapon or dead.</td></tr>
-
-<tr><td>MLOOK_TURN</td><td>Causes this player to turn by the MLOOK angle specified in brackets.</td></tr>
 
 <tr><td>MOVE_FWD</td><td>Causes the player to move forward by the amount specified in brackets. Use a negative value to move backwards.</td></tr>
 
@@ -614,7 +614,7 @@ Used like TRANS_SET(xx%) to set the transparency of the animation as a percentag
 Used like TRANS_FADE(xx%) to fade the transparency of the animation from it's previous level to that specified.</td></tr>
 
 <tr><td>TURN</td><td>
-Turns the player to the angle specified in brackets.</td></tr>
+Turns the player by the angle specified in brackets.</td></tr>
 
 <tr><td>TURN_RANDOM</td><td>
 Turns the player randomly between the current angle and that specified in brackets.</td></tr>
