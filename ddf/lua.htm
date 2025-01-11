@@ -76,6 +76,15 @@ In order to customize the default HUDs, your Lua code needs to redefine one of t
 <br>* The <b>NOT</b> equal operator is <b>"~="</b>
 <br>* Coals Logical Operators <b>"&&"</b> and <b>"||"</b> in Lua are <b>"and"</b> and <b>"or"</b> respectively.
 </p>
+
+<p><b><u>LUA debugging</u></b>
+<br>To turn on advanced LUA debugging you need to run EC with the commandline <b>-LUA_DEBUG 1</b>. Once that is active we can then use the <b>dbg()</b> function.
+<br>You can add <b>"dbg()"</b> to any line in LUAHUDS and execution will stop on that line and open a debugging console window (it's like adding a breakpoint in an IDE).
+<br>This debugging console allows you to do some very useful stuff, like see the contents of any local variables in the current function.
+<br>Once inside the debugging console, type <b>h</b> and ENTER for a list of available commands.
+<br><br>A subtle and nice thing about the <b>dbg()</b> function is that it can take a conditional, so you can break on something like <b>dbg(health == 0)</b>.
+</p>
+
 <p>
 
 <br><br><br>
