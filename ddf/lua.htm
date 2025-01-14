@@ -45,16 +45,16 @@
 
 
 <p>
-Stored in the <b>edge_hud.lua</b> file or in the <b>LUA_HUDS</b> data lump.
+Stored in the <b>edge_hud.lua</b> file or in the <b>LUAHUDS</b> data lump.
 </p>
 
 
 <p>
 <b><u>OVERVIEW</u></b>
 <br>LUA is a scripting language which EDGE uses it to define custom HUD modules. The standard reference manual for the LUA language can be found <A href="https://www.lua.org/manual/5.4/" target="new window"> here </A><br>
-The standard Lua scripts for drawing the DOOM HUD is loaded from this lump: "LUA_HUDS".<br>
+The standard Lua scripts for drawing the DOOM HUD is loaded from this lump: "LUAHUDS".<br>
 The API that Lua itself is contained in is loaded from edge_api.lua, which is a good reference to look at while developing your HUD. Take note that the API is hard-coded to EDGE.
-A wad may contain a lump called "LUA_HUDS" which is automatically loaded and will replace any definitions (functions etc) in earlier scripts.
+A wad may contain a lump called "LUAHUDS" which is automatically loaded and will replace any definitions (functions etc) in earlier scripts.
 </p>
 <p><b><u>FILES CONTENTS</u></b>
 <br>The contents of each file or lump is simply the text of the LUA code.
