@@ -149,6 +149,9 @@ Height of the creature (player) when crouching.</td></tr>
 <tr><td>DEATH_SOUND</td><td>[sound]</td><td>
 Sound made by action pointer MAKEDEATHSOUND.</td></tr>
 
+<tr><td>DLIGHT.AUTOCOLOUR</td><td>[Image name]</td><td>
+Will use the average RGB value of the specified image as the dynamic light colour associated with the object. Useful for when you don't want to specify a hexadecimal RGB value.</td></tr>
+
 <tr><td>DLIGHT.COLOUR</td><td>[special]</td><td>
 This value is the colour to use for any dynamic lighting associated with the object. It's value takes the form of three pairs of digits in hexadecimal e.g. #RRGGBB to specify the proportion of each of the three colours in the mix. So for example #FF0000 would be pure red, #990000 would be a darker red and #FFFFFF would be a bright white. Experimentation is probably the best way to find the colour you want.</td></tr>
 
@@ -172,7 +175,7 @@ This value is the type of dynamic lighting to use for the object. Possible value
 <br>Note: old QUADRATIC and LINEAR types have been depricated. </td></tr>
 
 
-
+<!--
 
 <tr><td>DLIGHT2.COLOUR</td><td>[special]</td><td>
 This value is the colour to use for any dynamic lighting associated with the object. It's value takes the form of three pairs of digits in hexadecimal e.g. #RRGGBB to specify the proportion of each of the three colours in the mix. So for example #FF0000 would be pure red, #990000 would be a darker red and #FFFFFF would be a bright white. Experimentation is probably the best way to find the colour you want.</td></tr>
@@ -196,7 +199,7 @@ This value is the type of dynamic lighting to use for the object. Possible value
 <br>ADD (adds the light to the texture). 
 <br>Note: old QUADRATIC and LINEAR types have been depricated. </td></tr>
 
-
+-->
 
 
 <tr><td>DROPITEM</td><td>[special]</td><td>
@@ -559,6 +562,9 @@ Not to be activated by sound, deaf monster.</td></tr>
 
 <tr><td>ALWAYS_LOUD</td><td>
 No sound volume change due to distance.</td></tr>
+
+<tr><td>ASSIGN_TID</td><td>
+Will assign a unique ID to a mobj when it spawns, managed separately from tags. For interaction with the corresponding LUAHUDS functions that make use of tids.</td></tr>
 
 <tr><td>ATTACK_HURTS</td><td>
 Monster can be harmed by it's own species.</td></tr>
@@ -1019,6 +1025,12 @@ Changes the vertical direction the object is facing by the angle specified in br
 <tr><td>FACETARGET</td><td>
 Turns the object to face it's target.</td></tr>
 
+<tr><td>FRIEND_LOOKOUT</td><td>
+Looks for a player to support or an enemy to attack. Similar to SUPPORT_LOOKOUT but will not go to MEANDER states automatically.</td></tr>
+
+<tr><td>GRAVITY</td><td>
+Remove NoGravity flag from thing.</td></tr>
+
 <tr><td>JUMP</td><td>
 Used like so.. JUMP(state:frame,xx%) and gives a xx% chance that the object jumps to the specified frame of the specified state. 
 <br>Note that frame numbers start at 0, so the first frame would be 0, second would be 1 etc.</td></tr>
@@ -1032,10 +1044,12 @@ Similar to the previous JUMP_LIQUID action, except this only triggers if the thi
 <tr><td>KILLSOUND</td><td>
 Stops any sound playing that is associated with this thing.</td></tr>
 
-
-
 <tr><td>LOOKOUT</td><td>
 Looks for players to kill. Enters the CHASE states if it finds one.</td></tr>
+
+<tr><td>LUA_RUN_SCRIPT</td><td>
+Will run the named LUAHUDS script, passing a table containing the calling things information as a parameter.
+<br>Usage is: LUA_RUN_SCRIPT("lua_script_name")</td></tr>
 
 <tr><td>MAKEACTIVESOUND</td><td>
 Makes the object's active sound</td></tr>
@@ -1076,6 +1090,9 @@ Walk around aimlessly. Find targets to attack.</td></tr>
 
 <tr><td>MORPH</td><td>
 Allows a thing to turn into another thing. Identical behaviour to BECOME, except health is filled up. </td></tr>
+
+<tr><td>NO_GRAVITY</td><td>
+Set NoGravity flag for the thing.</td></tr>
 
 <tr><td>NOISE_ALERT</td><td>
 Will cause nearby monsters to be alerted. Add it to a monsters death states so his final groan will warn nearby monsters to expect trouble ;)</td></tr>
@@ -1148,6 +1165,10 @@ Used like SET_PAINCHANCE(0%) and will dynamically change a monsters painchance.
 this will make sure the whole animation is played out and won't be interrupted by another
  shot which would normally make us re-start the pain animation again.
 </td></tr>
+
+<tr><td>SET_SCALE</td><td>
+Used like SET_SCALE(0.5). Stretches or shrinks the total size (width and height) of sprite graphics. 1 is normal perspective, 0.5 will make graphics half normal
+size. This is purely visual and is mainly intended for special effects things, such as a puff of smoke gradually dissipating by expansion (in combination with TRANS_FADE) or shrinking and disappearing.</td></tr>
 
 <tr><td>SMOKING</td><td>
 Creates a smoke trail behind the object.</td></tr>
@@ -1522,7 +1543,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2024.
+&copy; EDGE Team 1998 - 2025.
 </p>
 </body>
 </html>

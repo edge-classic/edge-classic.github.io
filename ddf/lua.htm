@@ -705,6 +705,7 @@ Returns an object/table with information about the currently targetted thing. <b
 &nbsp;&nbsp; Structure of returned <b>thing object/table</b>:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.name</i> is the CAST_TITLE or DDF name.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.tag</i> is the map tag (if it has one).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.tid</i> is the tid (if it has one).<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.type</i> is MONSTER, WEAPON, PICKUP or SCENERY.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.currenthealth</i> is the things current health (for non-MONSTER things this will be 1000).<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- <i>thing.spawnhealth</i> is the things spawnhealth (for non-MONSTER things this will be 1000).<br>
@@ -725,9 +726,17 @@ Returns an object/table with information about the currently targetted thing. <b
 
 <p><b>mapobject.tagged_info(ThingMapTag)</b>
 <br>
-Same as <i>mapobject.object_info()</i>, but only returns information about the thing with <b><u>ThingMapTag</u></b> we specified.
+Will return a table of all active map objects with the matching <b><u>ThingMapTag</u></b>  for iteration and scripting.
+<br>
+Structure of returned <b>thing object/table</b> is the same as <b><i>mapobject.object_info()</i></b><br>
 </p>
 
+<p><b>mapobject.tid_info(ThingTid)</b>
+<br>
+Will return a table of all active map objects with the matching <b><u>ThingTid</u></b>  for iteration and scripting.
+<br>
+Structure of returned <b>thing object/table</b> is the same as <b><i>mapobject.object_info()</i></b><br>
+</p>
 
 
 
@@ -752,25 +761,48 @@ Returns an object/table with information about the currently targetted Weapon pi
 </p>
 
 
+<p><b>mapobject.render_view_tag(x, y, w, h, ThingMapTag)</b>
+<br>Renders the viewpoint of the TAGgged thing on the screen, in a rectangle with the given coordinates. See the world from the eyes of any mobj!
+<br>Tags used for this function should be unique; no guarantees regarding which mobj is returned if shared between multiple mobjs.
+</p>
 
+<p><b>mapobject.render_view_tid(x, y, w, h, ThingTid)</b>
+<br>Same as above but renders the viewpoint of the thing with the indicated TID instead.
+<br>More specific than using a TAG, as a TID will be unique whereas TAGs may not be.
+</p>
 
 
 <p><b>player.query_object(MaxDistance, WhatInfo)</b>
 <br>
 Returns information about the currently targetted thing. <br>
 - <i>MaxDistance</i> is the limit to how far we can query an object in map units.<br>
-- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 5:<br>
+- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 7:<br>
 &nbsp;&nbsp; 1 (NAME)<br>
 &nbsp;&nbsp; 2 (CURRENT_HEALTH)<br>
 &nbsp;&nbsp; 3 (SPAWN_HEALTH)<br>
 &nbsp;&nbsp; 4 (PICKUP_BENEFIT)<br>
 &nbsp;&nbsp; 5 (KILL_BENEFIT)<br>
+&nbsp;&nbsp; 6 (TAG)<br>
+&nbsp;&nbsp; 7 (TID)<br>
 </p>
+
 <p><b>mapobject.query_tagged(ThingMapTag, WhatInfo)</b>
 <br>
 Returns information about the thing with the tag we specified. <br>
 - <i>ThingMapTag</i> is the map tag we assigned to the object.<br>
 - <i>WhatInfo</i> is the same as player.query_object()<br>
+</p>
+
+<p><b>mapobject.query_tid(ThingTid, WhatInfo)</b>
+<br>
+Returns information about the thing with the tid we specified. <br>
+- <i>ThingTid</i> is the Tid the object has.<br>
+- <i>WhatInfo</i> is the same as player.query_object()<br>
+</p>
+
+<p><b>mapobject.objects_in_radius(x, y, radius)</b>
+<br>
+Will return a table of all map objects within a given radius from the indicated XY coordinates, for iteration and scripting.
 </p>
 
 <p><b>player.query_weapon(MaxDistance, WhatInfo, [secAttackInfo])</b>
@@ -854,7 +886,7 @@ back to <A HREF="#top">top</A>
 
 <p>
 Problems with the docs, errors and comments should be directed to the EDGE-Classic team.<P>
-&copy; EDGE-Classic community 2024.
+&copy; EDGE-Classic community 2025.
 </p>
 
 

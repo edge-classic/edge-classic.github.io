@@ -170,6 +170,9 @@ Allows a custom color to be used as the pain effect when a player is hit by this
 <tr><td>DEATH_SOUND</td><td>[sound]</td><td>
 The sound played when the projectile explodes.</td></tr>
 
+<tr><td>DLIGHT.AUTOCOLOUR</td><td>[Image name]</td><td>
+Will use the average RGB value of the specified image as the dynamic light colour associated with the object. Useful for when you don't want to specify a hexadecimal RGB value.</td></tr>
+
 <tr><td>DLIGHT.COLOUR</td><td>[special]</td><td>
 This value is the colour to use for any dynamic lighting associated with the projectile. It's value takes the form of three pairs of digits in hexadecimal E.g. #RRGGBB to specify the proportion of each of the three colours in the mix. So for example #FF0000 would be pure red, #990000 would be a darker red and #FFFFFF would be a bright white. Experimentation is probably the best way to find the colour you want.</td></tr>
 
@@ -573,6 +576,9 @@ Identifies the projectile as a missile.</td></tr>
 <tr><td>BOSSMAN</td><td>
 Identifies the projectile as a bossman (e.g. boss brain spawn cube). Explosions do little damage and there is no volume change.</td></tr>
 
+<tr><td>BORE</td><td>
+Missile can tunnel through enemies. Causes missiles to pass through enemies rather than blowing up on impact. Still damaging them multiple times as it goes through.</td></tr>
+
 <tr><td>BOUNCE</td><td>
 Object will bounce off walls and ceilings/floors, and enters BOUNCE
 states too.</td></tr>
@@ -838,7 +844,7 @@ DDF docs written by Andy Baker and Ziggy Gnarly, with updates by Andrew Apted, A
 Problems with the docs, errors and comments should be directed to the EDGE team.
 </p>
 <p>
-&copy; EDGE Team 1998 - 2024.
+&copy; EDGE Team 1998 - 2025.
 </p>
 </body>
 </html>

@@ -676,12 +676,14 @@ Returns the number of objects of this type on the map.
 <br>
 Returns information about the currently targetted thing. <br>
 - <i>MaxDistance</i> is the limit to how far we can query an object in map units.<br>
-- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 5:<br>
-&nbsp&nbsp 1 (NAME)<br>
-&nbsp&nbsp 2 (CURRENT_HEALTH)<br>
-&nbsp&nbsp 3 (SPAWN_HEALTH)<br>
-&nbsp&nbsp 4 (PICKUP_BENEFIT)<br>
-&nbsp&nbsp 5 (KILL_BENEFIT)<br>
+- <i>WhatInfo</i> is to specify what information we want exactly and is a number from 1 to 7:<br>
+&nbsp;&nbsp; 1 (NAME)<br>
+&nbsp;&nbsp; 2 (CURRENT_HEALTH)<br>
+&nbsp;&nbsp; 3 (SPAWN_HEALTH)<br>
+&nbsp;&nbsp; 4 (PICKUP_BENEFIT)<br>
+&nbsp;&nbsp; 5 (KILL_BENEFIT)<br>
+&nbsp;&nbsp; 6 (TAG)<br>
+&nbsp;&nbsp; 7 (TID)<br>
 </p>
 <p><b>mapobject.query_tagged(ThingMapTag, WhatInfo)</b>
 <br>
@@ -689,6 +691,26 @@ Returns information about the thing with the tag we specified. <br>
 - <i>ThingMapTag</i> is the map tag we assigned to the object.<br>
 - <i>WhatInfo</i> is the same as player.query_object()<br>
 </p>
+
+
+<p><b>mapobject.query_tid(ThingTid, WhatInfo)</b>
+<br>
+Returns information about the thing with the tid we specified. <br>
+- <i>ThingTid</i> is the Tid the object has.<br>
+- <i>WhatInfo</i> is the same as player.query_object()<br>
+</p>
+
+
+<p><b>mapobject.render_view_tag(x, y, w, h, ThingMapTag)</b>
+<br>Renders the viewpoint of the TAGgged thing on the screen, in a rectangle with the given coordinates. See the world from the eyes of any mobj!
+<br>Tags used for this function should be unique; no guarantees regarding which mobj is returned if shared between multiple mobjs.
+</p>
+
+<p><b>mapobject.render_view_tid(x, y, w, h, ThingTid)</b>
+<br>Same as above but renders the viewpoint of the thing with the indicated TID instead.
+<br>More specific than using a TAG, as a TID will be unique whereas TAGs may not be.
+</p>
+
 
 <p><b>player.query_weapon(MaxDistance, WhatInfo, [secAttackInfo])</b>
 <br>
@@ -707,6 +729,9 @@ Returns information about the currently targetted weapon. <br>
 - <i>secAttackInfo</i> is optional, and is the same as WhatInfo but applies only to the weapons secondary attack. 
 </p>
 
+
+
+
 <br><br>
 <p>
 back to <A HREF="#top">top</A>
@@ -714,7 +739,7 @@ back to <A HREF="#top">top</A>
 
 <p>
 Problems with the docs, errors and comments should be directed to the EDGE-Classic team.<P>
-&copy; EDGE-Classic community 2024.
+&copy; EDGE-Classic community 2025.
 </p>
 
 
