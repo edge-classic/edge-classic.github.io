@@ -325,11 +325,15 @@ Once this linetype has been activated it changes to the type specified by the NE
 <tr><td>L</td><td>RADIUS_TRIGGER</td><td>[special]</td><td>
 Used to provide a link between linedefs and radius trigger script effects. Values are 'ENABLE_TAGGED' or 'DISABLE_TAGGED'.  When such linedef with a tag of 17, is activated (via shoot, push or walk), all radius triggers with the tag number of 17 would either be enabled or disabled as appropriate.</td></tr>
 
+<tr><td>S</td><td>REVERB_PRESET</td><td>[reverb]</td><td> This is the kind of sound distortion heard while in this sector. The sound distortion is an entry defined in DDFVERB.</td></tr>
+
+<!--
 <tr><td>S</td><td>REVERB_TYPE</td><td>[special]</td><td>values are either "REVERB" or "ECHO". This is the kind of sound distortion heard while in this sector if the REVERB_SFX sector special is set.</td></tr>
 
 <tr><td>S</td><td>REVERB_RATIO</td><td>[integer]</td><td>A number from 0 to 100. This is the strength of the reverberation, in terms of percentage of the sound's original volume.</td></tr>
 
 <tr><td>S</td><td>REVERB_DELAY</td><td>[integer]</td><td>The length of time, in milliseconds, before the reflected sounds are heard (think of this like an echo, a larger area has more of a "delay" until you hear yourself).</td></tr>
+-->
 
 <tr><td>L</td><td>SCROLL_PARTS</td><td>[special]</td><td>
 Specifies the texture parts to scroll. Values can be LEFT, LEFT_UPPER, LEFT_MIDDLE, LEFT_LOWER, RIGHT, RIGHT_UPPER, RIGHT_MIDDLE, and RIGHT_LOWER . A comma separated list can be used to specify multiple scroll parts.</td></tr>
@@ -651,8 +655,10 @@ The push is a constant amount.  Good for conveyor belts.  Without this flag the 
 <tr><td>VACUUM_SFX</td><td>When a player is in a sector with this special, sounds are muted and muffled to simulate being in a vacuum environment.
 </td></tr>
 
+<!--
 <tr><td>REVERB_SFX</td><td>When a player is in a sector with this special, sounds are distorted by the custom values we define with REVERB_TYPE, REVERB_DELAY, and REVERB_RATIO.
 </td></tr>
+-->
 
 <tr><td>SWIM</td><td>
 Activates swimming mode when a player is in a sector assigned this special. This allows up and down movement in the sector, plus forward motion in the mlook directon. Jump also works differently. For this to work well, the sector should have a lower GRAVITY than normal and have similar FRICTION and DRAG values. VISCOSITY could also be used.</td></tr>

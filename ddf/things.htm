@@ -872,10 +872,13 @@ States used when an object explodes/dies.</td></tr>
 States that a thing (player) uses when it's flying.</td></tr>
 
 <tr><td>GIB</td><td>
-States for an object when it has been gibbed.</td></tr>
+States for an object when it has been crushed.</td></tr>
 
 <tr><td>IDLE</td><td>
 States for when the object isn't doing anything.</td></tr>
+
+<tr><td>IMMUNITY_HIT</td><td>
+A creature with an IMMUNITY class assigned will *ALWAYS* go into this state when it is hit by a corresponding attack class.</td></tr>
 
 <tr><td>JUMP</td><td>
 States that a thing (player) uses when it's jumping.</td></tr>
@@ -898,6 +901,9 @@ States that a projectile enters when bouncing.</td></tr>
 <tr><td>RELOAD</td><td>
 States for when the creature is reloading.</td></tr>
 
+<tr><td>RESISTANCE_PAIN</td><td>
+Pain state to enter if RESISTANCE.CLASS is used. If it doesn't have them then the normal PAIN states are used.</td></tr>
+
 <tr><td>RESPAWN</td><td>
 States to use when a creature is resurrected by another creature.</td></tr>
 
@@ -917,7 +923,7 @@ States that an object enters when it has been touched.</td></tr>
 Death state to enter if WEAKNESS.CLASS is used. If they don't exist then it will try OVERKILL states, and finally it falls back to the normal DEATH states.</td></tr>
 
 <tr><td>WEAKPAIN</td><td>
-Pain state to enter if WEAKNESS.CLASS is used. If it doesn't have them then the normal PAIN states are used</td></tr>
+Pain state to enter if WEAKNESS.CLASS is used. If it doesn't have them then the normal PAIN states are used.</td></tr>
 
 </TABLE>
 <p>
