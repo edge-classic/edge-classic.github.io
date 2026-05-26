@@ -49,7 +49,7 @@
 Stored in reverbs.ddf file or in the DDFVERB data lump. 
 </p>
 <p>
-reverbs.ddf allows you to create a custom sound distortion(e.g. echos) which can then be assigned to specific sector types (via DDFSECT command "REVERB_PRESET"). 
+reverbs.ddf allows you to create a custom sound distortion(e.g. echos) which can then be assigned to specific sector types (via DDFSECT command "REVERB_PRESET") or via "REVERBPRESET" UDMF field. 
 <br>Each entry consists of the reverb name enclosed in square brackets, plus a series of commands that specify the characteristics of how it will behave.
 </p>
 <br>
@@ -65,19 +65,21 @@ The commands used for flats entries are as follows:
 <TR><TH>COMMAND</TH><TH>TYPE</TH><TH>DESCRIPTION</TH></TR>
 
 <TR><TD>ROOM_SIZE</TD><TD>[percentage]</TD><TD>
-Explanation stuff here</TD></TR>
+Simulate a room size, each 1% corresponds to 1 foot.</TD></TR>
 
 <TR><TD>DAMPING_LEVEL</TD><TD>[percentage]</TD><TD>
-Explanation stuff here</TD></TR>
-
-<TR><TD>WET_LEVEL</TD><TD>[percentage]</TD><TD>
-Explanation stuff here</TD></TR>
+High value to simulate soft rooms (curtains, carpets, many people).<br>
+Low value to  simulate hard, reflective rooms (empty halls, swimming pools).</TD></TR>
 
 <TR><TD>DRY_LEVEL</TD><TD>[percentage]</TD><TD>
-Explanation stuff here</TD></TR>
+Controls the volume of the unprocessed sound.</TD></TR>
+
+<TR><TD>WET_LEVEL</TD><TD>[percentage]</TD><TD>
+Controls the volume of the processed, reverberant signal relative to the original, dry audio.</TD></TR>
+
 
 <TR><TD>REVERB_WIDTH</TD><TD>[percentage]</TD><TD>
-Explanation stuff here</TD></TR>
+Creates a large, enveloping space.</TD></TR>
 
 <TR><TD>REVERB_GAIN</TD><TD>[percentage]</TD><TD>
 Explanation stuff here</TD></TR>
@@ -88,7 +90,7 @@ Explanation stuff here</TD></TR>
 <B><FONT SIZE=+1>EXAMPLES</font></b>
 </p>
 <p>
-The following is an example of a complete reverb entry for an example reverb entry "METALLIC":
+The following is an example of a complete reverb entry for an example "METALLIC":
 </p>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
 <TR><TD>
@@ -104,6 +106,41 @@ REVERB_GAIN = 15%;<br>
 </TD></TR>
 </TABLE>
 
+<br><bb>
+
+<p>
+These are the equivalent reverb entries used by our hardcoded builtin Dynamic Reverb:
+</p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TD>
+<FONT SIZE=2>
+[kIndoorStrong]<br>
+ROOM_SIZE = 40%;<br>
+DAMPING_LEVEL = 35%;<br>
+WET_LEVEL = 35%;<br>
+DRY_LEVEL = 50%;<br>
+REVERB_WIDTH = 65%;<br>
+REVERB_GAIN = 15%;<br>
+</FONT>
+</TD></TR>
+</TABLE>
+<br>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TD>
+<FONT SIZE=2>
+[kOutdoorStrong]<br>
+ROOM_SIZE = 30%;<br>
+DAMPING_LEVEL = 35%;<br>
+WET_LEVEL = 25%;<br>
+DRY_LEVEL = 50%;<br>
+REVERB_WIDTH = 15%;<br>
+REVERB_GAIN = 15%;<br>
+</FONT>
+</TD></TR>
+</TABLE>
+
+
+
 
 <!--begin footer-->
 <p>
@@ -111,7 +148,7 @@ back to <A HREF="#top">top</A>
 </p>
 <p>
 Problems with the docs, errors and comments should be directed to the EDGE-Classic team.<p>
-&copy; EDGE-Classic community 2025.
+&copy; EDGE-Classic community 2026.
 </p>
 </body>
 </html>
