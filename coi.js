@@ -1,3 +1,18 @@
+if ('serviceWorker' in navigator && window.top === window) {
+	navigator.serviceWorker.getRegistrations()
+		.then((registrations) => Promise.all(registrations
+			.filter((registration) => {
+				const worker = registration.active || registration.waiting || registration.installing;
+				return worker && new URL(worker.scriptURL).pathname !== '/coi-sw.js';
+			})
+			.map((registration) => registration.unregister())))
+		.then((removed) => {
+			if (removed.some(Boolean)) {
+				location.reload();
+			}
+		});
+}
+
 if (window.crossOriginIsolated) {
 	sessionStorage.removeItem('coiReloaded');
 } else if (window.isSecureContext && 'serviceWorker' in navigator) {
