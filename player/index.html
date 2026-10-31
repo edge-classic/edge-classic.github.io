@@ -1,1 +1,191 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>EDGE-classic-webplayer</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png"><link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#673ab8"><link rel="shortcut icon" href="./favicon.ico"><style>:root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#1c1c1c;color:#fff;font-family:Helvetica Neue,arial,sans-serif;font-weight:400}body,html{display:-ms-flexbox;display:flex;height:100%;min-width:480px;overflow:hidden;width:100%}body{margin:0;padding:0}#app{-ms-flex-align:center;align-items:center;-ms-flex-flow:column;flex-flow:column}#app,main{display:-ms-flexbox;display:flex;height:100%;width:100%}a,a:active,a:visited{color:#9ec2d6;text-decoration:none}a:hover{color:#00a2ff}</style><link href="./bundle.27340.css" rel="stylesheet" media="only x" onload="this.media='all'"><noscript><link rel="stylesheet" href="./bundle.27340.css"></noscript></head><body><div id="app"><main><div style="display:flex;width:100%;justify-content:center;"><div style="display:flex;width:100%;max-width:1440px;padding:24px;padding-left:42px;"><div style="display:flex;flex-grow:1;"><div style="display:flex;width:80%;"><div style="display:flex;flex-direction:column;justify-content:start;"><div style="display:flex;"><div style="font-size:18px;font-weight:normal;padding-bottom:24px;width:800px;">Play EDGE-Classic in your browser by selecting an option below:</div></div><div style="display:flex;align-items:center;"><button style="font-size:18px;width:292px;height:48px;padding:12px">Play Freedoom 2</button></div><div style="padding-top:24px;"></div><div style="display:flex;align-items:center;"><button style="font-size:18px;width:292px;height:48px;padding:12px">Play Blasphemer</button></div><div style="padding-top:24px;"></div><div style="display:flex;align-items:center;"><button style="font-size:18px;width:292px;height:48px;padding:12px">Play Wad, EPK, or Zip files</button></div><div style="padding-top:24px;"></div><textarea style="font-size:12px;width:292px;height:48px" placeholder="Enter custom command line" spellcheck="false"></textarea><div style="padding-top:128px;"></div><div style="display:flex;align-items:center;"><button style="font-size:18px;width:292px;height:48px;padding:12px">Show Licenses</button></div></div><input id="getWadFile" style="display:none" type="file" multiple="multiple"></div></div><div style="display:flex;flex-grow:1;width:50%;flex-direction:column;"><div style="display:flex;flex:0 0 24px;position:relative;"><div style="position:absolute;font-size:18px;font-weight:400;white-space:pre;">Suggested Projects</div></div><div style="display:flex;flex-shrink:0;flex-grow:1;flex-direction:column;"><a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/arctic-wolf-revisited" target="_blank" style="display:flex;flex:1;flex-direction:column;height:100%;align-items:flex-end"><div style="display:flex;flex:0;"><div style="padding-top:12px;padding-bottom:4px;font-size:14px;white-space:pre;font-weight:normal;">Operation: Arctic Wolf Revisited</div></div><div style="display:flex;position:relative;flex-grow:1;width:100%;"><img style="width:100%;height:100%;object-fit:cover;position:absolute" src="./assets/images/articwolf.png"></div></a><a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/astral-pathfinder1" target="_blank" style="display:flex;flex:1;flex-direction:column;height:100%;align-items:flex-end"><div style="display:flex;flex:0;"><div style="padding-top:12px;padding-bottom:4px;font-size:14px;white-space:pre;font-weight:normal;">Astral Pathfinder</div></div><div style="display:flex;position:relative;flex-grow:1;width:100%;"><img style="width:100%;height:100%;object-fit:cover;position:absolute" src="./assets/images/astralpathfinder.png"></div></a><a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/aliens-stranded" target="_blank" style="display:flex;flex:1;flex-direction:column;height:100%;align-items:flex-end"><div style="display:flex;flex:0;"><div style="padding-top:12px;padding-bottom:4px;font-size:14px;white-space:pre;font-weight:normal;">Aliens: Stranded</div></div><div style="display:flex;position:relative;flex-grow:1;width:100%;"><img style="width:100%;height:100%;object-fit:cover;position:absolute" src="./assets/images/aliensstranded.png"></div></a></div></div></div></div></main></div><script type="__PREACT_CLI_DATA__">%7B%22preRenderData%22:%7B%22url%22:%22/%22%7D%7D</script><script crossorigin="anonymous" src="./bundle.11c3e.esm.js" type="module"></script><script nomodule="" src="./polyfills.a1200.js"></script><script nomodule="" defer="defer" src="./bundle.45e27.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>EDGE-classic-webplayer</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="theme-color" content="#673ab8">
+		<link rel="icon" href="assets/favicon.ico">
+		<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+		<link rel="manifest" href="manifest.json">
+		<link rel="stylesheet" href="style.css">
+		<script src="/coi.js"></script>
+		<script type="module" src="player.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<main>
+				<div class="player">
+					<div id="chooser" class="chooser">
+						<div class="chooser-left">
+							<div class="chooser-options">
+								<div class="chooser-column">
+									<div class="chooser-title">Play EDGE-Classic in your browser by selecting an option below:</div>
+									<button id="play-freedoom">Play Freedoom 2</button>
+									<button id="play-blasphemer">Play Blasphemer</button>
+									<button id="play-files">Play Wad, EPK, or Zip files</button>
+									<textarea id="command-line" placeholder="Enter custom command line" spellcheck="false"></textarea>
+									<button id="show-licenses">Show Licenses</button>
+								</div>
+								<input id="getWadFile" hidden type="file" multiple>
+							</div>
+						</div>
+						<div class="projects">
+							<div class="projects-title"><div>Suggested Projects</div></div>
+							<div class="projects-list">
+								<a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/arctic-wolf-revisited" target="_blank">
+									<span>Operation: Arctic Wolf Revisited</span>
+									<div class="image"><img src="assets/images/articwolf.png" alt=""></div>
+								</a>
+								<a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/astral-pathfinder1" target="_blank">
+									<span>Astral Pathfinder</span>
+									<div class="image"><img src="assets/images/astralpathfinder.png" alt=""></div>
+								</a>
+								<a href="https://www.moddb.com/mods/edge-classic-add-ons/downloads/aliens-stranded" target="_blank">
+									<span>Aliens: Stranded</span>
+									<div class="image"><img src="assets/images/aliensstranded.png" alt=""></div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div id="canvas-container" hidden>
+						<canvas id="canvas"></canvas>
+						<div id="loading" class="loading-overlay">
+							<div class="loading">
+								<span style="--i:1">L</span><span style="--i:2">O</span><span style="--i:3">A</span><span style="--i:4">D</span><span style="--i:5">I</span><span style="--i:6">N</span><span style="--i:7">G</span><span style="--i:8">.</span><span style="--i:9">.</span><span style="--i:10">.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<dialog id="licenses">
+			<div class="modal-header">
+				<span id="close-licenses" class="modal-close">&times;</span>
+				<h2>EDGE-Classic Licenses</h2>
+			</div>
+			<div class="modal-body">
+<pre>
+===========================================================================================
+BSD 3-Clause License
+===========================================================================================
+
+AlmostEquals Google Test Framework Component - Copyright (c) 2005 Google, Inc.
+
+Blasphemer (various assets) - Copyright (c) 2021 Contributors to the Blasphemer project
+
+Freedoom (various assets) - Copyright (c) 2001-2019 Contributors to the Freedoom project
+
+minivorbis library - Copyright (c) 2020 Eduardo Bart
+  Copyright (c) 2002-2020 Xiph.org Foundation
+
+Mod4Play library - 	Copyright (c) 2024-2025 dashodanger
+					Copyright (c) 2022 Olav Sørensen
+
+===========================================================================================
+CC 1.0 Universal License
+===========================================================================================
+
+HandmadeMath.h - Ben Visness
+
+===========================================================================================
+CC-BY-3.0 Unported License
+===========================================================================================
+
+German Shepherd Dog Sprites - Copyright (c) 2017 Nash Muhandes
+
+===========================================================================================
+CC-BY-NC-4.0 International License
+===========================================================================================
+
+REKKR (various assets) - Copyright (c) 2021 Mockingbird Softworks
+
+===========================================================================================
+GPL3 License
+===========================================================================================
+
+COAL - Copyright (c) 2021-2024 The EDGE Team
+	   Copyright (c) 2009-2021 Andrew Apted, et al
+       Copyright (c) 1996-1997 Id Software, Inc.
+
+DDF library - Copyright (c) 1999-2024 The EDGE Team
+
+DEH_EDGE library - Copyright (c) 2004-2024 The EDGE Team
+
+EDGE-Classic - Copyright (c) 1999-2024 The EDGE Team
+
+EPI library - Copyright (c) 2002-2024 The EDGE Team
+
+===========================================================================================
+HacX License
+===========================================================================================
+
+HacX 1.2/2.0 (various assets) - Copyright (c) 1997-2012 Banjo Software, et al
+
+===========================================================================================
+MIT License
+===========================================================================================
+
+3dreamEngine Lua Math Libraries - Copyright (c) 2019 Luke100000 
+
+base64.lua - Copyright (c) 2018 Ilya Kolbin 
+
+Dear ImGUI - Copyright (c) 2014-2023 Omar Cornut
+
+debugger.lua -Copyright (c) 2023 Scott Lembcke and Howling Moon Software
+
+json.lua - Copyright (c) 2020 rxi
+
+Lua - Copyright (C) 1994-2023 Lua.org, PUC-Rio.
+
+miniz library - Copyright (c) 2013-2014 RAD Game Tools and Valve Software
+				Copyright (c) 2010-2014 Rich Geldreich and Tenacious Software LLC
+
+PL_MPEG library - Copyright(c) 2019 Dominic Szablewski
+
+PNPOLY algorithm - Copyright (c) 1970-2003 Wm. Randolph Franklin
+
+StringHash class - Copyright (c) 2024-2024 the rbfx project
+			       Copyright (c) 2008-2022 the Urho3D project.
+
+===========================================================================================
+Public Domain
+===========================================================================================
+
+Miniaudio library - David Reid
+
+prns.h - Marc B. Reynolds
+
+stb_image, stb_rect_pack, stb_sprintf and stb_truetype libraries - Sean Barrett
+
+===========================================================================================
+SIL Open Font License
+===========================================================================================
+
+Fira Code (renamed to ECFONT02.ttf) - Copyright 2014-2020 The Fira Code Project Authors
+
+Germania One (renamed to ECFONT03.ttf) - Copyright (c) 2011, John Vargas Beltrán,
+										 with Reserved Font Name "Germania One"
+
+Russo One (renamed to ECFONT01.ttf) - Copyright (c) 2011-2012, Jovanny Lemonad,
+									  with Reserved Font Name "Russo"
+
+===========================================================================================
+WidePix License
+===========================================================================================
+
+WidePix (various assets) - Copyright (c) 2020-2021 Nash Muhandes
+
+===========================================================================================
+zlib License
+===========================================================================================
+
+SDL3 library - Copyright (c) 1997-2026 Sam Lantinga
+</pre>
+			</div>
+			<div class="modal-footer"></div>
+		</dialog>
+	</body>
+</html>
