@@ -132,15 +132,23 @@ Value which sets how much a projectile will bounce off walls. 1 never
 loses speed, 0 completely stops, 0.5 loses 50% speed each time it
 bounces.</td></tr>
 
-<tr><td>DAMAGE.DEATH_STATE</td><td>[STATE]</td><td>
-The custom states to be used (defined in things.ddf) when this attack causes the death of a creature. Ideal for having a flamethrower attack which sets the monster on fire!
-<br>Example of use: In the attack you have DAMAGE.DEATH_STATE=BURNKILL and in your monsters DDF entry you create a STATES(BURNKILL)=...  with some burning monsters sprites.</td></tr>
+
+<tr><td>DAMAGE.VAL</td><td>[float]</td><td>
+On it's own this command sets a fixed amount of damage done by the attack. It can also be combined with either the DAMAGE.MAX or DAMAGE.ERROR commands to allow a range of possible damage values.</td></tr>
+
+<tr><td>DAMAGE.MAX</td><td>[float]</td><td>
+When combined with the DAMAGE.VAL command this forces the attack damage to be calculated in the range from DAMAGE.VAL to DAMAGE.MAX. The value for DAMAGE.MAX should be more than the value for DAMAGE.VAL otherwise this won't work.</td></tr>
 
 <tr><td>DAMAGE.ERROR</td><td>[float]</td><td>
 When combined with the DAMAGE.VAL command this forces the attack damage to be calculated on a weighted average basis in the range from (DAMAGE.VAL - DAMAGE.ERROR) to (DAMAGE.VAL + DAMAGE.ERROR). The value for DAMAGE.ERROR should be less than the value for DAMAGE.VAL otherwise this won't work properly.</td></tr>
 
-<tr><td>DAMAGE.MAX</td><td>[float]</td><td>
-When combined with the DAMAGE.VAL command this forces the attack damage to be calculated in the range from DAMAGE.VAL to DAMAGE.MAX. The value for DAMAGE.MAX should be more than the value for DAMAGE.VAL otherwise this won't work.</td></tr>
+
+<tr><td>DAMAGE.PAIN_STATE</td><td>[STATE]</td><td>
+The custom states to be used (defined in things.ddf) when this attack causes pain to a creature.</td></tr>
+
+<tr><td>DAMAGE.DEATH_STATE</td><td>[STATE]</td><td>
+The custom states to be used (defined in things.ddf) when this attack causes the death of a creature. Ideal for having a flamethrower attack which sets the monster on fire!
+<br>Example of use: In the attack you have DAMAGE.DEATH_STATE=BURNKILL and in your monsters DDF entry you create a STATES(BURNKILL)=...  with some burning monsters sprites.</td></tr>
 
 <tr><td>DAMAGE.OVERKILL_STATE&nbsp;&nbsp;</td><td>[STATE]</td><td>
 The custom states to be used (defined in things.ddf) when this attack causes overkill to a creature.</td></tr>
@@ -152,11 +160,6 @@ Message shown when the player is killed by this attack. The message can contain 
 <br>%k  :  the monster or opponent which killed the player 
 <br>i.e. the language.ddf entry could be <b><i>OB_Chaingun  = "%o was torn apart by %k.";</i></b></TD></TR>
 
-<tr><td>DAMAGE.PAIN_STATE</td><td>[STATE]</td><td>
-The custom states to be used (defined in things.ddf) when this attack causes pain to a creature.</td></tr>
-
-<tr><td>DAMAGE.VAL</td><td>[float]</td><td>
-On it's own this command sets a fixed amount of damage done by the attack. It can also be combined with either the DAMAGE.MAX or DAMAGE.ERROR commands to allow a range of possible damage values.</td></tr>
 
 <tr><td>DAMAGE.DAMAGE_IF_BENEFIT</td><td>[benefit]</td><td>
 A list of benefits (separated by commas): Player will take damage if they have at least one of these benefits. See below for benefit format.  </td></tr>
@@ -208,14 +211,34 @@ This value is the type of dynamic lighting to use for the projectile. Possible v
 <tr><td>ENGAGED_SOUND</td><td>[sound]</td><td>
 The sound to make when attacking.</td></tr>
 
-<tr><td>EXPLODE_DAMAGE.ERROR</td><td>[float]</td><td>
-Same as DAMAGE.ERROR, except for explosion damage rather than ordinary attack damage..</td></tr>
+<tr><td>EXPLODE_DAMAGE.VAL</td><td>[float]</td><td>
+Same as DAMAGE.VAL, except for explosion damage rather than ordinary attack damage..</td></tr>
 
 <tr><td>EXPLODE_DAMAGE.MAX</td><td>[float]</td><td>
 Same as DAMAGE.MAX, except for explosion damage rather than ordinary attack damage..</td></tr>
 
-<tr><td>EXPLODE_DAMAGE.VAL</td><td>[float]</td><td>
-Same as DAMAGE.VAL, except for explosion damage rather than ordinary attack damage..</td></tr>
+<tr><td>EXPLODE_DAMAGE.ERROR</td><td>[float]</td><td>
+Same as DAMAGE.ERROR, except for explosion damage rather than ordinary attack damage..</td></tr>
+
+<tr><td>EXPLODE_DAMAGE.PAIN_STATE</td><td>[STATE]</td><td>
+The custom states to be used (defined in things.ddf) when this attack causes pain to a creature.</td></tr>
+
+<tr><td>EXPLODE_DAMAGE.DEATH_STATE</td><td>[STATE]</td><td>
+The custom states to be used (defined in things.ddf) when this attack causes the death of a creature. Ideal for having a flamethrower attack which sets the monster on fire!
+<br>Example of use: In the attack you have EXPLODE_DAMAGE.DEATH_STATE=BURNKILL and in your monsters DDF entry you create a STATES(BURNKILL)=...  with some burning monsters sprites.</td></tr>
+
+<tr><td>EXPLODE_DAMAGE.OVERKILL_STATE&nbsp;&nbsp;</td><td>[STATE]</td><td>
+The custom states to be used (defined in things.ddf) when this attack causes overkill to a creature.</td></tr>
+
+
+<TR><TD>EXPLODE_DAMAGE.OBITUARY</TD><TD>[lang]</TD><TD>
+Message shown when the player is killed by this attack. The message can contain the following conversions:
+<br>%o  :  the player's name
+<br>%k  :  the monster or opponent which killed the player 
+<br>i.e. the language.ddf entry could be <b><i>OB_Chaingun  = "%o was torn apart by %k.";</i></b></TD></TR>
+
+<tr><td>EXPLODE_DAMAGE.FLASH_COLOUR</td><td>[colourmap]</td><td>
+Allows a custom color to be used as the pain effect when a player is hit by this damage type i.e. to emulate effects like Hexen's cold/poison damage.</td></tr>
 
 <tr><td>EXPLODE_RADIUS</td><td>[float]</td><td>
 Normally the explosion radius is the same as the damage caused, but this command forces the explosion radius to a particular value (e.g. 200).  The amount of damage is not affected.</td></tr>
